@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 05 Février 2014 à 19:48
+-- Généré le :  Jeu 06 Février 2014 à 10:31
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `city` varchar(50) NOT NULL,
   `country` varchar(30) NOT NULL,
   `birthday` date NOT NULL,
-  `member_type` int(11) NOT NULL,
+  `member_type` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
