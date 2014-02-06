@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 06 Février 2014 à 11:50
+-- Généré le :  Jeu 06 Février 2014 à 12:44
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `abuse_noted` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `abuse_message` text NOT NULL,
   `processed` tinyint(1) NOT NULL,
   `comment` int(11) NOT NULL,
   `member` int(11) NOT NULL,
