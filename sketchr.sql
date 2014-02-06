@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 06 Février 2014 à 10:31
+-- Généré le :  Jeu 06 Février 2014 à 11:50
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -113,6 +113,32 @@ CREATE TABLE IF NOT EXISTS `humorist` (
   `birthday` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `like_dislike_comment`
+--
+
+CREATE TABLE IF NOT EXISTS `like_dislike_comment` (
+  `member` int(11) NOT NULL,
+  `comment` int(11) NOT NULL,
+  `vote` tinyint(1) NOT NULL,
+  PRIMARY KEY (`member`,`comment`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `like_dislike_sketch`
+--
+
+CREATE TABLE IF NOT EXISTS `like_dislike_sketch` (
+  `member` int(11) NOT NULL,
+  `sketch` int(11) NOT NULL,
+  `vote` tinyint(1) NOT NULL,
+  PRIMARY KEY (`member`,`sketch`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
