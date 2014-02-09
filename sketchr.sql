@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 09 Février 2014 à 20:45
+-- Généré le :  Dim 09 Février 2014 à 20:52
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -71,18 +71,18 @@ CREATE TABLE IF NOT EXISTS `comment` (
 
 CREATE TABLE IF NOT EXISTS `country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `language_english` varchar(50) NOT NULL,
-  `language_french` varchar(50) NOT NULL,
+  `english_name` varchar(50) NOT NULL,
+  `french_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `language_english` (`language_english`),
-  UNIQUE KEY `language_french` (`language_french`)
+  UNIQUE KEY `language_english` (`english_name`),
+  UNIQUE KEY `language_french` (`french_name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=242 ;
 
 --
 -- Contenu de la table `country`
 --
 
-INSERT INTO `country` (`id`, `language_english`, `language_french`) VALUES
+INSERT INTO `country` (`id`, `english_name`, `french_name`) VALUES
 (1, 'Afghanistan', 'Afghanistan'),
 (2, 'Albania', 'Albanie'),
 (3, 'Antarctica', 'Antarctique'),
