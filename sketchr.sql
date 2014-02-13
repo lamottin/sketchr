@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 09 Février 2014 à 20:52
+-- Généré le :  Ven 14 Février 2014 à 00:51
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -23,21 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `abuse_noted`
---
-
-CREATE TABLE IF NOT EXISTS `abuse_noted` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `abuse_message` text NOT NULL,
-  `processed` tinyint(1) NOT NULL,
-  `comment` int(11) NOT NULL,
-  `member` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `category`
 --
 
@@ -50,16 +35,46 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comment`
+-- Structure de la table `category_post`
 --
 
-CREATE TABLE IF NOT EXISTS `comment` (
+CREATE TABLE IF NOT EXISTS `category_post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
   `post_date` date NOT NULL,
-  `sketch` int(11) NOT NULL,
+  `category_topic` int(11) NOT NULL,
   `member` int(11) NOT NULL,
-  `precomment` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category_post_report_abuse`
+--
+
+CREATE TABLE IF NOT EXISTS `category_post_report_abuse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `notification` text NOT NULL,
+  `processed` tinyint(1) NOT NULL,
+  `category_post` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category_topic`
+--
+
+CREATE TABLE IF NOT EXISTS `category_topic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `creation_date` date NOT NULL,
+  `closed` tinyint(1) NOT NULL,
+  `category` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -328,44 +343,6 @@ INSERT INTO `country` (`id`, `english_name`, `french_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dead_link`
---
-
-CREATE TABLE IF NOT EXISTS `dead_link` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `processed` tinyint(1) NOT NULL,
-  `sketch` int(11) NOT NULL,
-  `member` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `fan_humorist`
---
-
-CREATE TABLE IF NOT EXISTS `fan_humorist` (
-  `member` int(11) NOT NULL,
-  `humorist` int(11) NOT NULL,
-  PRIMARY KEY (`member`,`humorist`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `fan_sketch_type`
---
-
-CREATE TABLE IF NOT EXISTS `fan_sketch_type` (
-  `member` int(11) NOT NULL,
-  `sketch_type` int(11) NOT NULL,
-  PRIMARY KEY (`member`,`sketch_type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `humorist`
 --
 
@@ -380,28 +357,60 @@ CREATE TABLE IF NOT EXISTS `humorist` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `like_dislike_comment`
+-- Structure de la table `humorist_fan`
 --
 
-CREATE TABLE IF NOT EXISTS `like_dislike_comment` (
+CREATE TABLE IF NOT EXISTS `humorist_fan` (
+  `humorist` int(11) NOT NULL,
   `member` int(11) NOT NULL,
-  `comment` int(11) NOT NULL,
-  `vote` tinyint(1) NOT NULL,
-  PRIMARY KEY (`member`,`comment`)
+  PRIMARY KEY (`member`,`humorist`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `like_dislike_sketch`
+-- Structure de la table `humorist_post`
 --
 
-CREATE TABLE IF NOT EXISTS `like_dislike_sketch` (
+CREATE TABLE IF NOT EXISTS `humorist_post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `message` text NOT NULL,
+  `post_date` date NOT NULL,
+  `humorist_topic` int(11) NOT NULL,
   `member` int(11) NOT NULL,
-  `sketch` int(11) NOT NULL,
-  `vote` tinyint(1) NOT NULL,
-  PRIMARY KEY (`member`,`sketch`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `humorist_post_report_abuse`
+--
+
+CREATE TABLE IF NOT EXISTS `humorist_post_report_abuse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `notification` text NOT NULL,
+  `processed` tinyint(1) NOT NULL,
+  `humorist_post` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `humorist_topic`
+--
+
+CREATE TABLE IF NOT EXISTS `humorist_topic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `creation_date` date NOT NULL,
+  `closed` tinyint(1) NOT NULL,
+  `humorist` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -419,7 +428,41 @@ CREATE TABLE IF NOT EXISTS `member` (
   `city` varchar(50) NOT NULL,
   `country` varchar(30) NOT NULL,
   `birthday` date NOT NULL,
-  `member_type` varchar(30) NOT NULL,
+  `avatar` varchar(300) NOT NULL,
+  `grade` varchar(30) NOT NULL,
+  `banned_for_life` tinyint(1) DEFAULT NULL,
+  `banned_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `member_sketch_proposed`
+--
+
+CREATE TABLE IF NOT EXISTS `member_sketch_proposed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `video_link` varchar(300) NOT NULL,
+  `release_date` date NOT NULL,
+  `synopsis` text NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `member_temporarily_banned`
+--
+
+CREATE TABLE IF NOT EXISTS `member_temporarily_banned` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -442,6 +485,88 @@ CREATE TABLE IF NOT EXISTS `sketch` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `sketch_comment`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `message` text NOT NULL,
+  `post_date` date NOT NULL,
+  `sketch` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_comment_like_dislike`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_comment_like_dislike` (
+  `comment` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  `vote` tinyint(1) NOT NULL,
+  PRIMARY KEY (`member`,`comment`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_comment_report_abuse`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_comment_report_abuse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `notification` text NOT NULL,
+  `processed` tinyint(1) NOT NULL,
+  `sketch_comment` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_dead_link`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_dead_link` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `processed` tinyint(1) NOT NULL,
+  `sketch` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_like_dislike`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_like_dislike` (
+  `sketch` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  `vote` tinyint(1) NOT NULL,
+  PRIMARY KEY (`member`,`sketch`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_tag` (
+  `sketch` int(11) NOT NULL,
+  `tag` varchar(50) NOT NULL,
+  PRIMARY KEY (`sketch`,`tag`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `sketch_type`
 --
 
@@ -452,6 +577,78 @@ CREATE TABLE IF NOT EXISTS `sketch_type` (
   `synopsis` text NOT NULL,
   `category` int(11) NOT NULL,
   `humorist` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_type_fan`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_type_fan` (
+  `sketch_type` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`member`,`sketch_type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_type_post`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_type_post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `message` text NOT NULL,
+  `post_date` date NOT NULL,
+  `sketch_type_topic` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_type_post_report_abuse`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_type_post_report_abuse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `notification` text NOT NULL,
+  `processed` tinyint(1) NOT NULL,
+  `sketch_type_post` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_type_topic`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_type_topic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `creation_date` date NOT NULL,
+  `closed` tinyint(1) NOT NULL,
+  `sketch_type` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_view`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_view` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `view_date` date NOT NULL,
+  `sketch` int(11) NOT NULL,
+  `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
