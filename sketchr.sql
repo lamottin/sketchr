@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 14 Février 2014 à 01:13
+-- Généré le :  Ven 14 Février 2014 à 01:16
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -430,6 +430,8 @@ CREATE TABLE IF NOT EXISTS `member` (
   `birthday` date NOT NULL,
   `avatar` varchar(300) NOT NULL,
   `grade` varchar(30) NOT NULL,
+  `activated` tinyint(1) NOT NULL,
+  `activated_key` int(10) NOT NULL,
   `banned_for_life` tinyint(1) DEFAULT NULL,
   `banned_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
