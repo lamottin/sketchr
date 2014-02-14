@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 14 Février 2014 à 00:51
+-- Généré le :  Ven 14 Février 2014 à 01:13
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -423,7 +423,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `postcode` varchar(10) NOT NULL,
   `city` varchar(50) NOT NULL,
   `country` varchar(30) NOT NULL,
