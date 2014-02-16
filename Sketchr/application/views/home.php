@@ -2,17 +2,22 @@
 
 <div class="row full-width">
 
-	<div class="large-2 columns">
+	<div class="sidemenu large-2 columns">
 		<ul class="side-nav">
+			<li class="title">CATEGORIES</li>
 			<li><a href="#">Link 1</a></li>
 			<li><a href="#">Link 2</a></li>
 			<li><a href="#">Link 3</a></li>
 			<li><a href="#">Link 4</a></li>
+			<li class="divider"></li>
+			<li class="title">FORUMS</li>
+			<li><a href="#">Link 1</a></li>
+			<li><a href="#">Link 2</a></li>
 		</ul>
 
 	</div>
 
-	<div class="large-10 columns">
+	<div class="content-container large-10 columns">
 		 
 	    <div class="row">
 	      <div class="large-12 columns">
