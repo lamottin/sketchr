@@ -1,3 +1,9 @@
+/*  Small piece of CSS used to override Foundation CSS */
+
+
+/*************************************************************/
+/********************** top-bar tweaks ***********************/
+
 .top-bar input[type="text"], .top-bar .button {
     font-size: 0.77778rem;
     position: relative;
@@ -23,3 +29,13 @@
 .top-bar-section ul.left .has-form {
 	width: 40rem;
 }
+
+/*************************************************************/
+/******************** structure tweaks ***********************/
+
+.row.full-width { 
+    width: 95%; max-width: 100%; 
+}
+
+
+/**************************************************************/
