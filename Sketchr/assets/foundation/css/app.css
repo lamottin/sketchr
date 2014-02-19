@@ -39,15 +39,21 @@
 
 .content-container {
     border-left: 1px solid #e2e2e2;
+    width: 89%;
+}
+
+.sidemenu {
+    padding : 0;
+    width: 11%;
+}
+
+.content-section {
+    border-bottom: 1px solid #e2e2e2; 
 }
 
 
 /**************************************************************/
 /********************** side-nav tweaks ***********************/
-
-.sidemenu {
-    padding : 0;
-}
 
 .side-nav {
     padding-top: 2rem;

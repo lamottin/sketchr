@@ -2,7 +2,7 @@
 
 <div class="row full-width">
 
-	<div class="sidemenu large-2 columns">
+	<div class="columns sidemenu">
 		<ul class="side-nav">
 			<li class="title">CATEGORIES</li>
 			<li><a href="#">Link 1</a></li>
@@ -17,14 +17,117 @@
 
 	</div>
 
-	<div class="content-container large-10 columns">
+	<div class="columns content-container">
 		 
 	    <div class="row">
-	      <div class="large-12 columns">
-	        <h1>Welcome to Foundation</h1>
-	      </div>
-	    </div>
+			<div class="large-12 columns">
+				<h5>Recommended</h5>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>	
+		</div>
+
+		<div class="row">
+			<div class="large-12 columns">
+				<h5>Popular on Sketchr</h5>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>
+			<div class="large-3 columns">
+				<div class="div flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+				</div>	
+			</div>				
+		</div>
+
 	    
+
+
+
+
+
+
+
+
 	    <div class="row">
 	      <div class="large-12 columns">
 	      	<div class="panel">
