@@ -2,6 +2,18 @@
 
 class Home extends CI_Controller {
 
+
+	public function __construct() {
+		
+		parent::__construct();
+
+		//  Chargement des ressources pour tout le contrôleur
+		$this->load->database();
+		$this->load->helper(array('url'));
+		$this->load->model('category_model');	
+	}
+
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -19,7 +31,11 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('home');
+		$data = array();
+
+		$data['categories'] = $this->category_model->listAll();
+
+		$this->load->view('home', $data);
 	}
 }
 
