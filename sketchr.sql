@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 14 Février 2014 à 01:16
+-- Généré le :  Ven 21 Février 2014 à 16:23
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(30) NOT NULL,
+  `image` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -350,6 +351,7 @@ CREATE TABLE IF NOT EXISTS `humorist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
+  `image` varchar(300) NOT NULL,
   `birthday` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -479,6 +481,7 @@ CREATE TABLE IF NOT EXISTS `sketch` (
   `title` varchar(50) NOT NULL,
   `video_link` varchar(300) NOT NULL,
   `release_date` date NOT NULL,
+  `image` varchar(300) NOT NULL,
   `synopsis` text NOT NULL,
   `sketch_type` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -576,9 +579,9 @@ CREATE TABLE IF NOT EXISTS `sketch_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `start_date` date NOT NULL,
+  `image` varchar(300) NOT NULL,
   `synopsis` text NOT NULL,
   `category` int(11) NOT NULL,
-  `humorist` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -592,6 +595,19 @@ CREATE TABLE IF NOT EXISTS `sketch_type_fan` (
   `sketch_type` int(11) NOT NULL,
   `member` int(11) NOT NULL,
   PRIMARY KEY (`member`,`sketch_type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sketch_type_humorist`
+--
+
+CREATE TABLE IF NOT EXISTS `sketch_type_humorist` (
+  `sketch_type` int(11) NOT NULL,
+  `humorist` int(11) NOT NULL,
+  `role` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`sketch_type`,`humorist`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -650,7 +666,7 @@ CREATE TABLE IF NOT EXISTS `sketch_view` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `view_date` date NOT NULL,
   `sketch` int(11) NOT NULL,
-  `member` int(11) NOT NULL,
+  `member` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

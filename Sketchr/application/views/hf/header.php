@@ -4,20 +4,20 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Sketchr</title>
-		<link type="image/ico" rel="shortcut icon" href="assets/logo/logo.ico">
-		<link rel="stylesheet" href="assets/foundation/css/foundation.css" />
-		<link rel="stylesheet" href="assets/foundation/css/app.css" />
-		<script type="text/javascript" src="assets/foundation/js/vendor/jquery.js"></script>
-		<script type="text/javascript" src="assets/foundation/js/vendor/modernizr.js"></script>
-		<script type="text/javascript" src="assets/foundation/js/foundation.min.js"></script>
-		<script type="text/javascript" src="assets/foundation/js/foundation/foundation.topbar.js"></script>
+		<link type="image/ico" rel="shortcut icon" href="<?php echo base_url(); ?>assets/logo/logo.ico">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/foundation.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.topbar.js"></script>
 	</head>
 	<body>
 
 	<nav class="top-bar" data-topbar>
 		<ul class="title-area">
 			<li class="name large-8 small-9 columns">
-				<h1><a href="#">Sketchr</a></h1>
+				<h1><a href="<?php echo base_url(); ?>">Sketchr</a></h1>
 			</li>
 			<li class="toggle-topbar menu-icon">
 				<a href="#">Menu</a>
