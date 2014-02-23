@@ -49,8 +49,6 @@ class Sketchtype extends CI_Controller {
 		
 		$st = $this->sketch_type_model->lastAdded();
 		
-		//reset($data['sketch_type_id']);
-		
 		$id = $st[0]->id;
 		
 		$data['sketch_type_category'] = $this->category_model->getById($id);

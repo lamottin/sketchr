@@ -12,5 +12,13 @@ class Category_model extends CI_Model {
 			->get()
 			->result();
 	}
-
+	
+	public function getById($id) {
+		
+		return $this->db->select('*')
+			->from($this->table)
+			->where('id', $id)
+			->get()
+			->result();
+	}
 }
