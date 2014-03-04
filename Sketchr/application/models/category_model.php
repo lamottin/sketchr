@@ -21,4 +21,17 @@ class Category_model extends CI_Model {
 			->get()
 			->result();
 	}
+	
+	public function addCategory($data) {
+	
+		//$data[0] = title
+		//$data[1] = image
+		
+		$sql = "INSERT INTO ". $this->table ." (title, image) 
+				VALUES (".$this->db->escape($data[0]).", ".$this->db->escape($data[1]).")";
+
+		$this->db->query($sql);
+		echo $this->db->affected_rows(); 
+	}
 }
+?>
