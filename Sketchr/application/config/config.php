@@ -14,7 +14,10 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://127.0.0.1:8088/projects/GH/sketchr/Sketchr/';
+$root = "http://".$_SERVER['HTTP_HOST'];
+$root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+
+$config['base_url']    = "$root";
 
 /*
 |--------------------------------------------------------------------------
