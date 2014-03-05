@@ -49,3 +49,7 @@
 			</ul>
 		</section>
 	</nav>
+
+
+	<div class="row full-width">
+	<?php echo $menu; ?>

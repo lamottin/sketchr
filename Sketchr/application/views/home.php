@@ -1,219 +1,190 @@
-<?php include ('hf/header.php'); ?>
+<div class="columns content-container">
 
-<div class="row full-width">
+	<div class="large-11 columns">
+	 
+	    <div class="row">
+			<div class="large-12 columns">
+				<h5>Recommended</h5>
+			</div>
+		</div>
 
-	<div class="columns sidemenu">
-		<ul class="side-nav">
-			<li class="title">CATEGORIES</li>
-			
-				<?php foreach($categories as $category): ?>
-					<li>
-						<a href="<?php echo $category->id; ?>">
-							<?php echo $category->title; ?>
-						</a>
-					</li>
-				<?php endforeach; ?>
+		<div class="row">
 
-			<li class="divider"></li>
-			<li class="title">FORUMS</li>
-			<li><a href="#">Categories</a></li>
-			<li><a href="#">Link 2</a></li>
-			<li><a href="#">Link 3</a></li>
-		</ul>
+			<ul class="small-block-grid-6">
 
-	</div>
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
 
-	<div class="columns content-container">
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
 
-		<div class="large-11 columns">
-		 
-		    <div class="row">
-				<div class="large-12 columns">
-					<h5>Recommended</h5>
-				</div>
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+			</ul>
+
+			<div class="pull right">
+				<a href="#">
+					See more...
+				</a>
 			</div>
 
-			<div class="row">
+		</div>	
 
-				<ul class="small-block-grid-6">
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-				</ul>
-
-				<div class="pull right">
-					<a href="#">
-						See more...
-					</a>
-				</div>
-
-			</div>	
-
-			<div class="row">
-				<div class="large-12 columns">
-					<h5>Popular on Sketchr</h5>
-				</div>
+		<div class="row">
+			<div class="large-12 columns">
+				<h5>Popular on Sketchr</h5>
 			</div>
+		</div>
 
-			<div class="row">
+		<div class="row">
 
-				<ul class="small-block-grid-6">
+			<ul class="small-block-grid-6">
 
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-						</a>
-					</li>
-
-				</ul>
-
-				<div class="pull right">
-					<a href="#">
-						See more...
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
 					</a>
-				</div>
+				</li>
 
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+				<li>
+					<a class="th" href="../img/demos/demo2.png">
+						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+					</a>
+				</li>
+
+			</ul>
+
+			<div class="pull right">
+				<a href="#">
+					See more...
+				</a>
 			</div>
 
 		</div>
 
-	</div> 
-</div>  
-    
-<?php include ('hf/footer.php'); ?>
+	</div>
+</div>

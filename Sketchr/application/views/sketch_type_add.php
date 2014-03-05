@@ -1,29 +1,4 @@
-<?php include ('hf/header.php'); ?>
-
-<div class="row full-width">
-
-	<div class="columns sidemenu">
-		<ul class="side-nav">
-			<li class="title">CATEGORIES</li>
-			
-				<?php foreach($categories as $category): ?>
-					<li>
-						<a href="<?php echo $category->id; ?>">
-							<?php echo $category->title; ?>
-						</a>
-					</li>
-				<?php endforeach; ?>
-
-			<li class="divider"></li>
-			<li class="title">FORUMS</li>
-			<li><a href="#">Categories</a></li>
-			<li><a href="#">Link 2</a></li>
-			<li><a href="#">Link 3</a></li>
-		</ul>
-
-	</div>
-
-	<div class="columns content-container">
+<div class="columns content-container">
 
 		<div class="large-11 columns">
 		 
@@ -62,5 +37,3 @@
 		</div>
 	</div> 
 </div>  
-    
-<?php include ('hf/footer.php'); ?>

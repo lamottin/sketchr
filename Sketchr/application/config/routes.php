@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
+//$route['category/(:any)'] = "category/access_category_by_name";
 
 
 /* End of file routes.php */
