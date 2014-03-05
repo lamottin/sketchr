@@ -10,7 +10,7 @@ class Home extends CI_Controller {
 		//  Chargement des ressources pour tout le contrôleur
 		$this->load->database();
 		$this->load->helper(array('url'));
-		$this->load->model('category_model');	
+		$this->load->model('category_model');
 	}
 
 
