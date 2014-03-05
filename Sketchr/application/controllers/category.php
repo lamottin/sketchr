@@ -29,9 +29,12 @@ class Category extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+	public function index() {
+		$data = array();
 
+		$data['category'] = $this->uri->segment(3);
+
+		$this->load->view('category_sheet', $data);
 	}
 
 	public function add() {
