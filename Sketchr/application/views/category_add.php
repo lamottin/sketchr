@@ -34,7 +34,7 @@
 			</div>
 
 			<div class="row">
-				<form method="post" action="<?php echo base_url(); ?>category/add/">
+				<form method="post" action="<?php echo base_url(); ?>category/addCategory">
 					<div class="large-8 columns">
 						<label>Title
 							<input type="text" name="title" placeholder="Type the title here" required="required" />

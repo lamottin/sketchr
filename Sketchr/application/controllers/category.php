@@ -31,6 +31,10 @@ class Category extends CI_Controller {
 	 */
 	public function index()
 	{
+
+	}
+
+	public function add() {
 		$data = array();
 
 		$data['categories'] = $this->category_model->listAll();
@@ -38,8 +42,7 @@ class Category extends CI_Controller {
 		$this->load->view('category_add', $data);
 	}
 	
-	public function add()
-	{
+	public function addCategory() {
 		$data = array();
 		$data[0] = $_POST['title'];
 		$data[1] = $_POST['image'];

@@ -23,15 +23,13 @@ class Category_model extends CI_Model {
 	}
 	
 	public function addCategory($data) {
-	
-		//$data[0] = title
-		//$data[1] = image
-		
-		$sql = "INSERT INTO ". $this->table ." (title, image) 
-				VALUES (".$this->db->escape($data[0]).", ".$this->db->escape($data[1]).")";
 
-		$this->db->query($sql);
-		echo $this->db->affected_rows(); 
+		//	Ces données seront automatiquement échappées
+		$this->db->set('title', $data[0]);
+		$this->db->set('image', $data[1]);
+		
+		//	Une fois que tous les champs ont bien été définis, on "insert" le tout
+		return $this->db->insert($this->table);
 	}
 }
 ?>
