@@ -14,7 +14,7 @@ class Category extends MY_Controller {
 
 	public function access_category_by_name(){
 		$data = array();
-		$data['category'] = $this->uri->segment(2);
+		$data['category'] = $this->category_model->getById($this->uri->segment(2));
 
 		$this->show_view_with_hf('category_sheet', $data);
 	}
