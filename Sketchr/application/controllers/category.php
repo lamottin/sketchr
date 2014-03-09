@@ -14,7 +14,10 @@ class Category extends MY_Controller {
 
 	public function access_category_by_name(){
 		$data = array();
+
+		// Gets the category object which we are trying to access from the model
 		$data['category'] = $this->category_model->getById($this->uri->segment(2));
+		// WHAT TO DO IF IT RETURNS NULL? HAVE TO IMPLEMENT THAT !!!!
 
 		$this->show_view_with_hf('category_sheet', $data);
 	}
