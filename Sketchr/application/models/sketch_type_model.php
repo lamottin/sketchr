@@ -4,10 +4,18 @@ class Sketch_type_model extends CI_Model {
 
 	protected $table = 'sketch_type';
 	
+	/**
+	 * Insert a new sketch_type to the database
+	 */
 	public function add(){
+		// C'EST TRES TRES MOCHE...
 		$this->db->insert('sketch_type', $_POST);
 	}
 
+	/**
+	 * List all the sketch_types within the database ordered by their "id"
+	 * @return [Array] of all sketch_types
+	 */
 	public function listAll() {
 
 		return $this->db->select('*')
@@ -17,6 +25,10 @@ class Sketch_type_model extends CI_Model {
 			->result();
 	}
 	
+	/**
+	 * Get the last added sketch_type
+	 * @return [Object] The last added sketch_type
+	 */
 	public function lastAdded() {
 
 		return $this->db->select('*')
@@ -27,6 +39,11 @@ class Sketch_type_model extends CI_Model {
 			->result();
 	}
 
+	/**
+	 * List all the sketch_types from one category ordered by their "id"
+	 * @param 	$id The id of the category
+	 * @return 	[Array] of objects representing each sketch_type of the list
+	 */
 	public function listByCategoryID($id) {
 
 		return $this->db->select('*')
@@ -37,6 +54,11 @@ class Sketch_type_model extends CI_Model {
 			->result();
 	}
 
+	/**
+	 * Get a sketch_type identified by it's "id"
+	 * @param  $id The id of the sketch_type
+	 * @return [Object] The one sketch_type you're looking for
+	 */
 	public function getById($id) {
 
 		$query = $this->db->select('*')

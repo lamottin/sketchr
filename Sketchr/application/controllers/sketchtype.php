@@ -8,12 +8,26 @@ class Sketchtype extends MY_Controller {
 		parent::__construct();		
 	}
 
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL :
+	 * - base_url()/sketchtype/
+	 */
 	public function index()
 	{
 		$data = array();
 		$this->show_view_with_hf('sketch_type_add', $data);
 	}
 
+	/**
+	 * Maps to the following URL :
+	 * - base_url()/sketchtype/access_sketchtype_by_id
+	 *
+	 * Since this function is set as the route for serie/(:num) in
+	 * config/routes.php, it maps to the following URL too :
+	 * - base_url()/serie/(:num)
+	 */
 	public function access_sketchtype_by_id(){
 		$data = array();
 
@@ -27,10 +41,15 @@ class Sketchtype extends MY_Controller {
 		$this->show_view_with_hf('sketch_type_sheet', $data);
 	}
 	
+	/**
+	 * Get the data sent by _POST from the form used to add a new sketch_type
+	 * and passes it to sketch_type_model for insertion in the database
+	 */
 	public function add()
 	{
 		$data = array();
 		
+		// C'EST TRES MOCHE CA...
 		$this->sketch_type_model->add();
 
 		$data['categories'] = $this->category_model->listAll();

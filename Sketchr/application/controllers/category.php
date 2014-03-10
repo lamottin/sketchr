@@ -8,11 +8,25 @@ class Category extends MY_Controller {
 		parent::__construct();	
 	}
 
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL :
+	 * - base_url()/category/
+	 */
 	public function index() {
 
 	}
 
-	public function access_category_by_name(){
+	/**
+	 * Maps to the following URL :
+	 * - base_url()/category/access_category_by_id
+	 *
+	 * Since this function is set as the route for category/(:num) in
+	 * config/routes.php, it maps to the following URL too :
+	 * - base_url()/category/(:num)
+	 */
+	public function access_category_by_id(){
 		$data = array();
 
 		// Get the category object which we are trying to access from the model
@@ -25,11 +39,18 @@ class Category extends MY_Controller {
 		$this->show_view_with_hf('category_sheet', $data);
 	}
 
+	/**
+	 * Load the form to add a new category to the database
+	 */
 	public function add() {
 		$data = array();
 		$this->show_view_with_hf('category_add', $data);
 	}
 	
+	/**
+	 * Get the data sent by _POST from the form used to add a new category
+	 * and passes it to category_model for insertion in the database
+	 */
 	public function addCategory() {
 		$data = array();
 		$data[0] = $_POST['title'];
