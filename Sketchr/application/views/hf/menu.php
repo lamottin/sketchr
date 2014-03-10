@@ -5,7 +5,7 @@
 				
 					<?php foreach($categories as $category): ?>
 						<li>
-							<a href="<?php echo $category->id; ?>">
+							<a href="<?php echo base_url()."category/".$category->id; ?>">
 								<?php echo $category->title; ?>
 							</a>
 						</li>

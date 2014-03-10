@@ -12,77 +12,15 @@
 
 			<ul class="small-block-grid-6">
 
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
+				<?php for ($i=0; $i < 12; $i++) { ?>
+					
+					<li>
+						<a class="th" href="../img/demos/demo2.png">
+							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+						</a>
+					</li>
+					
+				<?php } ?>
 
 			</ul>
 
@@ -104,77 +42,15 @@
 
 			<ul class="small-block-grid-6">
 
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
-
-				<li>
-					<a class="th" href="../img/demos/demo2.png">
-						<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
-					</a>
-				</li>
+				<?php for ($i=0; $i < 12; $i++) { ?>
+					
+					<li>
+						<a class="th" href="../img/demos/demo2.png">
+							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+						</a>
+					</li>
+					
+				<?php } ?>
 
 			</ul>
 

@@ -19,6 +19,8 @@ class Category extends MY_Controller {
 		$data['category'] = $this->category_model->getById($this->uri->segment(2));
 		// WHAT TO DO IF IT RETURNS NULL? HAVE TO IMPLEMENT THAT !!!!
 
+		
+
 		$this->show_view_with_hf('category_sheet', $data);
 	}
 
