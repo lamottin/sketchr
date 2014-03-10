@@ -26,4 +26,24 @@ class Sketch_type_model extends CI_Model {
 			->get()
 			->result();
 	}
+
+	public function listByCategoryID($id) {
+
+		return $this->db->select('*')
+			->from($this->table)
+			->where('category', $id)
+			->order_by('id','desc')
+			->get()
+			->result();
+	}
+
+	public function getById($id) {
+
+		$query = $this->db->select('*')
+			->from($this->table)
+			->where('id', $id)
+			->get();
+
+		return $query->num_rows() > 0 ? $query->row() : false;
+	}
 }

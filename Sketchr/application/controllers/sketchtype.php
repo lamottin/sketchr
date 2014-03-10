@@ -13,6 +13,19 @@ class Sketchtype extends MY_Controller {
 		$data = array();
 		$this->show_view_with_hf('sketch_type_add', $data);
 	}
+
+	public function access_sketchtype_by_id(){
+		$data = array();
+
+		// Get the category object which we are trying to access from the model
+		$data['sketch_type'] = $this->sketch_type_model->getById($this->uri->segment(2));
+		// WHAT TO DO IF IT RETURNS NULL? HAVE TO IMPLEMENT THAT !!!!
+
+		// Get the list of sketch_types for this category
+		$data['sketchs'] = $this->sketch_model->listBySketchTypeId($data['sketch_type']->id);
+
+		$this->show_view_with_hf('sketch_type_sheet', $data);
+	}
 	
 	public function add()
 	{

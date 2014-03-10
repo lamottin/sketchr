@@ -6,7 +6,9 @@ class  MY_Controller  extends  CI_Controller  {
 		//  Chargement des ressources pour tout le contrôleur
 		$this->load->database();
 		$this->load->helper(array('url'));
-		$this->load->model('category_model');			
+		$this->load->model('category_model');
+		$this->load->model('sketch_type_model');	
+		$this->load->model('sketch_model');		
     }
 
 	function show_view_with_hf($view_name, $data) {
