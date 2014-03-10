@@ -4,6 +4,10 @@ class Category_model extends CI_Model {
 
 	protected $table = 'category';
 
+	/**
+	 * List all the categories within the database ordered by their "id"
+	 * @return [Array] of all categories
+	 */
 	public function listAll() {
 
 		return $this->db->select('*')
@@ -13,6 +17,11 @@ class Category_model extends CI_Model {
 			->result();
 	}
 	
+	/**
+	 * Get a category identified by it's "id"
+	 * @param  $id The id of the category
+	 * @return [Object] The one category you're looking for
+	 */
 	public function getById($id) {
 		
 		$query = $this->db->select('*')
@@ -23,6 +32,9 @@ class Category_model extends CI_Model {
 		return $query->num_rows() > 0 ? $query->row() : false;
 	}
 	
+	/**
+	 * Insert a new category to the database
+	 */
 	public function addCategory($data) {
 
 		//	Ces données seront automatiquement échappées
