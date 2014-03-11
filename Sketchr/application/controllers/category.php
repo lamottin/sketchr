@@ -48,6 +48,26 @@ class Category extends MY_Controller {
 	 */
 	public function add() {
 		
+		/*Rules :
+			-trim : 			supprimer les blancs
+			- required : 		champ requis
+			- xss_clean : 		Runs the data through the XSS filtering function
+			- max_length[X] : 	définit la taille max à x
+			- min_length[X] : 	définit la taille min à x
+			- valid_email : 	Returns FALSE if the form element does not contain a valid email address.
+			- alpha : 			Returns FALSE if the form element contains anything other than alphabetical characters. 	 
+			- alpha_numeric		Returns FALSE if the form element contains anything other than alpha-numeric characters. 	 
+			- alpha_dash		Returns FALSE if the form element contains anything other than alpha-numeric characters, underscores or dashes. 	 
+			- numeric			Returns FALSE if the form element contains anything other than numeric characters. 	 
+			- integer			Returns FALSE if the form element contains anything other than an integer. 	 
+			- is_natural		Returns FALSE if the form element contains anything other than a natural number: 0, 1, 2, 3, etc.
+			- matches[str]		Returns FALSE if the form element does not match the one in the parameter. Useful for passwords.
+			
+			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
+		*/
+		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean');
+		
 		//When the form is correctly filled
 		if( $this->form_validation->run() == TRUE ) {
 			
