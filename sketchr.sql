@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 21 Février 2014 à 16:23
+-- Généré le :  Mer 05 Mars 2014 à 10:27
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -31,7 +31,14 @@ CREATE TABLE IF NOT EXISTS `category` (
   `title` varchar(30) NOT NULL,
   `image` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `category`
+--
+
+INSERT INTO `category` (`id`, `title`, `image`) VALUES
+(1, 'Video Games', 'http://www.pngfactory.net/_png/_thumb/19415-bubka-SonyPlaystation.png');
 
 -- --------------------------------------------------------
 
@@ -583,7 +590,7 @@ CREATE TABLE IF NOT EXISTS `sketch_type` (
   `synopsis` text NOT NULL,
   `category` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
