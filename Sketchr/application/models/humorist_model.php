@@ -15,11 +15,12 @@ class Humorist_model extends CI_Model {
 	
 	public function getById($id) {
 		
-		return $this->db->select('*')
+		$query = $this->db->select('*')
 			->from($this->table)
 			->where('id', $id)
-			->get()
-			->result();
+			->get();
+
+		return $query->num_rows() > 0 ? $query->row() : false;
 	}
 	
 	public function addHumorist($data) {

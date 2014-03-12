@@ -9,6 +9,7 @@ class  MY_Controller  extends  CI_Controller  {
 		$this->load->model('category_model');
 		$this->load->model('sketch_type_model');	
 		$this->load->model('sketch_model');		
+		$this->load->model('humorist_model');	
     }
 
     /**

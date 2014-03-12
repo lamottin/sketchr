@@ -42,6 +42,7 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 $route['category/(:num)'] = "category/access_category_by_id";
 $route['serie/(:num)'] = "sketchtype/access_sketchtype_by_id";
+$route['watch/(:num)'] = "sketch/access_sketch_by_id";
 
 
 /* End of file routes.php */
