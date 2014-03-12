@@ -45,17 +45,6 @@ class Sketch extends MY_Controller {
     } 
 */
 
-    public function url_cheking($str){
-
-		 $pattern = "|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i";;
-         if (!preg_match($pattern, $str))
-         {
-               return FALSE;
-          }
-         
-         return TRUE;
-	}
-
 
 	public function add() {
 	
@@ -76,12 +65,12 @@ class Sketch extends MY_Controller {
 			
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
-		$this->form_validation->set_rules('URL', 'URL', 'trim|required|xss_clean|callback_url_checking');
+		$this->form_validation->set_rules('URL', 'URL', 'trim|required|xss_clean|valid_url_format');
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('type', 'Type', 'trim|required|xss_clean'); 
 		$this->form_validation->set_rules('release', 'Release', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('synopsis', 'Synopsis', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('URLimage', 'URLimage', 'trim|required|xss_clean|callback_url_checking');
+		$this->form_validation->set_rules('URLimage', 'URLimage', 'trim|required|xss_clean|valid_url_format');
 		
 		if( $this->form_validation->run() == TRUE ) {
 			

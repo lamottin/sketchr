@@ -14,7 +14,7 @@
 					
 					
 					<label class="control-label" for="URL">URL</label>
-					<input type="text" name="URL" placeholder="Type URL here" class="required" id="URL"/>
+					<input type="text" name="URL" placeholder="Type the URL here" class="required" id="URL"/>
 					<?php 
 						$error_URL = form_error('URL');
 						$label = (!empty($error_URL)) ? "<small class=\"error\">".$error_URL."</small>" : "" ;
@@ -23,7 +23,7 @@
 					
 					
 					<label class="control-label" for="title">Title</label>
-					<input type="text" name="title" placeholder="Type the titLe here" class="required" id="title"/>
+					<input type="text" name="title" placeholder="Type the title here" class="required" id="title"/>
 					<?php 
 						$error_title = form_error('title');
 						$label = (!empty($error_title)) ? "<small class=\"error\">".$error_title."</small>" : "" ;
@@ -49,7 +49,7 @@
 					?>
 
 
-					<label class="control-label" for="synopsis">synopsis</label>
+					<label class="control-label" for="synopsis">Synopsis</label>
 					<textarea  rows="3" name="synopsis"  class="required" id="synopsis">Type the synopsis here </textarea>
 					<?php 
 						$error_synopsis = form_error('synopsis');
@@ -61,7 +61,7 @@
 					<label class="control-label" for="URLimage">URL Image</label>
 					<input type="text" name="URLimage" placeholder="Type URL of image here" class="required" id="URLimage"/>
 					<?php 
-						$error_URLimage = form_error('URL');
+						$error_URLimage = form_error('URLimage');
 						$label = (!empty($error_URLimage)) ? "<small class=\"error\">".$error_URLimage."</small>" : "" ;
 						echo $label;
 					?>
