@@ -592,19 +592,6 @@ CREATE TABLE IF NOT EXISTS `sketch_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
---
--- Contenu de la table `sketch_type`
---
-
-INSERT INTO `sketch_type` (`id`, `title`, `start_date`, `image`, `synopsis`, `category`) VALUES
-(1, 'AZERTY', '2014-02-16', 'http://i.dailymail.co.uk/i/pix/2013/04/22/article-2313157-196F398E000005DC-800_634x352.jpg', 'azerty', 1),
-(2, 'AZERTY', '2014-02-16', 'http://i.dailymail.co.uk/i/pix/2013/04/22/article-2313157-196F398E000005DC-800_634x352.jpg', 'azerty', 1),
-(3, 'AZERTY', '2014-02-16', 'http://i.dailymail.co.uk/i/pix/2013/04/22/article-2313157-196F398E000005DC-800_634x352.jpg', 'azerty', 1),
-(4, 'AZERTY', '2014-02-16', 'http://i.dailymail.co.uk/i/pix/2013/04/22/article-2313157-196F398E000005DC-800_634x352.jpg', 'azerty', 1),
-(5, 'AZERTY', '2014-02-16', 'http://i.dailymail.co.uk/i/pix/2013/04/22/article-2313157-196F398E000005DC-800_634x352.jpg', 'azerty', 1),
-(6, 'AZERTY', '2014-02-16', 'http://i.dailymail.co.uk/i/pix/2013/04/22/article-2313157-196F398E000005DC-800_634x352.jpg', 'azerty', 1),
-(7, 'AZERTY', '2014-02-16', 'http://i.dailymail.co.uk/i/pix/2013/04/22/article-2313157-196F398E000005DC-800_634x352.jpg', 'azerty', 1);
-
 -- --------------------------------------------------------
 
 --
