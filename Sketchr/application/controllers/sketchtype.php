@@ -16,8 +16,6 @@ class Sketchtype extends MY_Controller {
 	 */
 	public function index()
 	{
-		$data = array();
-		$this->show_view_with_hf('sketch_type_add', $data);
 	}
 
 	/**
@@ -49,20 +47,45 @@ class Sketchtype extends MY_Controller {
 	{
 		$data = array();
 		
-		// C'EST TRES MOCHE CA...
-		$this->sketch_type_model->add();
-
-		$data['categories'] = $this->category_model->listAll();
-		
-		$st = $this->sketch_type_model->lastAdded();
-		
-		$id = $st[0]->id;
-		
-		$data['sketch_type_category'] = $this->category_model->getById($id);
-		
-		$data['posted'] = $st[0];
-		
-		$this->show_view_with_hf('sketch_type_modify', $data);
+		if(!isset($_POST['create']))
+		{
+			$data['humorists'] = $this->humorist_model->listAllByLastName();
+			$this->show_view_with_hf('sketch_type_add', $data);
+		}
+		else
+		{
+			$skecth_type_values['title'] = $_POST['title'];
+			$skecth_type_values['start_date'] = $_POST['start_date'];
+			$skecth_type_values['image'] = $_POST['image'];
+			$skecth_type_values['synopsis'] = $_POST['synopsis'];
+			$skecth_type_values['category'] = $_POST['category'];
+			
+			$this->sketch_type_model->add($skecth_type_values);
+			
+			$st = $this->sketch_type_model->lastAdded();
+			
+			$data['st'] = $st[0];
+			$h['sketch_type'] = $st[0]->id;
+			
+			$this->load->model('sketch_type_humorist_model');
+			if(is_array($_POST['humorist']))
+			{
+				foreach($_POST['humorist'] as $ahumorist)
+				{
+					$h['humorist'] = $ahumorist;
+					$this->sketch_type_humorist_model->add($h);
+				}
+			}
+			else
+			{
+				$h['humorist'] = $_POST['humorist'];
+				$this->sketch_type_humorist_model->add($h);
+			}
+			
+			$data['message'] = "This sketch has been added. In few seconds you will be redirect in its descriptive page";
+			
+			$this->show_view_with_hf('sketch_type_processed', $data);
+		}
 	}
 }
 

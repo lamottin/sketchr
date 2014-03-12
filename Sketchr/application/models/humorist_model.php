@@ -12,6 +12,15 @@ class Humorist_model extends CI_Model {
 			->get()
 			->result();
 	}
+
+	public function listAllByLastName() {
+
+		return $this->db->select('*')
+			->from($this->table)
+			->order_by('last_name', 'asc')
+			->get()
+			->result();
+	}
 	
 	public function getById($id) {
 		

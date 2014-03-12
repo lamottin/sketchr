@@ -30,7 +30,12 @@
 								<?php endforeach; ?>
 							</select>
 						</label>
-						<input type="submit" class="button" value="Create" /> 
+						<select name="humorist" style="height: 100px;" multiple="multiple" required="required">
+							<?php foreach($humorists as $humorist): ?>
+							<option value="<?php echo $humorist->id; ?>"><?php echo $humorist->first_name." ".$humorist->last_name; ?></option>								
+							<?php endforeach; ?>
+						</select>
+						<input type="submit" name="create" class="button" value="Create" /> 
 					</div>
 				</form>
 			</div>

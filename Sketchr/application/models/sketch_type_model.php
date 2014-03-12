@@ -7,9 +7,9 @@ class Sketch_type_model extends CI_Model {
 	/**
 	 * Insert a new sketch_type to the database
 	 */
-	public function add(){
+	public function add($st){
 		// C'EST TRES TRES MOCHE...
-		$this->db->insert('sketch_type', $_POST);
+		$this->db->insert('sketch_type', $st);
 	}
 
 	/**

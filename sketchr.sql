@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 05 Mars 2014 à 10:27
+-- Généré le :  Mer 12 Mars 2014 à 17:07
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.5.8
 
@@ -361,7 +361,15 @@ CREATE TABLE IF NOT EXISTS `humorist` (
   `image` varchar(300) NOT NULL,
   `birthday` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `humorist`
+--
+
+INSERT INTO `humorist` (`id`, `first_name`, `last_name`, `image`, `birthday`) VALUES
+(1, 'Frédéric', 'Molas', 'http://upload.wikimedia.org/wikipedia/commons/1/15/Paris_Manga_13_-_Fr%C3%A9d%C3%A9ric_Molas_-_002.jpg', '1982-11-26'),
+(2, 'Gad', 'Elmaleh', 'http://upload.wikimedia.org/wikipedia/commons/9/9e/ELMALEH_Gad-24x30-2007.jpg', '1971-04-19');
 
 -- --------------------------------------------------------
 
@@ -590,7 +598,14 @@ CREATE TABLE IF NOT EXISTS `sketch_type` (
   `synopsis` text NOT NULL,
   `category` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `sketch_type`
+--
+
+INSERT INTO `sketch_type` (`id`, `title`, `start_date`, `image`, `synopsis`, `category`) VALUES
+(1, 'Joueur du grenier', '2009-09-26', 'http://www.gamekyo.com/images_1/0cc4fc48881ff880cbde333ed7bded5c20130408151011.jpg', 'Frédéric Molas, dit le « Joueur du Grenier » (communément abrégé JDG), né le 26 novembre 1982, est un testeur français de jeux vidéo sur Internet. Il est le créateur, auteur, réalisateur de la série de vidéos critiques humoristiques de vieux jeux vidéo Joueur du Grenier filmée, coécrite, coréalisée et coprésentée par Sébastien Rassiat.\r\nL''émission se spécialise dans des critiques à but humoristique, voire satirique de vieux jeux vidéo souvent d''une grande difficulté ou de mauvaise qualité, appelées « vidéos du grenier ». Cependant, au fil du temps, les émissions se sont diversifiées, avec plus d''éléments de mise en scène, des hors-séries critiquant des films, séries ou dessins animés, ainsi que d''autres vidéos spéciales aux thèmes variés.', 1);
 
 -- --------------------------------------------------------
 
@@ -613,9 +628,15 @@ CREATE TABLE IF NOT EXISTS `sketch_type_fan` (
 CREATE TABLE IF NOT EXISTS `sketch_type_humorist` (
   `sketch_type` int(11) NOT NULL,
   `humorist` int(11) NOT NULL,
-  `role` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`sketch_type`,`humorist`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `sketch_type_humorist`
+--
+
+INSERT INTO `sketch_type_humorist` (`sketch_type`, `humorist`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
