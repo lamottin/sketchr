@@ -12,8 +12,13 @@
 			</div>
 			<div class="row">
 				<h5><?php echo $sketch_type->title; ?></h5>
-				<h5><?php echo $sketch_type->start_date; ?></h5>
-				<h5><?php echo $sketch_type->image; ?></h5>
+				<p><?php echo $sketch_type->start_date; ?></p>
+				<p><?php echo $sketch_type->image; ?></p>
+			</div>
+			<div class="row">
+				<p class="title">COMMENTS</p>
+
+				Commentaires
 			</div>
 
 			
