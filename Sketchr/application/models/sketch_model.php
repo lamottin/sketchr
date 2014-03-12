@@ -31,6 +31,22 @@ class Sketch_model extends CI_Model {
 
 		return $query->num_rows() > 0 ? $query->row() : false;
 	}
+
+
+	public function addSketch($data) {
+
+		//	Ces données seront automatiquement échappées
+		$this->db->set('video_link', $data[0]);
+		$this->db->set('title', $data[1]);
+		$this->db->set('sketch_type', $data[2]);
+		$this->db->set('release_date', $data[3]);
+		$this->db->set('synopsis', $data[4]);
+		$this->db->set('image', $data[5]);
+
+		
+		//	Une fois que tous les champs ont bien été définis, on "insert" le tout
+		return $this->db->insert($this->table);
+	}
 	
 	/**
 	 * List all the sketchs from one sketch_type ordered by their "id"
