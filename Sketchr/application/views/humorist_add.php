@@ -14,8 +14,8 @@
 					
 					
 					<label class="control-label" for="title">Firstname</label>
-					<input type="text" name="firstname" placeholder="Type the name here" class="required" id="firstname"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"firstname\" placeholder=\"Type the firstname here\" value=\""; echo set_value('firstname') ."\" class=\"required\" id=\"firstname\"/>";
+					
 						$error_firstname = form_error('firstname');
 						$label = (!empty($error_firstname)) ? "<small class=\"error\">".$error_firstname."</small>" : "" ;
 						echo $label;
@@ -23,8 +23,7 @@
 					
 					
 					<label class="control-label" for="title">Lastname</label>
-					<input type="text" name="lastname" placeholder="Type the lastname here" class="required" id="lastname"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"lastname\" placeholder=\"Type the lastname here\" value=\""; echo set_value('lastname') ."\" class=\"required\" id=\"lastname\"/>";
 						$error_lastname = form_error('lastname');
 						$label = (!empty($error_lastname)) ? "<small class=\"error\">".$error_lastname."</small>" : "" ;
 						echo $label;
@@ -32,8 +31,8 @@
 					
 					
 					<label class="control-label" for="title">Birthdate</label>
-					<input type="text" name="birthdate" placeholder="Please select a birthdate" class="required" id="birthdate"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"birthdate\" placeholder=\"Type the birthdate here\" value=\""; echo set_value('birthdate') ."\" class=\"datepicker\" id=\"birthdate\"/>";
+					
 						$error_birthdate = form_error('birthdate');
 						$label = (!empty($error_birthdate)) ? "<small class=\"error\">".$error_birthdate."</small>" : "" ;
 						echo $label;
@@ -41,8 +40,8 @@
 					
 					
 					<label class="control-label" for="image">Image</label>
-					<input type="text" name="image" placeholder="Type the image's link here" class="required" id="image"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"image\" placeholder=\"Type the image's link here\" value=\""; echo set_value('image') ."\" class=\"required\" id=\"image\"/>";
+					
 						$error_image = form_error('image');
 						$label = (!empty($error_image)) ? "<small class=\"error\">".$error_image."</small>" : "" ;
 						echo $label;

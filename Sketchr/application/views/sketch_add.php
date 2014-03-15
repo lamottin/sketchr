@@ -14,8 +14,8 @@
 					
 					
 					<label class="control-label" for="URL">URL</label>
-					<input type="text" name="URL" placeholder="Type the URL here" class="required" id="URL"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"URL\" placeholder=\"Type the URL here\" value=\""; echo set_value('URL') ."\" class=\"required\" id=\"URL\"/>";
+					
 						$error_URL = form_error('URL');
 						$label = (!empty($error_URL)) ? "<small class=\"error\">".$error_URL."</small>" : "" ;
 						echo $label;
@@ -23,8 +23,8 @@
 					
 					
 					<label class="control-label" for="title">Title</label>
-					<input type="text" name="title" placeholder="Type the title here" class="required" id="title"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"title\" placeholder=\"Type the title here\" value=\""; echo set_value('title') ."\" class=\"required\" id=\"title\"/>";
+					
 						$error_title = form_error('title');
 						$label = (!empty($error_title)) ? "<small class=\"error\">".$error_title."</small>" : "" ;
 						echo $label;
@@ -32,8 +32,8 @@
 					
 					
 					<label class="control-label" for="type">Type</label>
-					<input type="text" name="type" placeholder="Please select a type" class="required" id="type"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"type\" placeholder=\"Please select a type\" value=\""; echo set_value('type') ."\" class=\"required\" id=\"type\"/>";
+					
 						$error_type = form_error('type');
 						$label = (!empty($error_type)) ? "<small class=\"error\">".$error_type."</small>" : "" ;
 						echo $label;
@@ -41,8 +41,8 @@
 					
 					
 					<label class="control-label" for="release">Release</label>
-					<input type="text" name="release" placeholder="Type the release" class="required" id="release"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"release\" placeholder=\"Type the release date here\" value=\""; echo set_value('release') ."\" class=\"datepicker\" id=\"release\"/>";
+					
 						$error_release = form_error('release');
 						$label = (!empty($error_release)) ? "<small class=\"error\">".$error_release."</small>" : "" ;
 						echo $label;
@@ -50,8 +50,9 @@
 
 
 					<label class="control-label" for="synopsis">Synopsis</label>
-					<textarea  rows="3" name="synopsis"  class="required" id="synopsis">Type the synopsis here </textarea>
-					<?php 
+					<?php echo "<textarea rows=\"3\" name=\"synopsis\" class=\"required\" id=\"synopsis\">"; $value = set_value('synopsis'); $value = (!empty($value)) ? $value : "Type the synopsis here"; $value .= "</textarea>";
+					echo $value;
+					
 						$error_synopsis = form_error('synopsis');
 						$label = (!empty($error_synopsis)) ? "<small class=\"error\">".$error_synopsis."</small>" : "" ;
 						echo $label;
@@ -59,8 +60,8 @@
 
 
 					<label class="control-label" for="URLimage">URL Image</label>
-					<input type="text" name="URLimage" placeholder="Type URL of image here" class="required" id="URLimage"/>
-					<?php 
+					<?php echo "<input type=\"text\" name=\"URLimage\" placeholder=\"Type URL of image here\" value=\""; echo set_value('URLimage') ."\" class=\"required\" id=\"URLimage\"/>";
+					
 						$error_URLimage = form_error('URLimage');
 						$label = (!empty($error_URLimage)) ? "<small class=\"error\">".$error_URLimage."</small>" : "" ;
 						echo $label;

@@ -34,10 +34,10 @@ class Humorist extends MY_Controller {
 			
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
-		$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required|xss_clean|max_length[50]|alpha_dash');
+		$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required|xss_clean|max_length[50]');
 		$this->form_validation->set_rules('lastname', 'Lastname', 'trim|required|xss_clean|max_length[50]');
-		$this->form_validation->set_rules('birthdate', 'Birthdate', 'trim|xss_clean|callback_date_validator'); //Callback = lien vers la fonction plus bas pour vérifier la validité
-		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('birthdate', 'Birthdate', 'trim|xss_clean|valid_date_format|date_validator');
+		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean|valid_url_format');
 		
 		if( $this->form_validation->run() == TRUE ) {
 			
@@ -67,12 +67,6 @@ class Humorist extends MY_Controller {
 			$data = array();
 			$this->show_view_with_hf('humorist_add', $data);
 		}
-	}
-	
-	//Fonction à implémenter pour valider la date
-	function date_validator($str)
-	{
-		//Utiliser REGEX + DATE TIME + Voir le helper Date aussi
 	}
 }
 /* End of file humorist.php */

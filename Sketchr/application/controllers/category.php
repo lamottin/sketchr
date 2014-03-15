@@ -66,7 +66,7 @@ class Category extends MY_Controller {
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean|valid_url_format');
 		
 		//When the form is correctly filled
 		if( $this->form_validation->run() == TRUE ) {
@@ -93,8 +93,8 @@ class Category extends MY_Controller {
 			//show validation error
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
-			//print_r($this->data["status"]);
-			$data=array();
+			
+			$data = array();
 			$this->show_view_with_hf('category_add', $data);
 		}
 		else { //Default page loaded

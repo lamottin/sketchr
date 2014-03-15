@@ -68,7 +68,7 @@ class Sketch extends MY_Controller {
 		$this->form_validation->set_rules('URL', 'URL', 'trim|required|xss_clean|valid_url_format');
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('type', 'Type', 'trim|required|xss_clean'); 
-		$this->form_validation->set_rules('release', 'Release', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('release', 'Release', 'trim|required|xss_clean|valid_date_format|date_validator');
 		$this->form_validation->set_rules('synopsis', 'Synopsis', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('URLimage', 'URLimage', 'trim|required|xss_clean|valid_url_format');
 		
