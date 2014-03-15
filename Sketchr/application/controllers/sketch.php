@@ -94,11 +94,11 @@ class Sketch extends MY_Controller {
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
 			//print_r($this->data["status"]);
-			$data=array();
+			$data['types'] = $this->sketch_type_model->listAllTypes();
 			$this->show_view_with_hf('sketch_add', $data);
 		}
 		else {
-			$data = array();
+			$data['types'] = $this->sketch_type_model->listAllTypes();
 			$this->show_view_with_hf('sketch_add', $data);
 		}
 	}

@@ -126,5 +126,5 @@ class Sketchtype extends MY_Controller {
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file sketchtype.php */
+/* Location: ./application/controllers/sketchtype.php */

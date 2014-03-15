@@ -28,17 +28,22 @@
 						$error_title = form_error('title');
 						$label = (!empty($error_title)) ? "<small class=\"error\">".$error_title."</small>" : "" ;
 						echo $label;
+					
+					
+					
+					//Champ Type					
+					echo "<label class=\"control-label\" for=\"type\">Type</label>";
+					$value = set_value('type'); //Récupère l'ancienne valeur saisie pour resélectionner la valeur saisie par l'utilisateur si il y a une erreur dans le formulaire.
+					$select_type = "<select name=\"type\" class=\"required\" id=\"type\">";
+						foreach($types as $type):
+							if($type->id == $value) //Sélectionne le choix de l'utilisateur. ca l'évite d'avoir à le refaire.
+								$select_type .= "<option selected =\"selected\" value=\"".$type->id ."\">".$type->title ."</option>";
+							else //Cas par défaut
+								$select_type .= "<option value=\"".$type->id ."\">".$type->title ."</option>";
+						endforeach;
+					$select_type .= "</select>";
+					echo $select_type;
 					?>
-					
-					
-					<label class="control-label" for="type">Type</label>
-					<?php echo "<input type=\"text\" name=\"type\" placeholder=\"Please select a type\" value=\""; echo set_value('type') ."\" class=\"required\" id=\"type\"/>";
-					
-						$error_type = form_error('type');
-						$label = (!empty($error_type)) ? "<small class=\"error\">".$error_type."</small>" : "" ;
-						echo $label;
-					?>
-					
 					
 					<label class="control-label" for="release">Release</label>
 					<?php echo "<input type=\"text\" name=\"release\" placeholder=\"Type the release date here\" value=\""; echo set_value('release') ."\" class=\"datepicker\" id=\"release\"/>";

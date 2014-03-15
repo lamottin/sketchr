@@ -40,6 +40,19 @@ class Sketch_type_model extends CI_Model {
 	}
 	
 	/**
+	 * List all the titles of sketch_types within the database ordered by their name
+	 * @return [Array] of all sketch_types's title
+	 */
+	public function listAllTypes() {
+
+		return $this->db->select('title, id')
+			->from($this->table)
+			->order_by('title', 'asc')
+			->get()
+			->result();
+	}
+	
+	/**
 	 * Get the last added sketch_type
 	 * @return [Object] The last added sketch_type
 	 */
