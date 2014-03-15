@@ -5,7 +5,8 @@ class Sketchtype extends MY_Controller {
 
 	public function __construct() {
 		
-		parent::__construct();		
+		parent::__construct();
+		$this->load->library('form_validation');
 	}
 
 	/**
@@ -43,27 +44,50 @@ class Sketchtype extends MY_Controller {
 	 * Get the data sent by _POST from the form used to add a new sketch_type
 	 * and passes it to sketch_type_model for insertion in the database
 	 */
-	public function add()
-	{
-		$data = array();
+	public function add() {
+	
+		/*Rules :
+			-trim : 			supprimer les blancs
+			- required : 		champ requis
+			- xss_clean : 		Runs the data through the XSS filtering function
+			- max_length[X] : 	définit la taille max à x
+			- min_length[X] : 	définit la taille min à x
+			- valid_email : 	Returns FALSE if the form element does not contain a valid email address.
+			- alpha : 			Returns FALSE if the form element contains anything other than alphabetical characters. 	 
+			- alpha_numeric		Returns FALSE if the form element contains anything other than alpha-numeric characters. 	 
+			- alpha_dash		Returns FALSE if the form element contains anything other than alpha-numeric characters, underscores or dashes. 	 
+			- numeric			Returns FALSE if the form element contains anything other than numeric characters. 	 
+			- integer			Returns FALSE if the form element contains anything other than an integer. 	 
+			- is_natural		Returns FALSE if the form element contains anything other than a natural number: 0, 1, 2, 3, etc.
+			- matches[str]		Returns FALSE if the form element does not match the one in the parameter. Useful for passwords.
+			
+			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
+		*/
+		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('start_date', 'Start date', 'trim|required|xss_clean|valid_date_format|date_validator'); 
+		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean|valid_url_format');
+		$this->form_validation->set_rules('synopsis', 'Synopsis', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('category', 'Category', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('humorist', 'Humorist', 'trim|xss_clean|required');
 		
-		if(!isset($_POST['create']))
-		{
-			$data['humorists'] = $this->humorist_model->listAllByLastName();
-			$this->show_view_with_hf('sketch_type_add', $data);
-		}
-		else
-		{
-			$skecth_type_values['title'] = $_POST['title'];
-			$skecth_type_values['start_date'] = $_POST['start_date'];
-			$skecth_type_values['image'] = $_POST['image'];
-			$skecth_type_values['synopsis'] = $_POST['synopsis'];
-			$skecth_type_values['category'] = $_POST['category'];
+		//If the form is correctly filled, then we process the data
+		if( $this->form_validation->run() == TRUE ) {
 			
-			$this->sketch_type_model->add($skecth_type_values);
+			//Retrieve the data
+			$data = array();
+			$data[0] = $this->input->post("title");
+			$data[1] = $this->input->post("start_date");
+			$data[2] = $this->input->post("image");
+			$data[3] = $this->input->post("synopsis");
+			$data[4] = $this->input->post("category");
+			$data[5] = $this->input->post("humorist");
 			
+			//Add into database via the model
+			$this->sketch_type_model->add($data);
+			
+			
+			//Ajout des humoristes & liaison avec leur categorie
 			$st = $this->sketch_type_model->lastAdded();
-			
 			$data['st'] = $st[0];
 			$h['sketch_type'] = $st[0]->id;
 			
@@ -85,6 +109,19 @@ class Sketchtype extends MY_Controller {
 			$data['message'] = "This sketch has been added. In few seconds you will be redirect in its descriptive page";
 			
 			$this->show_view_with_hf('sketch_type_processed', $data);
+		}
+		elseif($this->input->post("create")){ //If there's some errors in the form, the wrong fields are highlighted with an alert. As for the correct ones, the values that the users typed remain there so that he hasn't to fill them again.
+			
+			//show validation error
+			$this->data["status"]->message = validation_errors();
+			$this->data["status"]->success = FALSE;
+			//print_r($this->data["status"]);
+			$data['humorists'] = $this->humorist_model->listAllByLastName();
+			$this->show_view_with_hf('sketch_type_add', $data);
+		}
+		else { //Default
+			$data['humorists'] = $this->humorist_model->listAllByLastName();
+			$this->show_view_with_hf('sketch_type_add', $data);
 		}
 	}
 }
