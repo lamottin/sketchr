@@ -2,8 +2,12 @@ jQuery(function($) {
 	
 	$('.datepicker').datepicker({
 		
-		dateFormat : 'yy-mm-dd',
-		minDate : 0
+		dateFormat : 'dd-mm-yy',
+		date : 0,
+		changeMonth: true,
+		changeYear: true,
+		showOtherMonths: true,
+		selectOtherMonths: true
 	});
 	
 	/* French initialisation for the jQuery UI date picker plugin. */
@@ -12,13 +16,13 @@ jQuery(function($) {
 	Stéphane Raimbault <stephane.raimbault@gmail.com> */
 	$.datepicker.regional['fr'] = {
 		closeText: 'Fermer',
-		prevText: 'Précédent',
+		prevText: 'Pr&eacute;c&eacute;dent',
 		nextText: 'Suivant',
 		currentText: 'Aujourd\'hui',
 		monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-		'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-		monthNamesShort: ['janv.', 'févr.', 'mars', 'avril', 'mai', 'juin',
-		'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
+		'Juillet', 'Ao&uacirc;t', 'Septembre', 'Octobre', 'Novembre', 'D&eacute;cembre'],
+		monthNamesShort: ['Janv', 'F&eacute;vr', 'Mars', 'Avril', 'Mai', 'Juin',
+		'Juil', 'Ao&ucirc;t', 'Sept', 'Oct', 'Nov', 'D&eacute;c'],
 		dayNames: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
 		dayNamesShort: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
 		dayNamesMin: ['D','L','M','M','J','V','S'],

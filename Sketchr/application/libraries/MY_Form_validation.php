@@ -42,7 +42,7 @@ class MY_Form_validation extends CI_Form_validation{
      * @return  string
      */
 	function valid_date_format($str){
-        $pattern = "/^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/";
+        $pattern = "/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-(19|20)\d\d$/";
         if (!preg_match($pattern, $str)){
             $this->set_message('valid_date_format', 'The Date you entered is not correctly formatted.');
             return FALSE;
@@ -56,9 +56,9 @@ class MY_Form_validation extends CI_Form_validation{
 	{
 		//Utiliser REGEX + DATE TIME + Voir le helper Date aussi
 		$date = explode('-',$str);
-		$day = $date[2];
+		$day = $date[0];
 		$month = $date[1];
-		$year = $date[0];
+		$year = $date[2];
 		
 		if ( $day == "31" && ($month == "4" || $month =="6" || $month=="9" || $month=="11" || $month=="04" || $month =="06" || $month=="09")) {
 					

@@ -39,7 +39,15 @@ class Sketch_model extends CI_Model {
 		$this->db->set('video_link', $data[0]);
 		$this->db->set('title', $data[1]);
 		$this->db->set('sketch_type', $data[2]);
-		$this->db->set('release_date', $data[3]);
+		
+		//Formatte la date pour le format sql
+		$release = explode('-',$data[3]);
+		$day = $release[0];
+		$month = $release[1];
+		$year = $release[2];
+		$date_sql = $year ."-".$month."-".$day;
+		
+		$this->db->set('release_date', $date_sql);
 		$this->db->set('synopsis', $data[4]);
 		$this->db->set('image', $data[5]);
 

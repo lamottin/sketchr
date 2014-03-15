@@ -50,7 +50,7 @@
 
 
 					<label class="control-label" for="synopsis">Synopsis</label>
-					<?php echo "<textarea rows=\"3\" name=\"synopsis\" class=\"required\" id=\"synopsis\">"; $value = set_value('synopsis'); $value = (!empty($value)) ? $value : "Type the synopsis here"; $value .= "</textarea>";
+					<?php echo "<textarea rows=\"50\" name=\"synopsis\" class=\"required\" id=\"synopsis\">"; $value = set_value('synopsis'); $value = (!empty($value)) ? $value : "Type the synopsis here"; $value .= "</textarea>";
 					echo $value;
 					
 						$error_synopsis = form_error('synopsis');

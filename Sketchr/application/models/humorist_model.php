@@ -37,7 +37,15 @@ class Humorist_model extends CI_Model {
 		//	Ces données seront automatiquement échappées
 		$this->db->set('first_name', $data[0]);
 		$this->db->set('last_name', $data[1]);
-		$this->db->set('birthday', $data[2]);
+		
+		//Formatte la date pour le format sql
+		$date = explode('-',$data[2]);
+		$day = $date[0];
+		$month = $date[1];
+		$year = $date[2];
+		$date_sql = $year ."-".$month."-".$day;
+		
+		$this->db->set('birthday', $date_sql);
 		$this->db->set('image', $data[3]);
 		
 		//	Une fois que tous les champs ont bien été définis, on "insert" le tout
