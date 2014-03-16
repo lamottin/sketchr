@@ -6,7 +6,7 @@
 		<title>Sketchr</title>
 		<link type="image/ico" rel="shortcut icon" href="<?php echo base_url(); ?>assets/logo/logo.ico">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/foundation.css" />
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/dark-hive/jquery-ui.min.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/custom-theme/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jqueryui-1.10.4/js/jquery-ui.min.js"></script>

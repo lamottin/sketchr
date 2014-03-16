@@ -68,7 +68,7 @@ class Sketchtype extends MY_Controller {
 		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean|valid_url_format');
 		$this->form_validation->set_rules('synopsis', 'Synopsis', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('category', 'Category', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('humorist', 'Humorist', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('humorist', 'Humorist', 'trim|required|xss_clean');
 		
 		//If the form is correctly filled, then we process the data
 		if( $this->form_validation->run() == TRUE ) {

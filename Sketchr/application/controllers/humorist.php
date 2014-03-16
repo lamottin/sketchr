@@ -48,8 +48,6 @@ class Humorist extends MY_Controller {
 			$data[2] = $this->input->post("birthdate");
 			$data[3] = $this->input->post("image");
 			
-			//À l'avenir faudra faire le script pour l'upload d'image. Pour l'instant considéré comme juste du texte.
-			//Vérifier les données..
 			$this->humorist_model->addHumorist($data);
 		
 			$this->show_view_with_hf('home', $data);

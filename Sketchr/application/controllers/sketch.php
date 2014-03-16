@@ -22,30 +22,6 @@ class Sketch extends MY_Controller {
 	}
 
 
-	/*public function url_cheking($str){
-
-		 $pattern = "/^(http|https|ftp):\/\/([A-Z0-9][A-Z0-9_-]*(?:\.[A-Z0-9][A-Z0-9_-]*)+):?(\d+)?\/?/i";
-         if (!preg_match($pattern, $str))
-         {
-               return FALSE;
-          }
-         
-         return TRUE;
-	}
-
-
-	 public function valid_url_format($str){
-        $pattern = "|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i";
-        if (!preg_match($pattern, $str)){
-            $this->set_message('valid_url_format', 'The URL you entered is not correctly formatted.');
-            return FALSE;
-        }
- 
-        return TRUE;
-    } 
-*/
-
-
 	public function add() {
 	
 		/*Rules :
@@ -120,8 +96,7 @@ class Sketch extends MY_Controller {
 
 		// Get the humorist object from the model
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
-		print_r($data['sketch_type']);
-
+		
 		$this->show_view_with_hf('sketch_sheet', $data);
 	}
 }

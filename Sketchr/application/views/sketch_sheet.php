@@ -15,13 +15,9 @@
 				<p><?php echo $sketch_type->start_date; ?></p>
 				<p><?php echo $sketch_type->image; ?></p>
 			</div>
-			<div class="row">
-				<p class="title">COMMENTS</p>
-
-				Commentaires
-			</div>
-
 			
+		<!--Inclure la page des commentaires -->
+			<?php $this->load->view('comment_sheet'); ?>
 		</div>
 
 		<div class="large-4 columns">

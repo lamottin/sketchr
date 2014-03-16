@@ -34,7 +34,7 @@ class Humorist_model extends CI_Model {
 	
 	public function addHumorist($data) {
 
-		//	Ces données seront automatiquement échappées
+		//Ces données seront automatiquement échappées
 		$this->db->set('first_name', $data[0]);
 		$this->db->set('last_name', $data[1]);
 		
