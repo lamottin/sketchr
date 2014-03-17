@@ -5,7 +5,8 @@ jQuery(function($) {
 		dateFormat : 'dd-mm-yy',
 		date : 0,
 		changeMonth: true,
-		changeYear: true
+		changeYear: true,
+		constrainInput: false
 	});
 	
 	/* French initialisation for the jQuery UI date picker plugin. */

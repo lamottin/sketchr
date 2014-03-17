@@ -7,11 +7,33 @@
 			<textarea name="comment" id="comment" cols="35" rows="6"></textarea>
 		</p>
 		<input type="hidden" name="id_sketch" id="id_sketch" value="<?php echo $sketch->id ?>" />
-		<input type="hidden" name="id_member" id="id_member" value="2" />
+		<input type="hidden" name="id_member" id="id_member" value="1" />
 		
 		<input type="submit" id="submit_com" class="button" value="Submit" />
 	</form>
 	</div>
+	
+	<?php 
+	
+		// Needed for the default gravatar image:
+		$url = 'http://'.dirname($_SERVER['SERVER_NAME']).'/assets/logo/logo.ico';
+		
+		foreach($datas as $data):
+		
+				// Converting the time to a UNIX timestamp:
+				$data->post_date = strtotime($data->post_date);
+				
+				echo '<div class="comment">
+						<div class="avatar">
+						'.$data->avatar .'	<!-- <img src="'.$data->avatar .'" /> -->
+						</div>
+						<div class="name">'.$data->first_name .' '.$data->last_name.'</div>
+						<div class="date" title="Added at '.date('H:i on d M Y',$data->post_date).'">'.date('d M Y',$data->post_date).'</div>
+						<p>'.$data->message.'</p>
+						</div>
+				';
+		endforeach;
+	?>
 </div>
 <script type="text/javascript">
 $j = jQuery.noConflict();

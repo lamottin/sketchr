@@ -12,7 +12,6 @@
 			<form method="post" action="<?php echo base_url(); ?>humorist/add" name="humorist" id="humorist">
 				<div class="small-8 columns">
 					
-					
 					<label class="control-label" for="title">Firstname</label>
 					<?php echo "<input type=\"text\" name=\"firstname\" placeholder=\"Type the firstname here\" value=\""; echo set_value('firstname') ."\" class=\"required\" id=\"firstname\"/>";
 					
@@ -31,7 +30,7 @@
 					
 					
 					<label class="control-label" for="title">Birthdate</label>
-					<?php echo "<input type=\"text\" name=\"birthdate\" placeholder=\"Type the birthdate here\" value=\""; echo set_value('birthdate') ."\" class=\"datepicker\" id=\"birthdate\"/>";
+					<?php echo "<input type=\"text\" name=\"birthdate\" placeholder=\"Type the birthdate here\" value=\""; echo set_value('birthdate') ."\" class=\"datepicker\" id=\"birthdate\" readonly='true'/>";
 					
 						$error_birthdate = form_error('birthdate');
 						$label = (!empty($error_birthdate)) ? "<small class=\"error\">".$error_birthdate."</small>" : "" ;

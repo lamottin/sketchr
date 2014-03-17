@@ -46,7 +46,7 @@
 					?>
 					
 					<label class="control-label" for="release">Release</label>
-					<?php echo "<input type=\"text\" name=\"release\" placeholder=\"Type the release date here\" value=\""; echo set_value('release') ."\" class=\"datepicker\" id=\"release\"/>";
+					<?php echo "<input type=\"text\" name=\"release\" placeholder=\"Type the release date here\" value=\""; echo set_value('release') ."\" class=\"datepicker\" id=\"release\" readonly='true'/>";
 					
 						$error_release = form_error('release');
 						$label = (!empty($error_release)) ? "<small class=\"error\">".$error_release."</small>" : "" ;

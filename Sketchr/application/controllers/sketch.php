@@ -8,6 +8,7 @@ class Sketch extends MY_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->model('sketch_model');
+		$this->load->model('comment_model');
 		$this->load->library('form_validation');
 	}
 
@@ -96,6 +97,7 @@ class Sketch extends MY_Controller {
 
 		// Get the humorist object from the model
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
+		$data['datas'] = $this->comment_model->listAllBySketch($data['sketch']->id);
 		
 		$this->show_view_with_hf('sketch_sheet', $data);
 	}

@@ -17,35 +17,7 @@ class Comment extends MY_Controller {
 	public function index() {
 
 	}
-		
-	public function markup()
-	{
-		/*
-		/ This method outputs the XHTML markup of the comment
-		*/
-
-		$link_open = '';
-		$link_close = '';
-
-		// Converting the time to a UNIX timestamp:
-		$this->data['dt'] = strtotime($this->data['dt']);
-		
-		// Needed for the default gravatar image:
-		$url = 'http://'.dirname($_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]).'/comm/img/default_avatar.gif';
-
-		return '<div class="comment">
-		 <div class="avatar">
-		 '.$link_open.'
-		 <img src="http://www.gravatar.com/avatar/'.md5($this->data['email']).'?size=50&amp;default='.urlencode($url).'" />
-		 '.$link_close.'
-		 </div>
-
-		 <div class="name">'.$link_open.$this->data['name'].$link_close.'</div>
-		 <div class="date" title="Added at '.date('H:i on d M Y',$this->data['dt']).'">'.date('d M Y',$this->data['dt']).'</div>
-		 <p>'.$this->data['comment'].'</p>
-		 </div>
-		 ';
-	}
+	
 
 	/*
 	 * This method is used to validate the data sent via AJAX.

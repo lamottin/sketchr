@@ -6,12 +6,16 @@ class Comment_model extends CI_Model {
 	
 	public function listAllBySketch($id_sketch) {
 
-		return $this->db->select('*')
+		$req = $this->db->select(''.$this->table .'.message, '.$this->table .'.post_date, membre.first_name, membre.last_name, membre.avatar')
 			->from($this->table)
+			->join('member `membre`', 'membre.id = '.$this->table.'.member', 'left')
 			->where('sketch', $id_sketch)
-			->order_by('post_date', 'desc')
+			->order_by($this->table .'.id', 'desc')
 			->get()
 			->result();
+		echo $req;
+		
+		return $req;
 	}
 	
 	public function addComment($data) {
