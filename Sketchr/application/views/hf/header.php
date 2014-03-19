@@ -8,12 +8,11 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/foundation.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/custom-theme/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jqueryui-1.10.4/js/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jqueryui-1.10.4/js/datepicker.js"></script>
+		
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.topbar.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 	</head>
 	<body>
 
