@@ -13,7 +13,7 @@
 	</form>
 	</div>
 	<div id="loader" style="display:none;"><img src="<?php echo base_url('/assets/loader.gif');?>" alt="loader" title="Loading..."></div>
-	<div id="resultatAjax"></div>
+	<div id="block_comment"></div>
 	<?php 
 	
 		foreach($datas as $data):
@@ -21,7 +21,7 @@
 				// Converting the time to a UNIX timestamp:
 				$data->post_date = strtotime($data->post_date);
 				
-				echo '<div class="comment">
+				echo '<div class="comment" >
 						<div class="avatar">
 						'.$data->avatar .'	<img src="'.base_url('/assets/logo/logo.ico').'" />
 						</div>
@@ -32,7 +32,6 @@
 				';
 		endforeach;
 	?>
-	
 	</div>
 </div>
 <script type="text/javascript">
@@ -48,7 +47,7 @@ $(function() {
 	// On récupère les événements du bouton submit
 	$("#addCom").submit(function(e) {
 	$("#loader").show();
-	e.preventDefault();
+	//e.preventDefault();
 	if(working) return false;
 	
 	working = true;
@@ -78,18 +77,17 @@ $(function() {
                 working = false;
 				$('#submit_com').val('Submit');
 				$('#comment').val('');
-				$('#resultatAjax').hide().append(data).slideDown();
-				$('#addCommentContainer').fadeOut();
+				$('#block_comment').hide().append(data).slideDown();
+				//$('#addCommentContainer').fadeOut();
 				$("#loader").hide();
-				//$('#addCommentContainer').prepend('<div data-alert data-options="animation_speed:3, animation:\'fadeOut\';" class="alert-box success radius">This is a success alert with a radius.<a href="#" class="close">&times;</a></div>');
+				//$('#addCommentContainer').prepend('<div data-alert data-options="animation_speed:500, animation:\'fadeOut\';" class="alert-box success radius">This is a success alert with a radius.<a href="#" class="close">&times;</a></div>');
               }
 	});
 	return false;
 });
 });
-
 </script>
-<style type="text/css">
+<!-- <style type="text/css">
  .comment,
  #addCommentContainer{
  background:#f7f7f7;
@@ -240,4 +238,4 @@ $(function() {
  border-color:#093c75;
  outline:none;
  }
-</style>
+</style> -->
