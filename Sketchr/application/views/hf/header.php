@@ -17,43 +17,44 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
 	</head>
 	<body>
+		<form method="get" action="<?php echo base_url(); ?>search">
 
-	<nav class="top-bar" data-topbar>
-		<ul class="title-area">
-			<li class="name large-8 small-9 columns">
-				<h1><a href="<?php echo base_url(); ?>">Sketchr</a></h1>
-			</li>
-			<li class="toggle-topbar menu-icon">
-				<a href="#">Menu</a>
-			</li>
-		</ul>
-
-		<section class="top-bar-section">
-			<!-- Left Nav Section -->
-			<ul class="left">
-				<form action="">
-					<li class="has-form">
-						<div class="row collapse">
-							<div class="large-10 small-9 columns">
-								<input type="text" placeholder="Find Stuff">
-							</div>
-							<div class="large-2 small-3 columns">
-								<a href="#" class="alert button expand">Search</a>
-							</div>
-						</div>
-					</li>
-				</form>
-			</ul>
-			
-			<!-- Right Nav Section -->
-			<ul class="right">
-				<li class="has-form">
-					<a href="http://foundation.zurb.com/docs" class="button radius">Sign in</a>
+		<nav class="top-bar" data-topbar>
+			<ul class="title-area">
+				<li class="name large-8 small-9 columns">
+					<h1><a href="<?php echo base_url(); ?>">Sketchr</a></h1>
+				</li>
+				<li class="toggle-topbar menu-icon">
+					<a href="#">Menu</a>
 				</li>
 			</ul>
-		</section>
-	</nav>
 
+			<section class="top-bar-section">
+				<!-- Left Nav Section -->
+				<ul class="left">
+					<form action="">
+						<li class="has-form">
+							<div class="row collapse">
+								<div class="large-10 small-9 columns">
+									<input type="text" name="v_search" placeholder="Find Stuff" required="required">
+								</div>
+								<div class="large-2 small-3 columns">
+									<input class="alert button expand" type="submit" value="Valider" />
+								</div>
+							</div>
+						</li>
+					</form>
+				</ul>
+				
+				<!-- Right Nav Section -->
+				<ul class="right">
+					<li class="has-form">
+						<a href="http://foundation.zurb.com/docs" class="button radius">Sign in</a>
+					</li>
+				</ul>
+			</section>
+		</nav>
+		</form>
 
 	<div class="row full-width">
 	<?php echo $menu; ?>

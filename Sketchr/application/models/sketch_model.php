@@ -4,6 +4,17 @@ class Sketch_model extends CI_Model {
 
 	protected $table = 'sketch';
 
+	public function findByTitle($pv_search){
+
+
+		return $this->db->select('*')
+			->from($this->table)
+			->like('title', $pv_search)
+			->order_by('id', 'desc')
+			->get();
+			->result();
+	}
+
 	/**
 	 * List all the sketchs within the database ordered by their "id"
 	 * @return [Array] of all sketch
