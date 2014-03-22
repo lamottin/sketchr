@@ -18,12 +18,15 @@ class Search extends MY_Controller {
 	public function index() {
 
 		$pv_search = htmlspecialchars($_GET['v_search']);
-		$o = $this->sketch_model->findByTitle($pv_search);
-	
+		$data['io'] = $this->sketch_model->findByTitle($pv_search);
+		
 
 		
 
-		echo $_GET['v_search'];
+		$this->show_view_with_hf('search_view.php', $data);
+		
+
+		/*echo $_GET['v_search'];*/
 		/*echo $_GET['v'];
 		if(isset($_GET['v']))
 			echo "j'existe";

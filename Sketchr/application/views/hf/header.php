@@ -40,7 +40,6 @@
 								</div>
 								<div class="large-2 small-3 columns">
 									<input class="alert button expand" type="submit" value="Valider" />
-								</div>
 							</div>
 						</li>
 					</form>
