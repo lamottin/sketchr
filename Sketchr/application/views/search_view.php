@@ -27,7 +27,7 @@
 								
 							<div class="row">
 								  	<div class="medium-9 columns ">
-										<?php 	echo "<a class='th' href=''>". $row->title.""; 	?>
+										<?php 	echo "<a class='th' href=''>". $row->title."</a>"; 	?>
 									</div>
 							</div>
 							<div class="row">
