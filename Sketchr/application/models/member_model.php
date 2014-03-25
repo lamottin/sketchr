@@ -69,5 +69,19 @@ class Member_model extends CI_Model {
 	public function update($id, $data) {
 	
 	}
+
+	public function verifyPassword($data) {
+
+		$query = $this->db->select('*')
+			->from($this->table)
+			->where('email', $data[0])
+			->get();
+
+		if($query->num_rows() > 0) {
+			$user = $query->row();
+			return $user->password == $data[1] ? true : false;
+		}
+		else return false;
+	}
 }
 ?>

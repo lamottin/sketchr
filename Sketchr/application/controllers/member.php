@@ -88,41 +88,52 @@ class Member extends MY_Controller {
 	}
 
 
+	/* This function is used to login the user when 
+	 * the user POSTs the login form in the header 
+	 */
 	public function login() {
 
-		$this->form_validation->set_rules('login', 'Login', 'trim|required|xss_clean|max_length[100]');
+		// retrieve the content from the form
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|max_length[100]');
 		
+		// if the form is valid
 		if( $this->form_validation->run() == TRUE ) {
 			
 			//process data
 			$data = array();
-			$data[0] = $this->input->post("firstname");
-			$data[1] = $this->input->post("lastname");
-			$data[2] = $this->input->post("email");
-			$data[3] = $this->input->post("password");
-			$data[4] = $this->input->post("confirm");
-			$data[5] = $this->input->post("country");
-			$data[6] = $this->input->post("postcode");
-			$data[7] = $this->input->post("city");
-			$data[8] = $this->input->post("birthdate");
+			$data[0] = $this->input->post("email");
+			$data[1] = $this->input->post("password");
 			
-			$this->member_model->create($data);
-		
-			$this->show_view_with_hf('home', $data);
+			// retrieve the user from the database using the email from the form
+			$data['user'] = $this->member_model->getByEmail($data[0]);
+			// if the user is found
+			if($data['user'] != null) {
+				// verify that the password matches the password from database
+				if($this->member_model->verifyPassword($data)) {
+					//if it does
+					return true;
+				}
+				else {
+					//if it doesn't
+					return false;
+				}
+			}
 		}
-		elseif($this->input->post("submit")){
+		elseif($this->input->post("submit")) {
 			
 			//show validation error
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
 			//print_r($this->data["status"]);
-			$data=array();
-			$this->show_view_with_hf('member_add', $data);
+			//$data=array();
+			//$this->show_view_with_hf('home', $data);
+			return $data;
 		}
 		else {
-			$data = array();
-			$this->show_view_with_hf('member_add', $data);
+			//$data = array();
+			//$this->show_view_with_hf('home', $data);
+			return $data;
 		}		
 	}
 

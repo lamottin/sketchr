@@ -48,11 +48,11 @@
 				
 				<!-- Right Nav Section -->
 				<ul class="right">
-					<form action="">
+					<form action="<?php echo base_url(); ?>member/login" method="post">
 						<li class="has-form">
 							<div class="row collapse">
 								<div>
-									<input type="text" name="login" placeholder="log-in" required="required">
+									<input type="text" name="email" placeholder="log-in" required="required">
 								</div>
 							</div>
 						</li>
