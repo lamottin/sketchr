@@ -4,13 +4,6 @@ class Like_Dislike_model extends CI_Model {
 
 	protected $table = 'wcd_yt_rate';
 
-
-	// check if the user has already clicked on the unlike (rate = 2) or the like (rate = 1)
-		//$dislike_sql = mysql_query('SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'.$pageID.'" and rate = 2 ');
-		//$dislike_count = mysql_result($dislike_sql, 0); 
-
-		//$like_sql = mysql_query('SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'.$pageID.'" and rate = 1 ');
-		//$like_count = mysql_result($like_sql, 0);
 		
 	//'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'.$id_sketch.'" and rate = ? '	
 	public function getCountByActUserSketch($user_ip, $id_sketch, $act) {
@@ -32,7 +25,7 @@ class Like_Dislike_model extends CI_Model {
 		return $this->db->count_all_results();
 	}	 
 
-	//'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 1'
+	//'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = $act'
 	public function getAllCountByActSketch($id_sketch, $act) {
 		
 		$this->db->from($this->table)
