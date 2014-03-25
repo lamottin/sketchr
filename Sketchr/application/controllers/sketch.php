@@ -9,6 +9,7 @@ class Sketch extends MY_Controller {
 		$this->load->helper('form');
 		$this->load->model('sketch_model');
 		$this->load->model('comment_model');
+		$this->load->model('like_dislike_model');
 		$this->load->library('form_validation');
 	}
 
@@ -80,6 +81,14 @@ class Sketch extends MY_Controller {
 		}
 	}
 
+    //function to calculate the percent
+    function percent($num_amount, $num_total) {
+        $count1 = $num_amount / $num_total;
+        $count2 = $count1 * 100;
+        $count = number_format($count2, 0);
+        return $count;
+    }
+	
 	/**
 	 * Maps to the following URL :
 	 * - base_url()/sketch/access_sketch_by_id
@@ -99,7 +108,60 @@ class Sketch extends MY_Controller {
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
 		$data['datas'] = $this->comment_model->listAllBySketch($data['sketch']->id);
 		
+		$user_ip = $_SERVER['REMOTE_ADDR'];
+		//Check if the user has already clicked on the unlike (rate = 2) or the like (rate = 1)
+        $like_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $data['sketch']->id, 1);  
+		$dislike_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $data['sketch']->id, 2);
+        
+        //Count all the rate 
+        $rate_all_count = $this->like_dislike_model->getAllCountBySketch($data['sketch']->id);
+        
+        $rate_like_count =  $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,1);
+		$rate_dislike_count = $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,2);
+		
+        $rate_like_percent = $this->percent($rate_like_count, $rate_all_count);        
+        $rate_dislike_percent = $this->percent($rate_dislike_count, $rate_all_count);
+		
+		$data['like_count'] = $like_count;
+		$data['dislike_count'] = $dislike_count;
+		$data['rate_all_count'] = $rate_all_count;
+		$data['rate_like_count'] = $rate_like_count;
+		$data['rate_dislike_count'] = $rate_dislike_count;
+		$data['rate_like_percent'] = $rate_like_percent;
+		$data['rate_dislike_percent'] = $rate_dislike_percent;
+		
 		$this->show_view_with_hf('sketch_sheet', $data);
+	}
+	
+	public function like_dislike() {
+	
+		
+		$user_ip = $_SERVER['REMOTE_ADDR'];
+		$act = $this->input->post('act');
+		$sketchID = $this->input->post('sketchID');
+		
+		//Check if the user has already clicked on the unlike (rate = 2) or the like (rate = 1)
+        $like_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $sketchID, 1);  
+		$dislike_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $sketchID, 2);
+
+		if($act == 'like'): //if the user click on "like"
+			if(($like_count == 0) && ($dislike_count == 0)){
+				$this->like_dislike_model->addAct($sketchID, $user_ip, 1);
+			}
+			if($like_count == 1){
+				$this->like_dislike_model->updateAct($sketchID, $user_ip, 1);
+			}
+
+		endif;
+		if($act == 'dislike'): //if the user click on "dislike"
+			if(($dislike_count == 0) && ($dislike_count == 0)){
+				$this->like_dislike_model->addAct($sketchID, $user_ip, 2);
+			}
+			if($dislike_count == 1){
+				$this->like_dislike_model->updateAct($sketchID, $user_ip, 2);
+			}
+
+		endif;
 	}
 }
 /* End of file sketch.php */

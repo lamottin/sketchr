@@ -28,6 +28,10 @@
 						<div class="name">'.$data->first_name .' '.$data->last_name.' a &eacutecrit :</div>
 						<div class="date" title="Added at '.date('d M Y',$data->post_date).'">le '.date('d M Y',$data->post_date).'</div>
 						<p>'.$data->message.'</p>
+						
+						
+						
+						
 						</div>
 				';
 		endforeach;
