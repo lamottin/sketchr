@@ -14,6 +14,7 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.topbar.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.dropdown.js"></script>
 	</head>
 	<body>
 
@@ -47,12 +48,14 @@
 			<!-- Right Nav Section -->
 			<ul class="right">
 				<li class="has-form">
-					<a href="http://foundation.zurb.com/docs" class="button radius">Sign in</a>
+					<a href="#" class="button radius" data-dropdown="hover1">Sign in</a>
+					<div id="hover1" class="f-dropdown content medium" data-dropdown-content>
+						mchain
+					</div>
 				</li>
 			</ul>
 		</section>
 	</nav>
-
 
 	<div class="row full-width">
 	<?php echo $menu; ?>
