@@ -6,16 +6,66 @@ class Comment_model extends CI_Model {
 	
 	public function listAllBySketch($id_sketch) {
 
-		$req = $this->db->select(''.$this->table .'.message, '.$this->table .'.post_date, membre.first_name, membre.last_name, membre.avatar')
+		return $this->db->select(''.$this->table .'.message, '.$this->table .'.post_date, membre.first_name, membre.last_name, membre.avatar')
 			->from($this->table)
-			->join('member `membre`', 'membre.id = '.$this->table.'.member', 'left')
+			->join('member membre', 'membre.id = '.$this->table.'.member', 'left')
 			->where('sketch', $id_sketch)
 			->order_by($this->table .'.id', 'desc')
 			->get()
 			->result();
-		echo $req;
+	}
+	
+	public function getAllInfoLastComment($id_sketch) {
+	
+		/*
+SELECT sketch_comment.message, sketch_comment.post_date, membre.first_name, membre.last_name, membre.avatar
+FROM sketch_comment
+LEFT JOIN member membre ON membre.id = sketch_comment.member
+WHERE sketch_comment.sketch=2 and sketch_comment.id = (SELECT MAX(sketch_comment.id) FROM sketch_comment)
+*/
+		$query=$this->db->select('id')
+			->from($this->table)
+			->limit(1, 0)
+			->order_by('id', 'desc')
+			->get()
+			->result();
+		$id = -1;	
+		foreach($query as $result):
+			$id = $result->id;
+		endforeach;
+	
+		return $this->db->select($this->table.'.message,'.$this->table.'.post_date, membre.first_name, membre.last_name, membre.avatar')
+			->from($this->table)
+			->join('member membre','membre.id = '.$this->table.'.member','left')
+			->where($this->table.'.sketch', $id_sketch)
+			->where($this->table.'.id' , $id)
+			->get()
+			->result();
+	}
+	
+	public function getInfoMemberById($id_member) {
+
+		return $this->db->select('first_name, last_name, avatar')
+			->from('member')
+			->where('id', $id_member)
+			->get()
+			->result();
+			
+
+	}
+	/**
+	 * Get the last added comment
+	 * @return [Object] The last added comment
+	 */
+	public function getInfoLastCommentBySketch($id_sketch) {
+	
 		
-		return $req;
+		return $this->db->select('message, post_date')
+			->from($this->table)
+			->limit(1, 0)
+			->order_by('id', 'desc')
+			->get()
+			->result();
 	}
 	
 	public function addComment($data) {

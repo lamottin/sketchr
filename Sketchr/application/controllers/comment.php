@@ -39,14 +39,34 @@ class Comment extends MY_Controller {
 			//Ajout dans la DB
 			$this->comment_model->addComment($data);
 			
-			
-
+			// Get the sketch object from the model
+			//$data["infos"] = $this->comment_model->getInfoMemberById($data[1]);
+			//$data["infos"] = $this->comment_model->getInfoLastCommentBySketch($data[0]);
+			$data["infos"] = $this->comment_model->getAllInfoLastComment($data[0]);
+			//print_r($data["infos"]);
+			foreach($data["infos"] as $data):
+				
+				// Converting the time to a UNIX timestamp:
+				$data->post_date = strtotime($data->post_date);
+				
+				echo '<div class="comment">
+						<div class="avatar">
+						'.$data->avatar .'	<img src=" '. base_url('/assets/logo/logo.ico').'" />
+						</div>
+						<div class="name">'.$data->first_name .' '.$data->last_name.' a &eacutecrit :</div>
+						<div class="date" title="Added at '.date('d M Y',$data->post_date).'">le '.date('d M Y',$data->post_date).'</div>
+						<p>'.$data->message.'</p>
+						</div>
+				';
+			endforeach;
+			//$this->load->view('comment_sheet', $data);
 		}
 		elseif($this->input->post("submit_com")){
 			
 			//Show validation error
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
+			//echo validation_errors();
 			//print_r($this->data["status"]);
 			$data=array();
 			//$this->show_view_with_hf('humorist_add', $data);
