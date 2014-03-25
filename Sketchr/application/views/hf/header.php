@@ -48,9 +48,34 @@
 				
 				<!-- Right Nav Section -->
 				<ul class="right">
-					<li class="has-form">
-						<a href="http://foundation.zurb.com/docs" class="button radius">Sign in</a>
-					</li>
+					<form action="">
+						<li class="has-form">
+							<div class="row collapse">
+								<div>
+									<input type="text" name="login" placeholder="log-in" required="required">
+								</div>
+							</div>
+						</li>
+						<li class="has-form">
+							<div class="row collapse">
+								<div>
+									<input type="text" name="password" placeholder="password" required="required">
+								</div>
+							</div>
+						</li>
+						<li class="has-form">
+							<div class="row collapse">
+								<div>
+									<input class="button radius" type="submit" value="Sign in" />
+								</div>
+							</div>
+						</li>
+						<li class="has-form">
+							<div class="row collapse">
+								<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
+							</div>
+						</li>
+					</form>
 				</ul>
 			</section>
 		</nav>
