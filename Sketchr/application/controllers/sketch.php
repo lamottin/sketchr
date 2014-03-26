@@ -171,6 +171,17 @@ class Sketch extends MY_Controller {
 
 		endif;
 	}
+
+
+	public function dead_link() {
+
+			
+			$user = $_SERVER['REMOTE_ADDR'];
+			$sketchID = $this->input->post('sketchID');
+
+			$this->deadlink_model->addDeadLink($sketchID, $user_ip);
+			
+	}
 }
 /* End of file sketch.php */
 /* Location: ./application/controllers/sketch.php */
