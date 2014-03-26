@@ -16,6 +16,61 @@
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
+		<script type="text/javascript" >
+			$(function(){ 
+		        //alert(event.timeStamp); 
+		        /*
+		        $('.new-com-bt').click(function(event){    
+		            $(this).hide();
+		            $('.new-com-cnt').show();
+		            $('#name-com').focus();
+		        });*/
+
+		        /* when start writing the comment activate the "add" button
+		        $('.the-new-com').bind('input propertychange', function() {
+		           $(".bt-add-com").css({opacity:0.6});
+		           var checklength = $(this).val().length;
+		           if(checklength){ $(".bt-add-com").css({opacity:1}); }
+		        });
+*/
+		        /* on clic  on the cancel button 
+		        $('.bt-cancel-com').click(function(){
+		            $('.the-new-com').val('');
+		            $('.new-com-cnt').fadeOut('fast', function(){
+		                $('.new-com-bt').fadeIn('fast');
+		            });
+		        });
+*/
+		        // on signin click 
+		        $("#signin").submit(function(e) {
+		            var email = $('#email');
+		            var password = $('#password');
+
+		            alert(email.val());
+
+	                $.ajax({
+	                    type: "POST",
+	                    url: "<?php echo base_url()."member/login"?>",
+	                    data: 'email='+email.val()+'&password='+password.val(),
+	                    error : function(xhr, textStatus, errorThrown){
+							alert(textStatus + errorThrown);
+						},
+	                    success: function(data){
+	                    	alert(data)
+	                    	/*
+	                        theCom.val('');
+	                        theMail.val('');
+	                        theName.val('');
+	                        $('.new-com-cnt').hide('fast', function(){
+	                            $('.new-com-bt').show('fast');
+	                            $('.new-com-bt').before(html);  
+	                        })
+	                    }  */
+	                });	
+		        });
+
+	   		});
+		</script>
 	</head>
 	<body>
 		<form method="get" action="<?php echo base_url(); ?>search">
@@ -48,18 +103,18 @@
 				
 				<!-- Right Nav Section -->
 				<ul class="right">
-					<form action="<?php echo base_url(); ?>member/login" method="post">
+					<form action="" id="signin" method="post" >
 						<li class="has-form">
 							<div class="row collapse">
 								<div>
-									<input type="text" name="email" placeholder="log-in" required="required">
+									<input type="text" name="email" id="email" placeholder="log-in" required="required">
 								</div>
 							</div>
 						</li>
 						<li class="has-form">
 							<div class="row collapse">
 								<div>
-									<input type="text" name="password" placeholder="password" required="required">
+									<input type="text" name="password" id="password" placeholder="password" required="required">
 								</div>
 							</div>
 						</li>

@@ -112,11 +112,13 @@ class Member extends MY_Controller {
 				// verify that the password matches the password from database
 				if($this->member_model->verifyPassword($data)) {
 					//if it does
-					return true;
+					$this->data["status"]->message = "good";
+					$this->data["status"]->success = TRUE;
 				}
 				else {
 					//if it doesn't
-					return false;
+					$this->data["status"]->message = "doesn't match";
+					$this->data["status"]->success = FALSE;
 				}
 			}
 		}
@@ -126,9 +128,8 @@ class Member extends MY_Controller {
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
 			//print_r($this->data["status"]);
-			//$data=array();
+			$data=array();
 			//$this->show_view_with_hf('home', $data);
-			return $data;
 		}
 		else {
 			//$data = array();
