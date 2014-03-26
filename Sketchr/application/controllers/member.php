@@ -93,6 +93,7 @@ class Member extends MY_Controller {
 	 */
 	public function login() {
 
+				
 		// retrieve the content from the form
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|max_length[100]');
@@ -100,11 +101,13 @@ class Member extends MY_Controller {
 		// if the form is valid
 		if( $this->form_validation->run() == TRUE ) {
 			
+			echo "machin";
+
 			//process data
 			$data = array();
 			$data[0] = $this->input->post("email");
 			$data[1] = $this->input->post("password");
-			
+
 			// retrieve the user from the database using the email from the form
 			$data['user'] = $this->member_model->getByEmail($data[0]);
 			// if the user is found
@@ -135,8 +138,10 @@ class Member extends MY_Controller {
 			//$data = array();
 			//$this->show_view_with_hf('home', $data);
 			return $data;
-		}		
+		}	
+		*/	
 	}
+
 
 }
 ?>

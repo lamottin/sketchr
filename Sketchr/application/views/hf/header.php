@@ -46,17 +46,23 @@
 		            var email = $('#email');
 		            var password = $('#password');
 
-		            alert(email.val());
-
+		            var form_data = {
+						email: $('#email').val(),
+						password: $('#password').val()
+					};
+					
 	                $.ajax({
 	                    type: "POST",
-	                    url: "<?php echo base_url()."member/login"?>",
-	                    data: 'email='+email.val()+'&password='+password.val(),
+	                    url: "<?php echo base_url().'member/login'; ?>",
+	                    data: form_data,
+	                    dataType: "text",  
+       					cache:false,
 	                    error : function(xhr, textStatus, errorThrown){
-							alert(textStatus + errorThrown);
+							alert("error : " + xhr.status + textStatus + errorThrown);
 						},
 	                    success: function(data){
-	                    	alert(data)
+	                    	alert("success " + data);
+	                    	//$('#signin-nav').empty();
 	                    	/*
 	                        theCom.val('');
 	                        theMail.val('');
@@ -64,8 +70,8 @@
 	                        $('.new-com-cnt').hide('fast', function(){
 	                            $('.new-com-bt').show('fast');
 	                            $('.new-com-bt').before(html);  
-	                        })
-	                    }  */
+	                        })*/
+	                    }  
 	                });	
 		        });
 
@@ -102,7 +108,7 @@
 				</ul>
 				
 				<!-- Right Nav Section -->
-				<ul class="right">
+				<ul class="right" id="signin-nav">
 					<form action="" id="signin" method="post" >
 						<li class="has-form">
 							<div class="row collapse">
