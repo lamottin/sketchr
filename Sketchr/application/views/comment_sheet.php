@@ -16,18 +16,18 @@
 	<div id="block_comment"></div>
 	<?php 
 	
-		foreach($datas as $data):
+		foreach($comments as $comment):
 		
 				// Converting the time to a UNIX timestamp:
-				$data->post_date = strtotime($data->post_date);
+				$data->post_date = strtotime($comment->post_date);
 				
 				echo '<div class="comment" >
 						<div class="avatar">
-						'.$data->avatar .'	<img src="'.base_url('/assets/logo/logo.ico').'" />
+						'.$comment->avatar .'	<img src="'.base_url('/assets/logo/logo.ico').'" />
 						</div>
-						<div class="name">'.$data->first_name .' '.$data->last_name.' a &eacutecrit :</div>
-						<div class="date" title="Added at '.date('d M Y',$data->post_date).'">le '.date('d M Y',$data->post_date).'</div>
-						<p>'.$data->message.'</p>
+						<div class="name">'.$comment->first_name .' '.$comment->last_name.' a &eacutecrit :</div>
+						<div class="date" title="Added at '.date('d M Y',$comment->post_date).'">le '.date('d M Y',$comment->post_date).'</div>
+						<p>'.$comment->message.'</p>
 						
 						
 						
