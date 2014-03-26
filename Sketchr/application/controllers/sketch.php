@@ -180,8 +180,11 @@ class Sketch extends MY_Controller {
 			$sketchID = $this->input->post('sketchID');
 
 			$this->deadlink_model->addDeadLink($sketchID, $user_ip);
-			
+
 	}
+
+
+
 }
 /* End of file sketch.php */
 /* Location: ./application/controllers/sketch.php */

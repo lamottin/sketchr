@@ -1,6 +1,6 @@
 	<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sketch_model extends CI_Model {
+class deadlink_model extends CI_Model {
 
 	protected $table = 'sketch_dead_link';
 
@@ -23,6 +23,28 @@ class Sketch_model extends CI_Model {
 
 		return $query->num_rows() > 0 ? $query->row() : false;
 	}
+
+	public function getBySketch($id_sketch) {
+		
+		$query = $this->db->select('*')
+			->from($this->table)
+			->where('sketch', $id_sketch)
+			->get();
+
+		return $query->num_rows() > 0 ? $query->row() : false;
+	}
+
+
+	public function getByProcessed($Processed) {
+		
+		$query = $this->db->select('*')
+			->from($this->table)
+			->where('Processed', $Processed)
+			->get();
+
+		return $query->num_rows() > 0 ? $query->row() : false;
+	}
+
 
 
 	public function addDeadLink($id_sketch, $user) {
