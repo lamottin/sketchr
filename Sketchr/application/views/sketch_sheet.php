@@ -73,7 +73,7 @@
             $(this).addClass('like-h');
             $.ajax({
                 type:"POST",
-                url:"<?php echo site_url('sketch/like_dislike');?>",
+                url:"<?php echo site_url('like_dislike');?>",
                 data:'act=like&sketchID='+sketchID,
                 success: function(data){
 					//alert(data);
@@ -85,7 +85,7 @@
             $(this).addClass('dislike-h');
             $.ajax({
                 type:"POST",
-                url:"<?php echo site_url('sketch/like_dislike');?>",
+                url:"<?php echo site_url('like_dislike');?>",
                 data:'act=dislike&sketchID='+sketchID,
                 success: function(data){
 					//alert(data);
