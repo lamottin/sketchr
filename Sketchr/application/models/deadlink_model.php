@@ -1,6 +1,6 @@
 	<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sketch_model extends CI_Model {
+class deadlink_model extends CI_Model {
 
 	protected $table = 'sketch_dead_link';
 
