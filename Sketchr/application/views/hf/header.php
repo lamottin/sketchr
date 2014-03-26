@@ -16,63 +16,32 @@
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
-		<script type="text/javascript" >
+		<script type="text/javascript">
 			$(function(){ 
-		        //alert(event.timeStamp); 
-		        /*
-		        $('.new-com-bt').click(function(event){    
-		            $(this).hide();
-		            $('.new-com-cnt').show();
-		            $('#name-com').focus();
-		        });*/
+				// on load
+				$('#logged-content').hide();
 
-		        /* when start writing the comment activate the "add" button
-		        $('.the-new-com').bind('input propertychange', function() {
-		           $(".bt-add-com").css({opacity:0.6});
-		           var checklength = $(this).val().length;
-		           if(checklength){ $(".bt-add-com").css({opacity:1}); }
-		        });
-*/
-		        /* on clic  on the cancel button 
-		        $('.bt-cancel-com').click(function(){
-		            $('.the-new-com').val('');
-		            $('.new-com-cnt').fadeOut('fast', function(){
-		                $('.new-com-bt').fadeIn('fast');
-		            });
-		        });
-*/
 		        // on signin click 
 		        $("#signin").submit(function(e) {
-		            var email = $('#email');
-		            var password = $('#password');
-
-		            var form_data = {
-						email: $('#email').val(),
-						password: $('#password').val()
-					};
-					
-	                $.ajax({
-	                    type: "POST",
-	                    url: "<?php echo base_url().'member/login'; ?>",
-	                    data: form_data,
-	                    dataType: "text",  
-       					cache:false,
+					$.ajax({
+	                    type: $("#signin").attr('method'),
+	                    url: $("#signin").attr('action'),
+	                    data: $("#signin").serialize(),
+	                    dataType: "json",
 	                    error : function(xhr, textStatus, errorThrown){
 							alert("error : " + xhr.status + textStatus + errorThrown);
 						},
 	                    success: function(data){
-	                    	alert("success " + data);
-	                    	//$('#signin-nav').empty();
-	                    	/*
-	                        theCom.val('');
-	                        theMail.val('');
-	                        theName.val('');
-	                        $('.new-com-cnt').hide('fast', function(){
-	                            $('.new-com-bt').show('fast');
-	                            $('.new-com-bt').before(html);  
-	                        })*/
+							if (data.status == 'good') {
+								$("#signin").hide();
+            					$('#logged-content').show();
+	                    	}
+	                    	else if (data.status == 'notgood') {
+	                    		alert(data.message);
+	                    	}
 	                    }  
 	                });	
+	                return false;
 		        });
 
 	   		});
@@ -109,7 +78,7 @@
 				
 				<!-- Right Nav Section -->
 				<ul class="right" id="signin-nav">
-					<form action="" id="signin" method="post" >
+					<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
 						<li class="has-form">
 							<div class="row collapse">
 								<div>
@@ -137,6 +106,15 @@
 							</div>
 						</li>
 					</form>
+					<div id="logged-content">
+						<li class="has-form">
+							<div class="row collapse">
+								<div>
+									<input type="text" name="email" id="email" placeholder="log-in" required="required">
+								</div>
+							</div>
+						</li>
+					</div>
 				</ul>
 			</section>
 		</nav>

@@ -101,8 +101,6 @@ class Member extends MY_Controller {
 		// if the form is valid
 		if( $this->form_validation->run() == TRUE ) {
 			
-			echo "machin";
-
 			//process data
 			$data = array();
 			$data[0] = $this->input->post("email");
@@ -115,31 +113,31 @@ class Member extends MY_Controller {
 				// verify that the password matches the password from database
 				if($this->member_model->verifyPassword($data)) {
 					//if it does
-					$this->data["status"]->message = "good";
-					$this->data["status"]->success = TRUE;
+					$result['status'] = "good";
+					$result['message'] = "Correct password";
 				}
 				else {
 					//if it doesn't
-					$this->data["status"]->message = "doesn't match";
-					$this->data["status"]->success = FALSE;
+					$result['status'] = "notgood";
+					$result['message'] = "Wrong password";
 				}
+			}
+			// Email not found in database
+			else {
+				$result['status'] = "notgood";
+				$result['message'] = "User doesn't exist";
 			}
 		}
 		elseif($this->input->post("submit")) {
 			
 			//show validation error
-			$this->data["status"]->message = validation_errors();
-			$this->data["status"]->success = FALSE;
-			//print_r($this->data["status"]);
-			$data=array();
-			//$this->show_view_with_hf('home', $data);
+			$result['status'] = "notgood";
+			$result['message'] = "Unknown error";
 		}
 		else {
-			//$data = array();
-			//$this->show_view_with_hf('home', $data);
 			return $data;
-		}	
-		*/	
+		}		
+		echo json_encode($result);
 	}
 
 
