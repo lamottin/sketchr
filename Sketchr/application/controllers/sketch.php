@@ -133,6 +133,14 @@ class Sketch extends MY_Controller {
 		$this->show_view_with_hf('sketch_sheet', $data);
 	}
 	
+	/**
+	 * Maps to the following URL :
+	 * - base_url()/sketch/like_dislike
+	 *
+	 * Since this function is set as the route for like_dislike in
+	 * config/routes.php, it maps to the following URL too :
+	 * - base_url()/like_dislike
+	 */
 	public function like_dislike() {
 	
 		
@@ -162,6 +170,17 @@ class Sketch extends MY_Controller {
 			}
 
 		endif;
+	}
+
+
+	public function dead_link() {
+
+			
+			$user = $_SERVER['REMOTE_ADDR'];
+			$sketchID = $this->input->post('sketchID');
+
+			$this->deadlink_model->addDeadLink($sketchID, $user_ip);
+			
 	}
 }
 /* End of file sketch.php */
