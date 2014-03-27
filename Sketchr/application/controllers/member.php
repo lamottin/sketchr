@@ -115,6 +115,8 @@ class Member extends MY_Controller {
 					//if it does
 					$result['status'] = "good";
 					$result['message'] = "Correct password";
+					$this->session->set_userdata($data['user']);
+					$result['user'] = $this->session->all_userdata();
 				}
 				else {
 					//if it doesn't

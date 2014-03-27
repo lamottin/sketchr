@@ -18,9 +18,6 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
 		<script type="text/javascript">
 			$(function(){ 
-				// on load
-				$('#logged-content').hide();
-
 		        // on signin click 
 		        $("#signin").submit(function(e) {
 					$.ajax({
@@ -34,7 +31,7 @@
 	                    success: function(data){
 							if (data.status == 'good') {
 								$("#signin").hide();
-            					$('#logged-content').show();
+            					$('#signin-nav').append('<div class="row collapse"><li class="has-form">'+data.user.id+'</li><li class="has-form"> | </li><li class="has-form">'+data.user.username+'</li></div>');
 	                    	}
 	                    	else if (data.status == 'notgood') {
 	                    		alert(data.message);
@@ -106,15 +103,6 @@
 							</div>
 						</li>
 					</form>
-					<div id="logged-content">
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<input type="text" name="email" id="email" placeholder="log-in" required="required">
-								</div>
-							</div>
-						</li>
-					</div>
 				</ul>
 			</section>
 		</nav>
