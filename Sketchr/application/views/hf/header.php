@@ -9,23 +9,15 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/custom-theme/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/like_dislike.css">
-<<<<<<< HEAD
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">	
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
-=======
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">
-		
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
->>>>>>> 7289ecb4dd137ebcef624ce21ac788bf4c384ea0
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.topbar.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.dropdown.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
-		<!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.js"></script>
-		--><script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.autocomplete.js"></script>
-		<!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		--><script type="text/javascript">
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.autocomplete.js"></script>
+		<script type="text/javascript">
 			
 			$(function(){ 
 		        
@@ -127,15 +119,9 @@
 									<input id="autocomplete_search" class="ac_input" type="text" name="pv_search" placeholder="Find Stuff">
 								</div>
 								<div class="large-2 small-3 columns">
-<<<<<<< HEAD
 									<input class="alert button expand" type="submit" value="Valider" />
 								</div>
 							</div>	
-=======
-									<input class="alert button expand" type="submit" value="Valider"/>
-								</div>
-							</div>
->>>>>>> 7289ecb4dd137ebcef624ce21ac788bf4c384ea0
 						</li>
 					</form>
 				</ul>
