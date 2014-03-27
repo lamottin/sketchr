@@ -37,19 +37,19 @@ class Search extends MY_Controller {
 	
 	$pv_search = htmlspecialchars($_GET['pv_search']);
 	if (!$pv_search) return;
-	$items = array(
+	/*$items = array(
 		"Great Bittern"=>"Botaurus stellaris",
 		"Little Grebe"=>"Tachybaptus ruficollis",
 		"Black-necked Grebe"=>"Podiceps nigricollis",
 		"Little Bittern"=>"Ixobrychus minutus",
 		"Black-crowned Night Heron"=>"Nycticorax nycticorax",
 		"Purple Heron"=>"Ardea purpurea"
-		);
+		);*/
 	
-		//$data['titles'] = $this->sketch_model->findByTitle($pv_search);
-		foreach ($items as $key=>$value) {
-			if (strpos(strtolower($key), $pv_search) !== false) {
-				echo "$key|$value\n";
+		$data['titles'] = $this->sketch_model->findByTitle($pv_search);
+		foreach ($data['titles'] as $key) {
+			if (strpos(strtolower($key->title), $pv_search) !== false) {
+				echo $key->title ."\n";
 			}
 		}
 		

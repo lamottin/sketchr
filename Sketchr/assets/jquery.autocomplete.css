@@ -1,8 +1,8 @@
 .ac_results {
 	padding: 0px;
-	border: 1px solid #7FB7FB;
+	border: 1px solid #008CBA;
 	overflow: hidden;
-  background-color: #AFD2FD;
+  background-color: #FFFFFF;
 }
 
 .ac_results ul {
@@ -43,6 +43,6 @@
 }
 
 .ac_over {
-	background-color: white;
-	color: black;
+	background-color: #008CBA;
+	color: white;
 }

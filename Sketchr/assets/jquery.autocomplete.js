@@ -254,10 +254,10 @@ jQuery.autocomplete = function(input, options) {
 			// if the field no longer has focus or if there are no matches, do not display the drop down
 			if( !hasFocus || data.length == 0 ) return hideResultsNow();
 
-			if ($.browser.msie) {
+			//if ($.browser.msie) {
 				// we put a styled iframe behind the calendar so HTML SELECT elements don't show through
 				$results.append(document.createElement('iframe'));
-			}
+			//}
 			results.appendChild(dataToDom(data));
 			// autofill in the complete box w/the first match as long as the user hasn't entered in more data
 			if( options.autoFill && ($input.val().toLowerCase() == v_search.toLowerCase()) ) autoFill(data[0][0]);
@@ -465,7 +465,7 @@ jQuery.fn.autocomplete = function(url, options, data) {
 	options.inputClass = options.inputClass || "ac_input";
 	options.resultsClass = options.resultsClass || "ac_results";
 	options.lineSeparator = options.lineSeparator || "\n";
-	options.cellSeparator = options.cellSeparator || "|";
+	//options.cellSeparator = options.cellSeparator || "|";
 	options.minChars = options.minChars || 1;
 	options.delay = options.delay || 400;
 	options.matchCase = options.matchCase || 0;
