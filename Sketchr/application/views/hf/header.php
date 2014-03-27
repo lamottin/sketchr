@@ -9,13 +9,18 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/custom-theme/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/like_dislike.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">
+		
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.topbar.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.dropdown.js"></script>
-		<!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script> -->
+		
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.autocomplete.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
+		
 	</head>
 	<body>
 		<form method="get" action="<?php echo base_url(); ?>search">
@@ -33,14 +38,14 @@
 			<section class="top-bar-section">
 				<!-- Left Nav Section -->
 				<ul class="left">
-					<form action="">
+					<form onsubmit="return false;" action="">
 						<li class="has-form">
 							<div class="row collapse">
 								<div class="large-10 small-9 columns">
-									<input type="text" name="v_search" placeholder="Find Stuff" required="required">
+									<input id="CityAjax" class="ac_input" type="text" name="pv_search" placeholder="Find Stuff">
 								</div>
 								<div class="large-2 small-3 columns">
-									<input class="alert button expand" type="submit" value="Valider" />
+									<input onclick="lookupAjax();" class="alert button expand" type="submit" value="Valider" />
 							</div>
 						</li>
 					</form>

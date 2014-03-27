@@ -17,10 +17,9 @@ class Search extends MY_Controller {
 	 */
 	public function index() {
 
-		$pv_search = htmlspecialchars($_GET['v_search']);
-		$data['io'] = $this->sketch_model->findByTitle($pv_search);
+		$pv_search = htmlspecialchars($_GET['pv_search']);
 		
-
+		$data['io'] = $this->sketch_model->findByTitle($pv_search);
 		
 
 		$this->show_view_with_hf('search_view.php', $data);
@@ -32,6 +31,29 @@ class Search extends MY_Controller {
 			echo "j'existe";
 		if($_GET['v'] == "")
 			echo "je suis vide";*/
+	}
+	
+	public function ajaxTitle() {
+	
+	$pv_search = htmlspecialchars($_GET['pv_search']);
+	if (!$pv_search) return;
+	$items = array(
+		"Great Bittern"=>"Botaurus stellaris",
+		"Little Grebe"=>"Tachybaptus ruficollis",
+		"Black-necked Grebe"=>"Podiceps nigricollis",
+		"Little Bittern"=>"Ixobrychus minutus",
+		"Black-crowned Night Heron"=>"Nycticorax nycticorax",
+		"Purple Heron"=>"Ardea purpurea"
+		);
+	
+		//$data['titles'] = $this->sketch_model->findByTitle($pv_search);
+		foreach ($items as $key=>$value) {
+			if (strpos(strtolower($key), $pv_search) !== false) {
+				echo "$key|$value\n";
+			}
+		}
+		
+		
 	}
 }
 /* End of file search.php */
