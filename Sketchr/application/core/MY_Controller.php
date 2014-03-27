@@ -6,6 +6,7 @@ class  MY_Controller  extends  CI_Controller  {
 		//  Chargement des ressources pour tout les contrôleurs
 		$this->load->database();
 		$this->load->helper(array('url'));
+		$this->load->library('session');
 		$this->load->model('category_model');
 		$this->load->model('sketch_type_model');	
 		$this->load->model('sketch_model');		
@@ -25,5 +26,14 @@ class  MY_Controller  extends  CI_Controller  {
 		$this->load->view($view_name, $data); // the actual view you wanna load
 		$this->load->view('hf/footer'); // footer, if you have one
 	}
+
+
+	/**
+	 * Function used to verify if the user is logged in
+	 */
+	private function _isLoggedIn() {
+		
+	} 
+	
 
 }

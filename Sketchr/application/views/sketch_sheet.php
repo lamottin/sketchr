@@ -14,8 +14,8 @@
 				        
 						<?php echo '
 						<div class="tab-tr" id="t1">
-						<div class="like-btn '; if($like_count == 1){ echo 'like-h';} echo '">Like</div>
-						<div class="dislike-btn '; if($dislike_count == 1){ echo 'dislike-h';} echo '"></div>
+						<div id="btn_like_sketch" class="like-btn '; if($like_count == 1){ echo 'like-h';} echo '">Like</div>
+						<div id="btn_dislike_sketch" class="dislike-btn '; if($dislike_count == 1){ echo 'dislike-h';} echo '"></div>
 
 								<!-- <div class="share-btn">Share</div> -->
 
@@ -60,16 +60,16 @@
 
 		<div class="large-4 columns">
 			liste de videos ;;;
-		</div>	
+		</div>
 
 	</div>
-</div> 
+</div>
 <script>
     $(function(){ 
         var sketchID = <?php echo $sketch->id;  ?>; 
 
-        $('.like-btn').click(function(){
-            $('.dislike-btn').removeClass('dislike-h');    
+        $('#btn_like_sketch').click(function(){
+            $('#btn_dislike_sketch').removeClass('dislike-h');
             $(this).addClass('like-h');
             $.ajax({
                 type:"POST",
@@ -80,8 +80,8 @@
                 }
             });
         });
-        $('.dislike-btn').click(function(){
-            $('.like-btn').removeClass('like-h');
+        $('#btn_dislike_sketch').click(function(){
+            $('#btn_like_sketch').removeClass('like-h');
             $(this).addClass('dislike-h');
             $.ajax({
                 type:"POST",

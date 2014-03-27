@@ -20,7 +20,33 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
-		
+		<script type="text/javascript">
+			$(function(){ 
+		        // on signin click 
+		        $("#signin").submit(function(e) {
+					$.ajax({
+	                    type: $("#signin").attr('method'),
+	                    url: $("#signin").attr('action'),
+	                    data: $("#signin").serialize(),
+	                    dataType: "json",
+	                    error : function(xhr, textStatus, errorThrown){
+							alert("error : " + xhr.status + textStatus + errorThrown);
+						},
+	                    success: function(data){
+							if (data.status == 'good') {
+								$("#signin").hide();
+            					$('#signin-nav').append('<div class="row collapse"><li class="has-form">'+data.user.id+'</li><li class="has-form"> | </li><li class="has-form">'+data.user.username+'</li></div>');
+	                    	}
+	                    	else if (data.status == 'notgood') {
+	                    		alert(data.message);
+	                    	}
+	                    }  
+	                });	
+	                return false;
+		        });
+
+	   		});
+		</script>
 	</head>
 	<body>
 		<form method="get" action="<?php echo base_url(); ?>search">
@@ -52,19 +78,19 @@
 				</ul>
 				
 				<!-- Right Nav Section -->
-				<ul class="right">
-					<form action="<?php echo base_url(); ?>member/login" method="post">
+				<ul class="right" id="signin-nav">
+					<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
 						<li class="has-form">
 							<div class="row collapse">
 								<div>
-									<input type="text" name="email" placeholder="log-in" required="required">
+									<input type="text" name="email" id="email" placeholder="log-in" required="required">
 								</div>
 							</div>
 						</li>
 						<li class="has-form">
 							<div class="row collapse">
 								<div>
-									<input type="text" name="password" placeholder="password" required="required">
+									<input type="text" name="password" id="password" placeholder="password" required="required">
 								</div>
 							</div>
 						</li>

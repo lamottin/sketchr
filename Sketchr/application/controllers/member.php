@@ -93,6 +93,7 @@ class Member extends MY_Controller {
 	 */
 	public function login() {
 
+				
 		// retrieve the content from the form
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|max_length[100]');
@@ -104,7 +105,7 @@ class Member extends MY_Controller {
 			$data = array();
 			$data[0] = $this->input->post("email");
 			$data[1] = $this->input->post("password");
-			
+
 			// retrieve the user from the database using the email from the form
 			$data['user'] = $this->member_model->getByEmail($data[0]);
 			// if the user is found
@@ -112,30 +113,35 @@ class Member extends MY_Controller {
 				// verify that the password matches the password from database
 				if($this->member_model->verifyPassword($data)) {
 					//if it does
-					return true;
+					$result['status'] = "good";
+					$result['message'] = "Correct password";
+					$this->session->set_userdata($data['user']);
+					$result['user'] = $this->session->all_userdata();
 				}
 				else {
 					//if it doesn't
-					return false;
+					$result['status'] = "notgood";
+					$result['message'] = "Wrong password";
 				}
+			}
+			// Email not found in database
+			else {
+				$result['status'] = "notgood";
+				$result['message'] = "User doesn't exist";
 			}
 		}
 		elseif($this->input->post("submit")) {
 			
 			//show validation error
-			$this->data["status"]->message = validation_errors();
-			$this->data["status"]->success = FALSE;
-			//print_r($this->data["status"]);
-			//$data=array();
-			//$this->show_view_with_hf('home', $data);
-			return $data;
+			$result['status'] = "notgood";
+			$result['message'] = "Unknown error";
 		}
 		else {
-			//$data = array();
-			//$this->show_view_with_hf('home', $data);
 			return $data;
 		}		
+		echo json_encode($result);
 	}
+
 
 }
 ?>

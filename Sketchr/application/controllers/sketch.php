@@ -106,7 +106,7 @@ class Sketch extends MY_Controller {
 
 		// Get the humorist object from the model
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
-		$data['datas'] = $this->comment_model->listAllBySketch($data['sketch']->id);
+		$data['comments'] = $this->comment_model->listAllBySketch($data['sketch']->id);
 		
 		$user_ip = $_SERVER['REMOTE_ADDR'];
 		//Check if the user has already clicked on the unlike (rate = 2) or the like (rate = 1)
@@ -171,6 +171,20 @@ class Sketch extends MY_Controller {
 
 		endif;
 	}
+
+
+	public function dead_link() {
+
+			
+			$user = $_SERVER['REMOTE_ADDR'];
+			$sketchID = $this->input->post('sketchID');
+
+			$this->deadlink_model->addDeadLink($sketchID, $user_ip);
+
+	}
+
+
+
 }
 /* End of file sketch.php */
 /* Location: ./application/controllers/sketch.php */
