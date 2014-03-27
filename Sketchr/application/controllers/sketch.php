@@ -83,9 +83,9 @@ class Sketch extends MY_Controller {
 		}
 	}
 
-    //function to calculate the percent
+    //Function to calculate the percent
     function percent($num_amount, $num_total) {
-        $count1 = $num_amount / $num_total;
+        $count1 = ($num_total !== 0) ? $num_amount / $num_total : 0; //Avoid division by Zero
         $count2 = $count1 * 100;
         $count = number_format($count2, 0);
         return $count;
@@ -125,6 +125,7 @@ class Sketch extends MY_Controller {
         $rate_like_percent = $this->percent($rate_like_count, $rate_all_count);        
         $rate_dislike_percent = $this->percent($rate_dislike_count, $rate_all_count);
 		
+		//The data for customizing the like/dislike panel
 		$data['like_count'] = $like_count;
 		$data['dislike_count'] = $dislike_count;
 		$data['rate_all_count'] = $rate_all_count;
@@ -148,6 +149,8 @@ class Sketch extends MY_Controller {
 	
 		
 		$user_ip = $_SERVER['REMOTE_ADDR'];
+		
+		//Retrieve the POST datas send via AJAX (views/sketch_sheet)
 		$act = $this->input->post('act');
 		$sketchID = $this->input->post('sketchID');
 		
@@ -155,24 +158,46 @@ class Sketch extends MY_Controller {
         $like_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $sketchID, 1); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'. $data['sketch']->id.'" and rate = 1 '
 		$dislike_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $sketchID, 2); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'. $data['sketch']->id.'" and rate = 2 '
 
-		if($act == 'like'): //if the user click on "like"
+		if($act == 'like'){ //if the user click on "like"
+			
+			//We insert a new entry with rate = 1 (like)
 			if(($like_count == 0) && ($dislike_count == 0)){
 				$this->like_dislike_model->addAct($sketchID, $user_ip, 1); //'INSERT INTO wcd_yt_rate (id_item, ip, rate )VALUES("'.$sketchID.'", "'.$user_ip.'", 1)'
 			}
-			if($dislike_count == 1){
+			//We update the previous one (a dislike)
+			else if($dislike_count == 1){
 				$this->like_dislike_model->updateAct($sketchID, $user_ip, 1); //'UPDATE wcd_yt_rate SET rate = 1 WHERE id_item = '.$sketchID.' and ip ="'.$user_ip.'"'
 			}
-
-		endif;
-		if($act == 'dislike'): //if the user click on "dislike"
+		}
+		
+		else if($act == 'dislike') { //if the user click on "dislike"
+			
+			//We insert a new entry with rate = 2 (dislike)
 			if(($like_count == 0) && ($dislike_count == 0)){
 				$this->like_dislike_model->addAct($sketchID, $user_ip, 2); //'INSERT INTO wcd_yt_rate (id_item, ip, rate )VALUES("'.$sketchID.'", "'.$user_ip.'", 2)'
 			}
-			if($like_count == 1){
+			//We update the previous one (a like)
+			else if($like_count == 1){
 				$this->like_dislike_model->updateAct($sketchID, $user_ip, 2); //'UPDATE wcd_yt_rate SET rate = 2 WHERE id_item = '.$sketchID.' and ip ="'.$user_ip.'"'
 			}
-
-		endif;
+		}
+		
+		//For AJAX
+		//Count all the rate 
+        $rate_all_count = $this->like_dislike_model->getAllCountBySketch($sketchID); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$id_sketch.'"'
+        
+        $rate_like_count =  $this->like_dislike_model->getAllCountByActSketch($sketchID,1); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 1'
+		$rate_dislike_count = $this->like_dislike_model->getAllCountByActSketch($sketchID,2); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 2'
+		
+        $rate_like_percent = $this->percent($rate_like_count, $rate_all_count);        
+        $rate_dislike_percent = $this->percent($rate_dislike_count, $rate_all_count);
+		
+		$return['rate_all_count'] = $rate_all_count;
+		$return['rate_like_count'] = $rate_like_count;
+		$return['rate_dislike_count'] = $rate_dislike_count;
+		$return['rate_like_percent'] = $rate_like_percent;
+		$return['rate_dislike_percent'] = $rate_dislike_percent;
+		echo json_encode($return);
 	}
 
 

@@ -6,13 +6,13 @@
 		<title>Sketchr</title>
 		<link type="image/ico" rel="shortcut icon" href="<?php echo base_url(); ?>assets/logo/logo.ico">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/foundation.css" />
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/custom-theme/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/custom-theme/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/like_dislike.css">
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/style_comment.css">
+		
+		
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/example_comment.css">
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">	
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">
 
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
@@ -56,14 +56,14 @@
 					  $("#keyword").attr('action') + "/ajaxTitle",
 					  {
 							delay:10,
-							minChars:3,
+							minChars:3, //When the user types at least 3 letters
 							matchSubset:1,
 							matchContains:1,
 							cacheLength:10,
 							onItemSelect:selectItem,
 							onFindValue:findValue,
 							formatItem:formatItem,
-							autoFill:false
+							autoFill:false //Avoid the input field to be filled, only display the results with a select
 						}
 					);
 				/*on key up search_bar

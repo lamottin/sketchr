@@ -52,7 +52,7 @@ class Like_Dislike_model extends CI_Model {
 
 		$this->db->where('ip', $user_ip);
 		$this->db->where('sketch', $id_sketch);
-		$this->db->update($this->table, $data);
+		$this->db->update($this->table);
 		
 	}
 }

@@ -17,14 +17,15 @@
 	<div id="loader" style="display:none;"><img src="<?php echo base_url('/assets/loader.gif');?>" alt="loader" title="Loading..."></div>
     <?php 
     foreach($comments as $comment):
-
+		// Converting the time to a UNIX timestamp:
+		$comment->post_date = strtotime($comment->post_date);
     ?>
 	
 	<div class="cmt-cnt">
         <img src="<?php echo $comment->avatar; ?>" />
         <div class="thecom">
-            <h5><?php echo $comment->first_name  .' '.$comment->last_name.' a &eacutecrit :'; ?></h5>
-			<span data-utime="1371248446" class="com-dt"> le <?php echo date('d-m-Y H:i');?></span>
+            <h5><b><?php echo $comment->first_name  .' '.$comment->last_name; ?></b></h5>
+			<span class="com-dt"><?php echo date('d-m-Y H:i',$comment->post_date);?></span>
             <br/>
             <p>
                 <?php echo $comment->message; ?>
@@ -75,7 +76,7 @@
 						$('.the-new-com').val('');
                         $('.new-com-cnt').hide('fast', function(){
                             $('.new-com-bt').show('fast');
-                            $('.new-com-bt').after('<div class="cmt-cnt"><img src="' + data.avatar +'" /><div class="thecom"><h5>'+data.firstname + ' ' + data.lastname + ' a &eacutecrit :</h5><span data-utime="1371248446" class="com-dt"> le ' + data.post_date + '</span><br/><p>' + data.message + '</p></div></div>');  
+                            $('.new-com-bt').after('<div class="cmt-cnt"><img src="' + data.avatar +'" /><div class="thecom"><h5><b>'+data.firstname + ' ' + data.lastname + '</b></h5><span data-utime="1371248446" class="com-dt"> ' + data.post_date + '</span><br/><p>' + data.message + '</p></div></div>');  
                         });
                     }  
                 });

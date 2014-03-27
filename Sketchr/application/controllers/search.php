@@ -31,12 +31,16 @@ class Search extends MY_Controller {
 			echo "je suis vide";*/
 	}
 	
+	//Executed as an AJAX script when the user type 3 chars on the search bar, then we display all the results
 	public function ajaxTitle() {
 	
-		$pv_search = htmlspecialchars($_GET['pv_search']);
+		$pv_search = $this->input->get('pv_search');
 		if (!$pv_search) return;
 		
+		//Get all the titles based on the search
 		$data['titles'] = $this->sketch_model->findByTitle($pv_search);
+		
+		//Will be sent to the autocomplete widget to display the results as a select
 		foreach ($data['titles'] as $key) {
 			if (strpos(strtolower($key->title), $pv_search) !== false) {
 				echo $key->title ."\n";
@@ -47,5 +51,5 @@ class Search extends MY_Controller {
 	}
 }
 /* End of file search.php */
-/* Location: ./application/controllers/category.php */
+/* Location: ./application/controllers/search.php */
 ?>

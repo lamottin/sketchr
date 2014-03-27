@@ -12,23 +12,22 @@
 			</div>
 			<div class="row">
 				        
-						<?php echo '
 						<div class="tab-tr" id="t1">
-						<div id="btn_like_sketch" class="like-btn '; if($like_count == 1){ echo 'like-h';} echo '">Like</div>
-						<div id="btn_dislike_sketch" class="dislike-btn '; if($dislike_count == 1){ echo 'dislike-h';} echo '"></div>
+						<div id="btn_like_sketch" class="like-btn <?php if($like_count == 1){ echo 'like-h';}?>">Like</div>
+						<div id="btn_dislike_sketch" class="dislike-btn <?php if($dislike_count == 1){ echo 'dislike-h';}?>"></div>
 
 								<!-- <div class="share-btn">Share</div> -->
 
 								<div class="stat-cnt">
-									<div class="rate-count">'. $rate_all_count. '</div>
+									<div class="rate-count"><?php echo $rate_all_count;?></div>
 									<div class="stat-bar">
-										<div class="bg-green" style="width:'.$rate_like_percent.'%;"></div>
-										<div class="bg-red" style="width:'. $rate_dislike_percent.'%"></div>
-									</div><!-- stat-bar -->
-									<div class="dislike-count">'. $rate_dislike_count.'</div>
-									<div class="like-count">'. $rate_like_count.'</div>
-								</div><!-- /stat-cnt -->
-							</div><!-- /tab-tr -->
+										<div class="bg-green" style="width:<?php echo $rate_like_percent;?>%;"></div>
+										<div class="bg-red" style="width:<?php echo $rate_dislike_percent;?>%"></div>
+									</div>
+									<div class="dislike-count"><?php echo $rate_dislike_count;?></div>
+									<div class="like-count"><?php echo $rate_like_count;?></div>
+								</div>
+							</div>
 							<!-- <div class="share-cnt">
 
 								AddThis Button BEGIN 
@@ -45,8 +44,6 @@
 
 							</div> /share-cnt -->
 							<br/><br/>
-
-						'; ?>
 			
 			<div class="row">
 				<h5><?php echo $sketch_type->title; ?></h5>
@@ -68,6 +65,7 @@
     $(function(){ 
         var sketchID = <?php echo $sketch->id;  ?>; 
 
+		//When we click on the like button
         $('#btn_like_sketch').click(function(){
             $('#btn_dislike_sketch').removeClass('dislike-h');
             $(this).addClass('like-h');
@@ -76,10 +74,23 @@
                 url:"<?php echo site_url('like_dislike');?>",
                 data:'act=like&sketchID='+sketchID,
                 success: function(data){
-					//alert(data);
+				
+					//We parse the data send by PHP (sketch/like_dislike)
+					var datas = jQuery.parseJSON(data);
+					
+					//We update all the values
+					$(".dislike-count").val('').text(datas.rate_dislike_count);
+					$(".like-count").val('').text(datas.rate_like_count);
+					$(".rate-count").val('').text(datas.rate_all_count);
+					
+					//Modify css property about width
+					$(".bg-green").css({width:datas.rate_like_percent+'%'});
+					$(".bg-red").css({width:datas.rate_dislike_percent+'%'});
                 }
             });
         });
+		
+		//When we click on the dislike button
         $('#btn_dislike_sketch').click(function(){
             $('#btn_like_sketch').removeClass('like-h');
             $(this).addClass('dislike-h');
@@ -88,10 +99,23 @@
                 url:"<?php echo site_url('like_dislike');?>",
                 data:'act=dislike&sketchID='+sketchID,
                 success: function(data){
-					//alert(data);
+					
+					//We parse the data send by PHP (sketch/like_dislike)
+					var datas = jQuery.parseJSON(data);
+					
+					//We update all the values
+					$(".dislike-count").val('').text(datas.rate_dislike_count);
+					$(".like-count").val('').text(datas.rate_like_count);
+					$(".rate-count").val('').text(datas.rate_all_count);
+					
+					//Modify css property about width
+					$(".bg-green").css({width:datas.rate_like_percent+'%'});
+					$(".bg-red").css({width:datas.rate_dislike_percent+'%'});
                 }
             });
         });
+		
+		//Button share
         $('.share-btn').click(function(){
             $('.share-cnt').toggle();
         });

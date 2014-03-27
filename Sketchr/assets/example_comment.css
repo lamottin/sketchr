@@ -6,13 +6,14 @@
 
 /* the comments container  */
 .cmt-container{ 
-	width: 540px;
+	width: 90%;
 	height: auto; min-height: 30px;
 	padding: 10px;
 	margin: 10px auto;
 	background-color: #fff;
 	border: #d3d6db 1px solid;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	font: 12px 'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 } 
 
 .cmt-cnt{
@@ -25,7 +26,7 @@
 	float: left; 
 	margin-right: 10px;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-	background-color: #ccc;
+	background-color: #AAAAAA;
 }
 .thecom{
 	width: auto; height: auto; min-height: 35px; 
@@ -35,16 +36,17 @@
 	display: inline;
 	float: left;
 	font-family: tahoma;
-	font-size: 13px;
+	font-size: 14px;
 	color: #3b5998;
 	margin: 0 15px 0 0;
 }
 .thecom .com-dt{
 	display: inline;
 	float: left;
-	font-size: 12px; 
+	font-size: 13px; 
 	line-height: 18px;
-	color: #ccc;
+	color: #AAAAAA;
+	text-align: right;
 }
 .thecom p{
 	width: auto;
@@ -53,15 +55,16 @@
 }
 .new-com-bt{
 	width: 100%; 	height: 30px;
-	border: #d3d7dc 1px solid;
+	border: #c6c6c6 1px solid;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-	background-color: #f9f9f9;
-	color: #adb2bb;
+	background-color: #f0f0f0;
+	color: #4e5665;
 	cursor: text;
+	
 }
 .new-com-bt span{
 	display: inline;
-	font-size: 13px;
+	font-size: 15px;
 	margin-left: 10px;
 	line-height: 30px;
 }
@@ -86,7 +89,7 @@
 	margin-bottom:5px;
 }
 .cmt-container textarea:focus, .new-com-cnt input[type="text"]:focus{
-	border-color: rgba(82, 168, 236, 0.8);
+	border-color: #008CBA;
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
@@ -97,20 +100,32 @@
 .bt-add-com{
 	display: inline;
 	float: left;
+	font-size: 15px;
 	padding: 8px 10px;  margin-right: 10px;
-	background-color: #3498db;
+	background-color: #008CBA;
 	color: #fff; cursor: pointer;
 	opacity: 0.6;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
+.bt-add-com:hover{
+	
+	background-color: #007095;
+	
+}
 .bt-cancel-com{
 	display: inline;
 	float: left;
+	font-size: 15px;
 	padding: 8px 10px; 
 	border: #d9d9d9 1px solid;
 	background-color: #fff;
 	color: #404040;	cursor: pointer;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+}
+.bt-cancel-com:hover{
+	
+	background-color: #f0f0f0;
+	border: #c6c6c6 1px solid; 
 }
 .new-com-cnt{ 
 	width:100%; height: auto; 
