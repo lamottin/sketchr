@@ -44,6 +44,9 @@ class Member extends MY_Controller {
 			
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
+	
+		$data = array();
+
 		$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required|xss_clean|max_length[50]');
 		$this->form_validation->set_rules('lastname', 'Lastname', 'trim|required|xss_clean|max_length[50]');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email|max_length[100]');
@@ -57,7 +60,6 @@ class Member extends MY_Controller {
 		if( $this->form_validation->run() == TRUE ) {
 			
 			//process data
-			$data = array();
 			$data[0] = $this->input->post("firstname");
 			$data[1] = $this->input->post("lastname");
 			$data[2] = $this->input->post("email");
@@ -78,11 +80,9 @@ class Member extends MY_Controller {
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
 			//print_r($this->data["status"]);
-			$data=array();
 			$this->show_view_with_hf('member_add', $data);
 		}
 		else {
-			$data = array();
 			$this->show_view_with_hf('member_add', $data);
 		}
 	}
@@ -93,7 +93,8 @@ class Member extends MY_Controller {
 	 */
 	public function login() {
 
-				
+		$data = array();
+
 		// retrieve the content from the form
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|max_length[100]');
@@ -102,7 +103,6 @@ class Member extends MY_Controller {
 		if( $this->form_validation->run() == TRUE ) {
 			
 			//process data
-			$data = array();
 			$data[0] = $this->input->post("email");
 			$data[1] = $this->input->post("password");
 
@@ -141,7 +141,6 @@ class Member extends MY_Controller {
 		}		
 		echo json_encode($result);
 	}
-
 
 }
 ?>

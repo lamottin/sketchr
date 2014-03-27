@@ -24,6 +24,9 @@ class Comment extends MY_Controller {
 	*/
 	public function add()
 	{
+
+		$data = array();
+		
 		$this->form_validation->set_rules('id_sketch', '', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('id_member', '', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('comment', 'Comment', 'trim|required|xss_clean');
@@ -31,7 +34,6 @@ class Comment extends MY_Controller {
 		if( $this->form_validation->run() == TRUE ) {
 			
 			//Process data
-			$data = array();
 			$data[0] = $this->input->post("id_sketch");
 			$data[1] = $this->input->post("id_member");
 			$data[2] = $this->input->post("comment");
@@ -68,11 +70,9 @@ class Comment extends MY_Controller {
 			$this->data["status"]->success = FALSE;
 			//echo validation_errors();
 			//print_r($this->data["status"]);
-			$data=array();
 			//$this->show_view_with_hf('humorist_add', $data);
 		}
 		else {
-			$data = array();
 			//$this->show_view_with_hf('humorist_add', $data);
 		}
 		/*
@@ -82,7 +82,6 @@ class Comment extends MY_Controller {
 		
 
 		$errors = array();
-		$data = array();
 
 		// Using the filter_input function introduced in PHP 5.2.0
 

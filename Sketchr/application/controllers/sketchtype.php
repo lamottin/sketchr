@@ -63,6 +63,9 @@ class Sketchtype extends MY_Controller {
 			
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
+	
+		$data = array();
+		
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('start_date', 'Start date', 'trim|required|xss_clean|valid_date_format|date_validator'); 
 		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean|valid_url_format');
@@ -74,7 +77,6 @@ class Sketchtype extends MY_Controller {
 		if( $this->form_validation->run() == TRUE ) {
 			
 			//Retrieve the data
-			$data = array();
 			$data[0] = $this->input->post("title");
 			$data[1] = $this->input->post("start_date");
 			$data[2] = $this->input->post("image");

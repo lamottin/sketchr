@@ -17,6 +17,8 @@ class Search extends MY_Controller {
 	 */
 	public function index() {
 
+		$data = array();
+
 		$pv_search = htmlspecialchars($_GET['v_search']);
 		$data['io'] = $this->sketch_model->findByTitle($pv_search);
 		

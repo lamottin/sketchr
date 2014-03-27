@@ -9,12 +9,11 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqueryui-1.10.4/css/custom-theme/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/like_dislike.css">
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.topbar.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.dropdown.js"></script>
-		<!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script> -->
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
 		<script type="text/javascript">
 			$(function(){ 
@@ -30,8 +29,7 @@
 						},
 	                    success: function(data){
 							if (data.status == 'good') {
-								$("#signin").hide();
-            					$('#signin-nav').append('<div class="row collapse"><li class="has-form">'+data.user.id+'</li><li class="has-form"> | </li><li class="has-form">'+data.user.username+'</li></div>');
+            					$('#login-content').show();
 	                    	}
 	                    	else if (data.status == 'notgood') {
 	                    		alert(data.message);
@@ -68,42 +66,59 @@
 								</div>
 								<div class="large-2 small-3 columns">
 									<input class="alert button expand" type="submit" value="Valider" />
-							</div>
+								</div>
+							</div>	
 						</li>
 					</form>
 				</ul>
 				
 				<!-- Right Nav Section -->
-				<ul class="right" id="signin-nav">
-					<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<input type="text" name="email" id="email" placeholder="log-in" required="required">
-								</div>
-							</div>
-						</li>
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<input type="text" name="password" id="password" placeholder="password" required="required">
-								</div>
-							</div>
-						</li>
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<input class="button radius" type="submit" value="Sign in" />
-								</div>
-							</div>
-						</li>
-						<li class="has-form">
-							<div class="row collapse">
-								<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
-							</div>
-						</li>
-					</form>
-				</ul>
+				<div id="login-content">
+					<ul class="right" id="signin-nav">
+						<?php if( empty($user_session['user_data']) ) { ?>
+							<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input type="text" name="email" id="email" placeholder="log-in" required="required">
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input type="text" name="password" id="password" placeholder="password" required="required">
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input class="button radius" type="submit" value="Sign in" />
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
+									</div>
+								</li>
+							</form>
+						<?php } else { ?>
+							<li class="litext"><?php echo $user_session['first_name'] ?></li>
+							<li class="divider"></li>
+							<li class="has-form">
+								<form action="<?php echo base_url().'home/session_destroy'; ?>"method="post" id="signin">
+									<div class="row collapse">
+										<div>
+											<input class="button radius" type="submit" value="Log out" />
+										</div>
+									</div>
+								</form>
+							</li>
+						<?php } ?>
+					</ul>
+				</div>	
 			</section>
 		</nav>
 		</form>
