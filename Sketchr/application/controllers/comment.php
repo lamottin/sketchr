@@ -44,12 +44,16 @@ class Comment extends MY_Controller {
 			//$data["infos"] = $this->comment_model->getInfoLastCommentBySketch($data[0]);
 			$data["infos"] = $this->comment_model->getAllInfoLastComment($data[0]);
 			//print_r($data["infos"]);
+			
 			foreach($data["infos"] as $data):
 				
 				// Converting the time to a UNIX timestamp:
-				$data->post_date = strtotime($data->post_date);
-				
-				echo '<div class="comment">
+				$result["post_date"]= date('d-m-Y H:i');
+				$result["avatar"]= $data->avatar;
+				$result["firstname"]= $data->first_name;
+				$result["lastname"]= $data->last_name;
+				$result["message"]= $data->message;
+				/*echo '<div class="comment">
 						<div class="avatar">
 						'.$data->avatar .'	<img src=" '. base_url('/assets/logo/logo.ico').'" />
 						</div>
@@ -57,8 +61,10 @@ class Comment extends MY_Controller {
 						<div class="date" title="Added at '.date('d M Y',$data->post_date).'">le '.date('d M Y',$data->post_date).'</div>
 						<p>'.$data->message.'</p>
 						</div>
-				';
+				';*/
 			endforeach;
+			
+			echo json_encode($result);
 			//$this->load->view('comment_sheet', $data);
 		}
 		elseif($this->input->post("submit_com")){

@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/foundation/css/app.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/like_dislike.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/style_comment.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/example_comment.css">
 		
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
@@ -17,10 +19,8 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.topbar.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.dropdown.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.alert.js"></script>
-		<!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.js"></script>
-		--><script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.autocomplete.js"></script>
-		<!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		--><script type="text/javascript">
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery.autocomplete.js"></script>
+		<script type="text/javascript">
 			
 			$(function(){ 
 		        
@@ -62,7 +62,7 @@
 							onItemSelect:selectItem,
 							onFindValue:findValue,
 							formatItem:formatItem,
-							autoFill:true
+							autoFill:false
 						}
 					);
 				/*on key up search_bar
