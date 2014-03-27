@@ -12,7 +12,8 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/style_comment.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/example_comment.css">
-		
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery.autocomplete.css">	
+
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
@@ -87,8 +88,7 @@
 						},
 	                    success: function(data){
 							if (data.status == 'good') {
-								$("#signin").hide();
-            					$('#signin-nav').append('<div class="row collapse"><li class="has-form">'+data.user.id+'</li><li class="has-form"> | </li><li class="has-form">'+data.user.username+'</li></div>');
+            					$('#login-content').show();
 	                    	}
 	                    	else if (data.status == 'notgood') {
 	                    		alert(data.message);
@@ -123,44 +123,60 @@
 									<input id="autocomplete_search" class="ac_input" type="text" name="pv_search" placeholder="Find Stuff">
 								</div>
 								<div class="large-2 small-3 columns">
-									<input class="alert button expand" type="submit" value="Valider"/>
+									<input class="alert button expand" type="submit" value="Valider" />
 								</div>
-							</div>
+							</div>	
 						</li>
 					</form>
 				</ul>
 				
 				<!-- Right Nav Section -->
-				<ul class="right" id="signin-nav">
-					<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<input type="text" name="email" id="email" placeholder="log-in" required="required">
-								</div>
-							</div>
-						</li>
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<input type="text" name="password" id="password" placeholder="password" required="required">
-								</div>
-							</div>
-						</li>
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<input class="button radius" type="submit" value="Sign in" />
-								</div>
-							</div>
-						</li>
-						<li class="has-form">
-							<div class="row collapse">
-								<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
-							</div>
-						</li>
-					</form>
-				</ul>
+				<div id="login-content">
+					<ul class="right" id="signin-nav">
+						<?php if( empty($user_session['user_data']) ) { ?>
+							<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input type="text" name="email" id="email" placeholder="log-in" required="required">
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input type="text" name="password" id="password" placeholder="password" required="required">
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input class="button radius" type="submit" value="Sign in" />
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
+									</div>
+								</li>
+							</form>
+						<?php } else { ?>
+							<li class="litext"><?php echo $user_session['first_name'] ?></li>
+							<li class="divider"></li>
+							<li class="has-form">
+								<form action="<?php echo base_url().'home/session_destroy'; ?>"method="post" id="signin">
+									<div class="row collapse">
+										<div>
+											<input class="button radius" type="submit" value="Log out" />
+										</div>
+									</div>
+								</form>
+							</li>
+						<?php } ?>
+					</ul>
+				</div>	
 			</section>
 		</nav>
 

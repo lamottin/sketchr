@@ -30,6 +30,14 @@
 	width: 40rem;
 }
 
+.top-bar-section li.litext {
+    padding: 0 15px;
+    line-height: 45px;
+    background: #333333; 
+    color: white;
+    white-space: nowrap;
+}
+
 /*************************************************************/
 /******************** structure tweaks ***********************/
 

@@ -43,6 +43,9 @@ class Sketch extends MY_Controller {
 			
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
+	
+		$data = array();
+
 		$this->form_validation->set_rules('URL', 'URL', 'trim|required|xss_clean|valid_url_format');
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('type', 'Type', 'trim|required|xss_clean'); 
@@ -53,7 +56,6 @@ class Sketch extends MY_Controller {
 		if( $this->form_validation->run() == TRUE ) {
 			
 			//process data
-			$data = array();
 			$data[0] = $this->input->post("URL");
 			$data[1] = $this->input->post("title");
 			$data[2] = $this->input->post("type");
@@ -98,8 +100,9 @@ class Sketch extends MY_Controller {
 	 * - base_url()/watch/(:num)
 	 */
 	public function access_sketch_by_id(){
-		$data = array();
 
+		$data = array();
+		
 		// Get the sketch object from the model
 		$data['sketch'] = $this->sketch_model->getById($this->uri->segment(2));
 		// WHAT TO DO IF IT RETURNS NULL? HAVE TO IMPLEMENT THAT !!!!
@@ -174,7 +177,6 @@ class Sketch extends MY_Controller {
 
 
 	public function dead_link() {
-
 			
 			$user = $_SERVER['REMOTE_ADDR'];
 			$sketchID = $this->input->post('sketchID');

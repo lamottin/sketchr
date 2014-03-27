@@ -29,8 +29,8 @@ class Category extends MY_Controller {
 	 * - base_url()/category/(:num)
 	 */
 	public function access_category_by_id(){
-		$data = array();
 
+		$data = array();
 		// Get the category object which we are trying to access from the model
 		$data['category'] = $this->category_model->getById($this->uri->segment(2));
 		// WHAT TO DO IF IT RETURNS NULL? HAVE TO IMPLEMENT THAT !!!!
@@ -65,15 +65,15 @@ class Category extends MY_Controller {
 			
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
+	
+		$data = array();
+
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('image', 'Image', 'trim|required|xss_clean|valid_url_format');
 		
 		//When the form is correctly filled
 		if( $this->form_validation->run() == TRUE ) {
-			
-			//process data
-			$data = array();
-			
+
 			//We retrieve the data within the POST method.
 			$data[0] = $this->input->post("title");
 			$data[1] = $this->input->post("image");
@@ -94,11 +94,9 @@ class Category extends MY_Controller {
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
 			
-			$data = array();
 			$this->show_view_with_hf('category_add', $data);
 		}
 		else { //Default page loaded
-			$data = array();
 			$this->show_view_with_hf('category_add', $data);
 		}
 	}

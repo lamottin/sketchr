@@ -34,6 +34,9 @@ class Humorist extends MY_Controller {
 			
 			Le '|' sert pour définir des règles en cascade et non pas un 'OU'
 		*/
+	
+		$data = array();
+
 		$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required|xss_clean|max_length[50]');
 		$this->form_validation->set_rules('lastname', 'Lastname', 'trim|required|xss_clean|max_length[50]');
 		$this->form_validation->set_rules('birthdate', 'Birthdate', 'trim|xss_clean|valid_date_format|date_validator');
@@ -42,7 +45,6 @@ class Humorist extends MY_Controller {
 		if( $this->form_validation->run() == TRUE ) {
 			
 			//process data
-			$data = array();
 			$data[0] = $this->input->post("firstname");
 			$data[1] = $this->input->post("lastname");
 			$data[2] = $this->input->post("birthdate");
@@ -58,11 +60,9 @@ class Humorist extends MY_Controller {
 			$this->data["status"]->message = validation_errors();
 			$this->data["status"]->success = FALSE;
 			//print_r($this->data["status"]);
-			$data=array();
 			$this->show_view_with_hf('humorist_add', $data);
 		}
 		else {
-			$data = array();
 			$this->show_view_with_hf('humorist_add', $data);
 		}
 	}
