@@ -121,7 +121,7 @@ class Sketch extends MY_Controller {
 		$infos['comments'] = $this->comment_model->listAllBySketch($data['sketch']->id);
 		foreach($infos['comments'] as $info ) {
 			$data['comments'][] = array(
-				"comments" => $info, //The object
+				"comments" => $info, //The object with all the fields
 				"likes" => $this->sketch_comment_like_dislike_model->getAllCountByActComment($info->id,1), //Get the number of likes
 				"dislikes" => $this->sketch_comment_like_dislike_model->getAllCountByActComment($info->id,2), //Get the number of dislikes
 				"already_liked" => ($this->sketch_comment_like_dislike_model->getCountByActUserComment($_SERVER['REMOTE_ADDR'],$info->id,1) == 1) ? true: false, //Check if the user already liked

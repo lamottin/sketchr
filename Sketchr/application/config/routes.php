@@ -45,6 +45,7 @@ $route['serie/(:num)'] = "sketchtype/access_sketchtype_by_id";
 $route['watch/(:num)'] = "sketch/access_sketch_by_id";
 $route['like_dislike'] = "sketch/like_dislike";
 $route['like_dislike_comment'] = "comment/like_dislike_comment";
+$route['report_abus'] = "comment/report_abus";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

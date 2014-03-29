@@ -19,6 +19,8 @@
 	background-color: #f0f0f0;	border: #c6c6c6 1px solid; 
 }
 .dislike-btn{background: url(img/dislike-ico.png) 50% 50% no-repeat; }
+.abus{background: url(img/warning-21x21.png) 50% 50% no-repeat; width: 21px; height: 21px; float: right; padding-left:10px;padding-right:30px;}
+.abus:hover{cursor: pointer;}
 .dislike-btn:hover, .dislike-h{
 	background: url(img/dislike-ico-h.png) 50% 50% no-repeat;
 	background-color: #f0f0f0;	border: #c6c6c6 1px solid; 

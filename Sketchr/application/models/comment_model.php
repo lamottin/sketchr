@@ -84,4 +84,15 @@ WHERE sketch_comment.sketch=2 and sketch_comment.id = (SELECT MAX(sketch_comment
 		
 	}
 	
+	public function reportAbuse($id_membre, $id_post, $comment_abus) {
+
+		$this->db->set('member', $id_membre);
+		$this->db->set('sketch_comment', $id_post);
+		$this->db->set('notification', $comment_abus);
+		$this->db->set('processed', 0);
+		
+		//	Une fois que tous les champs ont bien été définis, on "insert" le tout
+		return $this->db->insert($this->table ."_report_abuse");
+	}
+	
 }

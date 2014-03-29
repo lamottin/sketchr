@@ -15,7 +15,18 @@
     <div class="clear"></div>
 	
 	<div id="loader" style="display:none;"><img src="<?php echo base_url('/assets/loader.gif');?>" alt="loader" title="Loading..."></div>
-    <?php 
+	<div id="myModal" class="reveal-modal" data-reveal>
+		<h2>Confirmation</h2>
+		<p class="lead">Vous &ecirc;tes sur le point de signaler un commentaire comme indésirable</p>
+		<p>Veuillez renseigner en quelques mots les raisons pour lesquelles vous identifiez ce commentaire comme tel.</p>
+			<div class="large-8 columns">
+			<textarea id="comment_abus" placeholder="Votre commentaire"></textarea>
+			</div>
+		<a href="#" id="confirm_abus" class="button disabled">Confirmer</a>
+		<a class="close-reveal-modal">&#215;</a> 
+	</div>
+    <?php
+	if(!empty($comments)) {	
     foreach($comments as $value):
 				
 		// Converting the time to a UNIX timestamp:
@@ -27,7 +38,7 @@
         <div class="thecom">
             <h5><b><?php echo $value["comments"]->first_name  .' '.$value["comments"]->last_name; ?></b></h5>
 			<input type="hidden" id="id_post<?php echo $value["comments"]->id;?>" value="<?php echo $value["comments"]->id;?>"/>
-			<span class="com-dt"><?php echo date('d-m-Y H:i',$value["comments"]->post_date);?></span>
+			<span class="com-dt"><?php echo date('d-m-Y H:i',$value["comments"]->post_date);?><span data-tooltip class="has-tip tip-bottom" title="Signaler un abus !"><div class="abus" data-reveal-id="myModal" data-reveal></div></span></span>
             <br/>
             <p>
                 <?php echo $value["comments"]->message;?>
@@ -38,7 +49,8 @@
 			</div>
         </div>
     </div><!-- end "cmt-cnt" -->
-    <?php endforeach; ?>
+    <?php endforeach; }?>
+	<div class="horizontal_dotted_line"></div>
 </div><!-- end of comments container "cmt-container" -->
 </div>
 
@@ -82,7 +94,7 @@
 						$('.the-new-com').val('');
                         $('.new-com-cnt').hide('fast', function(){
                             $('.new-com-bt').show('fast');
-                            $('.new-com-bt').after('<div class="cmt-cnt"><img src="' + data.avatar +'" /><div class="thecom"><h5><b>'+data.firstname + ' ' + data.lastname + '</b></h5><input type="hidden" id="id_post'+data.id+'" value="'+data.id+'"/><span class="com-dt"> ' + data.post_date + '</span><br/><p>' + data.message + '</p><div class="cmt_dis_like"><div id="dislike_comment'+data.id+'" class="dislike-count-comment">0</div><div id="like_comment'+data.id+'" class="like-count-comment">0</div></div></div></div>');  
+                            $('.new-com-bt').after('<div class="horizontal_dotted_line"></div><div class="cmt-cnt"><img src="' + data.avatar +'" /><div class="thecom"><h5><b>'+data.firstname + ' ' + data.lastname + '</b></h5><input type="hidden" id="id_post'+data.id+'" value="'+data.id+'"/><span class="com-dt"> ' + data.post_date + '<span data-tooltip class="has-tip tip-bottom" title="Signaler un abus !"><div class="abus" data-reveal-id="myModal" data-reveal></div></span></span><br/><p>' + data.message + '</p><div class="cmt_dis_like"><div id="dislike_comment'+data.id+'" class="dislike-count-comment">0</div><div id="like_comment'+data.id+'" class="like-count-comment">0</div></div></div></div>');  
                         });
                     }  
                 });
@@ -95,7 +107,7 @@
 			//Retrieve the id where we clicked on the like. We get for example post_id17
 			var id_post = $(this).parent().parent().children("input").attr('id');
 			
-			//Substring "post_id" from "post_id17" so we get only the id
+			//Substring "post_id" from "post_id17" so we get only the id here 17
 			id_post = id_post.substr(7, id_post.length);
 		
 			//Add some style when we click
@@ -126,7 +138,7 @@
 			//Retrieve the id where we clicked on the like/dislike. We get for example post_id17
 			var id_post = $(this).parent().parent().children("input").attr('id');
 			
-			//Substring "post_id" from "post_id17" so we get only the id
+			//Substring "post_id" from "post_id17" so we get only the id here 17
 			id_post = id_post.substr(7, id_post.length);
 			
 			//Add some style when we click
@@ -140,7 +152,7 @@
                 data:'act=dislike&commentID='+id_post,
                 success: function(data){
 					
-					//We parse the data send by PHP (sketch/like_dislike)
+					//We parse the data send by PHP (sketch/like_dislike_comment)
 					var datas = jQuery.parseJSON(data);
 					
 					//We update all the values
@@ -149,6 +161,44 @@
                 }
             });
         });
-
+		
+		//When we click on the warning button
+        $('.abus').click(function(){
+			
+			//Retrieve the id where we clicked on the like/dislike. We get for example post_id17
+			var id_post = $(this).parent().parent().parent().children("input").attr('id');
+			
+			//Substring "post_id" from "post_id17" so we get only the id here 17
+			id_post = id_post.substr(7, id_post.length);
+						
+			// When start writing the comment activate the "add" button
+			$('#comment_abus').bind('input propertychange', function() {
+				var checklength = $(this).val().length;
+				if(checklength>4){ 
+					$("#confirm_abus").removeClass("disabled");
+					
+				}
+				else{
+					$("#confirm_abus").addClass("disabled");
+				}
+			});
+			
+			$("#confirm_abus").click(function() {
+				var id_membre = $("#id_member").val();
+				var comment_abus = $("#comment_abus").val();
+				$('#myModal').foundation('reveal', 'close');
+				$.ajax({
+					type: "POST",
+					url: "<?php echo site_url('report_abus');?>",
+					data: "id_post="+id_post+"&comment_abus="+comment_abus+"&id_member="+id_membre,
+					success: function(data){
+						
+						//We parse the data send by PHP (comment/report_abus)
+						var datas = jQuery.parseJSON(data);
+						$("#comment_abus").val('');
+					}
+				});
+			});
+        });
     });
 </script>

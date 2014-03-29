@@ -51,9 +51,10 @@
 	line-height: 18px;
 	color: #AAAAAA;
 	text-align: right;
+	margin-top: 3px;
 }
 .thecom p{
-	width: auto;
+	width: 75%;
 	margin: 5px 5px 5px 45px;
 	color: #4e5665;
 }

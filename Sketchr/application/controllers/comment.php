@@ -130,6 +130,21 @@ class Comment extends MY_Controller {
 		$return['rate_dislike_count_comment'] = $rate_dislike_count;
 		echo json_encode($return);
 	}
+	
+	public function report_abus(){
+		
+		$id_post = $this->input->post('id_post');
+		$comment_abus = $this->input->post('comment_abus');
+		$id_member = $this->input->post('id_member');
+		
+		$this->comment_model->reportAbuse($id_member, $id_post, $comment_abus);
+		
+		$result["id_post"] = $id_post;
+		$result["comment_abus"] = $comment_abus;
+		$result["id_member"] = $id_member;
+		
+		echo json_encode($result);
+	}
 
 	private static function validate_text($str)
 	{
