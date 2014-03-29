@@ -15,7 +15,7 @@
     <div class="clear"></div>
 	
 	<div id="loader" style="display:none;"><img src="<?php echo base_url('/assets/loader.gif');?>" alt="loader" title="Loading..."></div>
-	<div id="myModal" class="reveal-modal" data-reveal>
+	<div id="modal_abus" class="reveal-modal" data-reveal>
 		<h2>Confirmation</h2>
 		<p class="lead">Vous &ecirc;tes sur le point de signaler un commentaire comme indésirable</p>
 		<p>Veuillez renseigner en quelques mots les raisons pour lesquelles vous identifiez ce commentaire comme tel.</p>
@@ -23,6 +23,7 @@
 			<textarea id="comment_abus" placeholder="Votre commentaire"></textarea>
 			</div>
 		<a href="#" id="confirm_abus" class="button disabled">Confirmer</a>
+		<a href="#" id="cancel_abus" class="button secondary">Annuler</a>
 		<a class="close-reveal-modal">&#215;</a> 
 	</div>
     <?php
@@ -38,7 +39,7 @@
         <div class="thecom">
             <h5><b><?php echo $value["comments"]->first_name  .' '.$value["comments"]->last_name; ?></b></h5>
 			<input type="hidden" id="id_post<?php echo $value["comments"]->id;?>" value="<?php echo $value["comments"]->id;?>"/>
-			<span class="com-dt"><?php echo date('d-m-Y H:i',$value["comments"]->post_date);?><span data-tooltip class="has-tip tip-bottom" title="Signaler un abus !"><div class="abus" data-reveal-id="myModal" data-reveal></div></span></span>
+			<span class="com-dt"><?php echo date('d-m-Y H:i',$value["comments"]->post_date);?><span data-tooltip class="has-tip tip-bottom" title="Signaler un abus !"><div class="abus" data-reveal-id="modal_abus" data-reveal></div></span></span>
             <br/>
             <p>
                 <?php echo $value["comments"]->message;?>
@@ -94,7 +95,7 @@
 						$('.the-new-com').val('');
                         $('.new-com-cnt').hide('fast', function(){
                             $('.new-com-bt').show('fast');
-                            $('.new-com-bt').after('<div class="horizontal_dotted_line"></div><div class="cmt-cnt"><img src="' + data.avatar +'" /><div class="thecom"><h5><b>'+data.firstname + ' ' + data.lastname + '</b></h5><input type="hidden" id="id_post'+data.id+'" value="'+data.id+'"/><span class="com-dt"> ' + data.post_date + '<span data-tooltip class="has-tip tip-bottom" title="Signaler un abus !"><div class="abus" data-reveal-id="myModal" data-reveal></div></span></span><br/><p>' + data.message + '</p><div class="cmt_dis_like"><div id="dislike_comment'+data.id+'" class="dislike-count-comment">0</div><div id="like_comment'+data.id+'" class="like-count-comment">0</div></div></div></div>');  
+                            $('.new-com-bt').after('<div class="horizontal_dotted_line"></div><div class="cmt-cnt"><img src="' + data.avatar +'" /><div class="thecom"><h5><b>'+data.firstname + ' ' + data.lastname + '</b></h5><input type="hidden" id="id_post'+data.id+'" value="'+data.id+'"/><span class="com-dt"> ' + data.post_date + '<span data-tooltip class="has-tip tip-bottom" title="Signaler un abus !"><div class="abus" data-reveal-id="modal_abus" data-reveal></div></span></span><br/><p>' + data.message + '</p><div class="cmt_dis_like"><div id="dislike_comment'+data.id+'" class="dislike-count-comment">0</div><div id="like_comment'+data.id+'" class="like-count-comment">0</div></div></div></div>');  
                         });
                     }  
                 });
@@ -183,10 +184,15 @@
 				}
 			});
 			
+			$("#cancel_abus").click(function() {
+			
+				$('#modal_abus').foundation('reveal', 'close');
+			});
+			
 			$("#confirm_abus").click(function() {
 				var id_membre = $("#id_member").val();
 				var comment_abus = $("#comment_abus").val();
-				$('#myModal').foundation('reveal', 'close');
+				$('#modal_abus').foundation('reveal', 'close');
 				$.ajax({
 					type: "POST",
 					url: "<?php echo site_url('report_abus');?>",

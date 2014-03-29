@@ -10,6 +10,7 @@ class Sketch extends MY_Controller {
 		$this->load->model('sketch_model');
 		$this->load->model('comment_model');
 		$this->load->model('like_dislike_model');
+		$this->load->model('deadlink_model');
 		$this->load->model('sketch_comment_like_dislike_model');
 		$this->load->library('form_validation');
 	}
@@ -129,6 +130,8 @@ class Sketch extends MY_Controller {
 			);
 		}
 		
+		$data['already_reported'] = $this->deadlink_model->getBySketch($data['sketch']->id);
+		
 		$user_ip = $_SERVER['REMOTE_ADDR'];
 		//Check if the user has already clicked on the unlike (rate = 2) or the like (rate = 1)
         $like_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $data['sketch']->id, 1);  //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'. $data['sketch']->id.'" and rate = 1 '
@@ -219,13 +222,16 @@ class Sketch extends MY_Controller {
 	}
 
 
-	public function dead_link() {
+	public function report_deadlink() {
 			
-			$user = $_SERVER['REMOTE_ADDR'];
-			$sketchID = $this->input->post('sketchID');
+			$id_member = $this->input->post('id_member');
+			$sketchID = $this->input->post('id_sketch');
 
-			$this->deadlink_model->addDeadLink($sketchID, $user_ip);
-
+			$this->deadlink_model->addDeadLink($sketchID, $id_member);
+			$result["id_member"] = $id_member ;
+			$result["id_sketch"] = $id_sketch;
+			
+			echo json_encode($result);
 	}
 
 

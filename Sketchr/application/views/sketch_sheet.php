@@ -10,12 +10,25 @@
 				<!-- should load $sketch->video_link...-->
 				<h5><?php echo $sketch->title; ?></h5>
 			</div>
+			<div id="modal_deadlink" class="reveal-modal" data-reveal>
+				<h2>Confirmation</h2>
+				<p class="lead">Vous &ecirc;tes sur le point de signaler un lien mort.</p>
+				<p>Souhaitez-vous confirmer ?</p>
+				<input type="hidden" name="id_sketch_hidden" id="id_sketch_hidden" value="<?php echo $sketch->id ?>" />
+				<input type="hidden" name="id_member_hidden" id="id_member_hidden" value="1" />	
+				<a href="#" id="confirm_deadlink" class="button">Confirmer</a>
+				<a href="#" id="cancel_deadlink" class="button secondary">Annuler</a>
+				<a class="close-reveal-modal">&#215;</a> 
+			</div>
 			<div class="row">
 				        
 						<div class="tab-tr" id="t1">
 						<div id="btn_like_sketch" class="like-btn <?php if($like_count == 1){ echo 'like-h';}?>">Like</div>
 						<div id="btn_dislike_sketch" class="dislike-btn <?php if($dislike_count == 1){ echo 'dislike-h';}?>"></div>
-
+						<?php
+							if($already_reported != null && ($already_reported==false || $already_reported->processed==1))
+								echo '<div class="deadlink" data-reveal-id="modal_deadlink" data-reveal></div>';
+						?>
 								<!-- <div class="share-btn">Share</div> -->
 
 								<div class="stat-cnt">
@@ -114,6 +127,24 @@
                 }
             });
         });
+		$("#cancel_deadlink").click(function() {
+			$('#modal_deadlink').foundation('reveal', 'close');
+		});
+		$("#modal_deadlink").click(function() {
+			var id_member = $("#id_member_hidden").val();
+			var id_sketch = $("#id_sketch_hidden").val();
+			$('#modal_deadlink').foundation('reveal', 'close');
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url('report_deadlink');?>",
+				data: "id_member="+id_member+"&id_sketch="+id_sketch,
+				success: function(data){
+						
+					//We parse the data send by PHP (comment/report_abus)
+					var datas = jQuery.parseJSON(data);
+				}
+			});
+		});
 		
 		//Button share
         $('.share-btn').click(function(){
