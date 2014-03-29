@@ -74,7 +74,7 @@
                 url:"<?php echo site_url('like_dislike');?>",
                 data:'act=like&sketchID='+sketchID,
                 success: function(data){
-				
+					
 					//We parse the data send by PHP (sketch/like_dislike)
 					var datas = jQuery.parseJSON(data);
 					

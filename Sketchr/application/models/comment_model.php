@@ -6,7 +6,7 @@ class Comment_model extends CI_Model {
 	
 	public function listAllBySketch($id_sketch) {
 
-		return $this->db->select(''.$this->table .'.message, '.$this->table .'.post_date, membre.first_name, membre.last_name, membre.avatar')
+		return $this->db->select(''.$this->table .'.id, '.$this->table .'.message, '.$this->table .'.post_date, membre.first_name, membre.last_name, membre.avatar')
 			->from($this->table)
 			->join('member membre', 'membre.id = '.$this->table.'.member', 'left')
 			->where('sketch', $id_sketch)
@@ -34,7 +34,7 @@ WHERE sketch_comment.sketch=2 and sketch_comment.id = (SELECT MAX(sketch_comment
 			$id = $result->id;
 		endforeach;
 	
-		return $this->db->select($this->table.'.message,'.$this->table.'.post_date, membre.first_name, membre.last_name, membre.avatar')
+		return $this->db->select($this->table.'.id, '.$this->table.'.message,'.$this->table.'.post_date, membre.first_name, membre.last_name, membre.avatar')
 			->from($this->table)
 			->join('member membre','membre.id = '.$this->table.'.member','left')
 			->where($this->table.'.sketch', $id_sketch)

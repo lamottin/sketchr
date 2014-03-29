@@ -10,6 +10,7 @@ class Sketch extends MY_Controller {
 		$this->load->model('sketch_model');
 		$this->load->model('comment_model');
 		$this->load->model('like_dislike_model');
+		$this->load->model('sketch_comment_like_dislike_model');
 		$this->load->library('form_validation');
 	}
 
@@ -109,7 +110,24 @@ class Sketch extends MY_Controller {
 
 		// Get the humorist object from the model
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
-		$data['comments'] = $this->comment_model->listAllBySketch($data['sketch']->id);
+		
+		/* Here I got all the infos of a comment in an array and his likes/dislikes, already liked/disliked
+		* "comments" => StdObject; so in the view to get the field we type (in a foreach) $value["comments"]->field_name as in $value["comments"]->post_date
+		* "likes" => number of likes; $value["likes"] in a view to get the data
+		* "dislikes" => number of dislikes; $value["dislikes"] in a view to get the data
+		* "already_liked" => boolean; $value["already_liked"] in a view to get the data
+		* "already_disliked" => boolean; $value["already_disliked"] in a view to get the data
+		*/
+		$infos['comments'] = $this->comment_model->listAllBySketch($data['sketch']->id);
+		foreach($infos['comments'] as $info ) {
+			$data['comments'][] = array(
+				"comments" => $info, //The object
+				"likes" => $this->sketch_comment_like_dislike_model->getAllCountByActComment($info->id,1), //Get the number of likes
+				"dislikes" => $this->sketch_comment_like_dislike_model->getAllCountByActComment($info->id,2), //Get the number of dislikes
+				"already_liked" => ($this->sketch_comment_like_dislike_model->getCountByActUserComment($_SERVER['REMOTE_ADDR'],$info->id,1) == 1) ? true: false, //Check if the user already liked
+				"already_disliked" => ($this->sketch_comment_like_dislike_model->getCountByActUserComment($_SERVER['REMOTE_ADDR'],$info->id,2) == 1) ? true: false, //Check if the user already disliked
+			);
+		}
 		
 		$user_ip = $_SERVER['REMOTE_ADDR'];
 		//Check if the user has already clicked on the unlike (rate = 2) or the like (rate = 1)
@@ -117,10 +135,10 @@ class Sketch extends MY_Controller {
 		$dislike_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $data['sketch']->id, 2);//'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'. $data['sketch']->id.'" and rate = 2 '
         
         //Count all the rate 
-        $rate_all_count = $this->like_dislike_model->getAllCountBySketch($data['sketch']->id); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$id_sketch.'"'
+        $rate_all_count = $this->like_dislike_model->getAllCountBySketch($data['sketch']->id); //'SELECT COUNT(*) FROM wcd_yt_rate WHERE id_item = "'.$id_sketch.'"'
         
-        $rate_like_count =  $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,1); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 1'
-		$rate_dislike_count = $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,2); //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 2'
+        $rate_like_count =  $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,1); //'SELECT COUNT(*) FROM wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 1'
+		$rate_dislike_count = $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,2); //'SELECT COUNT(*) FROM wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 2'
 		
         $rate_like_percent = $this->percent($rate_like_count, $rate_all_count);        
         $rate_dislike_percent = $this->percent($rate_dislike_count, $rate_all_count);

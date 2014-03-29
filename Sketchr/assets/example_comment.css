@@ -15,7 +15,11 @@
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 	font: 12px 'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 } 
-
+.horizontal_dotted_line{
+  padding-top: 5px;
+  border-bottom: 1px dotted #BBBBBB;
+  width: 100%;
+}
 .cmt-cnt{
 	width: 100%; height: auto; min-height: 35px; 
 	padding: 5px 0;
@@ -37,12 +41,12 @@
 	float: left;
 	font-family: tahoma;
 	font-size: 14px;
-	color: #3b5998;
+	color: #008CBA;
 	margin: 0 15px 0 0;
 }
 .thecom .com-dt{
 	display: inline;
-	float: left;
+	float: right;
 	font-size: 13px; 
 	line-height: 18px;
 	color: #AAAAAA;

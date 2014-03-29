@@ -28,8 +28,20 @@
 .stat-bar{	width: 120px; height: 3px;	margin-bottom: 5px;}
 .rate-count{ font-size: 20px; color: #333; text-align: right; font-weight: bold; }
 .stat-bar div{height: 3px; float: left;}
-.like-count{background: url(img/like-ico2.png) 0% 50% no-repeat;}
-.dislike-count{background: url(img/dislike-ico2.png) 0% 50% no-repeat; margin-left: 15px;}
+.like-count, .like-count-comment{background: url(img/like-ico2.png) 0% 50% no-repeat;}
+.dislike-count, .dislike-count-comment{background: url(img/dislike-ico2.png) 0% 50% no-repeat; margin-left: 15px;}
+
+.dislike-count-comment:hover, .dislike-h2{background: url(img/dislike-ico-h2.png) 0% 50% no-repeat;}
+.like-count-comment:hover, .like-h2{background: url(img/like-ico-h2.png) 0% 50% no-repeat;}
+
+.like-count-comment, .dislike-count-comment{
+	width: auto; height: 18px; 
+	float: right; 
+	font-size: 12px; line-height: 18px; color: #666;
+	padding-left: 15px;
+	cursor: pointer;
+}
+
 .like-count, .dislike-count{
 	width: auto; height: 18px; 
 	float: right; 
