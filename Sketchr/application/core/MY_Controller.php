@@ -24,7 +24,7 @@ class  MY_Controller  extends  CI_Controller  {
      * @param  [type] $data The array containing lots of data (duh)
      */
 	function show_view_with_hf($view_name, $data) {
-		$data['user_session'] = $this->_get_user_session();
+		$data['user_session'] = $this->get_user_session();
 		$data['categories'] = $this->category_model->listAll();
 		$data['menu'] = $this->load->view('hf/menu', $data, TRUE); // load your menu data from the db
 		$this->load->view('hf/header', $data); // display your header by giving it the menu
@@ -32,11 +32,7 @@ class  MY_Controller  extends  CI_Controller  {
 		$this->load->view('hf/footer'); // footer, if you have one
 	}
 
-	function session_destroy(){
-		$this->session->sess_destroy();
-	}
-
-	protected function _get_user_session() {
+	protected function get_user_session() {
 		return (isset($this->user_session)) ? $this->user_session : "null";
 	}
 

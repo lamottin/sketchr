@@ -116,7 +116,7 @@ class Member extends MY_Controller {
 					$result['status'] = "good";
 					$result['message'] = "Correct password";
 					$this->session->set_userdata($data['user']);
-					$result['user'] = $this->session->all_userdata();
+					$data['user_session'] = $this->get_user_session();
 				}
 				else {
 					//if it doesn't
@@ -136,10 +136,27 @@ class Member extends MY_Controller {
 			$result['status'] = "notgood";
 			$result['message'] = "Unknown error";
 		}
-		else {
-			return $data;
-		}		
 		echo json_encode($result);
+	}
+
+	public function is_logged_in() {
+
+		$user = $this->get_user_session();
+		if( isset($user['id']) ) {
+			$response['logged_in'] = "true";
+		}
+		else {
+			$response['logged_in'] = "false";
+		}
+		echo json_encode($response);
+	}
+
+
+	public function logout(){
+
+		$this->session->sess_destroy();
+		$response = "true";
+		echo json_encode($response);
 	}
 
 }

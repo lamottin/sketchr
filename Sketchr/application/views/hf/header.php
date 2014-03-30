@@ -24,7 +24,29 @@
 		<script type="text/javascript">
 			
 			$(function(){ 
-		        
+
+				// on page load
+				$(document).ready(function(e) {
+					$.ajax({
+						type: "post",
+						url: "<?php echo base_url().'member/is_logged_in'; ?>", 
+						dataType: "json",
+						error : function(xhr, textStatus, errorThrown){
+							alert("error : " + xhr.status + textStatus + errorThrown);
+						},
+						success : function(response) {
+							if(response.logged_in == 'false') {
+            					$('#loggedin-nav').hide();	
+            					$('#signin-nav').show();
+							} else {
+								$('#signin-nav').hide();
+            					$('#loggedin-nav').show();
+							}
+						}
+					});
+					return false;
+				});
+
 				function findValue(li) {
 					if( li == null ) return alert("No match!");
 
@@ -35,37 +57,37 @@
 					var sValue = li.selectValue;
 
 					//alert("The value you selected was: " + sValue);
-				  }
+				}
 
-				  function selectItem(li) {
-						findValue(li);
-				  }
+				function selectItem(li) {
+					findValue(li);
+				}
 
-				  function formatItem(row) {
-						return row[0] ;//+ " (id: " + row[1] + ")";
-				  }
+				function formatItem(row) {
+					return row[0] ;//+ " (id: " + row[1] + ")";
+				}
 
-				  function lookupAjax(){
+				function lookupAjax(){
 					var oSuggest = $("#autocomplete_search")[0].autocompleter;
 					oSuggest.findValue();
 					return false;
-				  }
+				}
 
 				  
-					$("#autocomplete_search").autocomplete(
-					  $("#keyword").attr('action') + "/ajaxTitle",
-					  {
-							delay:10,
-							minChars:3, //When the user types at least 3 letters
-							matchSubset:1,
-							matchContains:1,
-							cacheLength:10,
-							onItemSelect:selectItem,
-							onFindValue:findValue,
-							formatItem:formatItem,
-							autoFill:false //Avoid the input field to be filled, only display the results with a select
-						}
-					);
+				$("#autocomplete_search").autocomplete(
+					$("#keyword").attr('action') + "/ajaxTitle",
+					{
+						delay:10,
+						minChars:3, //When the user types at least 3 letters
+						matchSubset:1,
+						matchContains:1,
+						cacheLength:10,
+						onItemSelect:selectItem,
+						onFindValue:findValue,
+						formatItem:formatItem,
+						autoFill:false //Avoid the input field to be filled, only display the results with a select
+					}
+				);
 				/*on key up search_bar
 				$("#searchBar").keyup(function() {
 					var recherche = $(this).val();
@@ -86,14 +108,32 @@
 	                    error : function(xhr, textStatus, errorThrown){
 							alert("error : " + xhr.status + textStatus + errorThrown);
 						},
-	                    success: function(data){
-							if (data.status == 'good') {
-            					$('#login-content').show();
+	                    success: function(result){      
+							if (result.status == 'good') {
+								$('#signin-nav').hide();
+            					$('#loggedin-nav').show();
 	                    	}
-	                    	else if (data.status == 'notgood') {
-	                    		alert(data.message);
+	                    	else if (result.status == 'notgood') {
+	                    		alert(result.message);
 	                    	}
 	                    }  
+	                });	
+	                return false;
+		        });
+
+		        // on logout click 
+		        $("#logout").click(function(e) {
+					$.ajax({
+	                    type: "post",
+	                    url: "<?php echo base_url().'member/logout'; ?>",
+	                    dataType: "json",
+	                    error : function(xhr, textStatus, errorThrown){
+							alert("error : " + xhr.status + textStatus + errorThrown);
+						},
+	                    success: function(result){   
+            				$('#loggedin-nav').hide();   
+	                    	$('#signin-nav').show();
+	                   	}
 	                });	
 	                return false;
 		        });
@@ -133,48 +173,44 @@
 				<!-- Right Nav Section -->
 				<div id="login-content">
 					<ul class="right" id="signin-nav">
-						<?php if( empty($user_session['user_data']) ) { ?>
-							<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
-								<li class="has-form">
-									<div class="row collapse">
-										<div>
-											<input type="text" name="email" id="email" placeholder="log-in" required="required">
-										</div>
-									</div>
-								</li>
-								<li class="has-form">
-									<div class="row collapse">
-										<div>
-											<input type="text" name="password" id="password" placeholder="password" required="required">
-										</div>
-									</div>
-								</li>
-								<li class="has-form">
-									<div class="row collapse">
-										<div>
-											<input class="button radius" type="submit" value="Sign in" />
-										</div>
-									</div>
-								</li>
-								<li class="has-form">
-									<div class="row collapse">
-										<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
-									</div>
-								</li>
-							</form>
-						<?php } else { ?>
-							<li class="litext"><?php echo $user_session['first_name'] ?></li>
-							<li class="divider"></li>
+						<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
 							<li class="has-form">
-								<form action="<?php echo base_url().'home/session_destroy'; ?>"method="post" id="signin">
-									<div class="row collapse">
-										<div>
-											<input class="button radius" type="submit" value="Log out" />
-										</div>
+								<div class="row collapse">
+									<div>
+										<input type="text" name="email" id="email" placeholder="log-in" required="required">
 									</div>
-								</form>
+								</div>
 							</li>
-						<?php } ?>
+							<li class="has-form">
+								<div class="row collapse">
+									<div>
+										<input type="text" name="password" id="password" placeholder="password" required="required">
+									</div>
+								</div>
+							</li>
+							<li class="has-form">
+								<div class="row collapse">
+									<div>
+										<input class="button radius" type="submit" value="Sign in" />
+									</div>
+								</div>
+							</li>
+							<li class="has-form">
+								<div class="row collapse">
+									<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
+								</div>
+							</li>
+						</form>
+					</ul>
+					<ul class="right" id="loggedin-nav">
+						<li class="litext"><?php echo $user_session['first_name'].' '.$user_session['last_name'] ?></li>
+						<li class="has-form">
+							<div class="row collapse">
+								<div>
+									<button id="logout" class="button radius">Logout</button>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>	
 			</section>
