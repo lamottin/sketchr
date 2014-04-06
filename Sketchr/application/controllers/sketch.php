@@ -108,6 +108,7 @@ class Sketch extends MY_Controller {
 		// Get the sketch object from the model
 		$data['sketch'] = $this->sketch_model->getById($this->uri->segment(2));
 		// WHAT TO DO IF IT RETURNS NULL? HAVE TO IMPLEMENT THAT !!!!
+		$data['sketch_embedded_link'] = $this->get_embedded_link($data['sketch']->video_link);
 
 		// Get the humorist object from the model
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
@@ -237,7 +238,12 @@ class Sketch extends MY_Controller {
 			echo json_encode($result);
 	}
 
+	private function get_embedded_link($video_link) {
 
+		$parts = explode("=", $video_link);
+
+		return '//www.youtube.com/embed/'.end($parts);
+	}
 
 }
 /* End of file sketch.php */

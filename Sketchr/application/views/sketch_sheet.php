@@ -6,9 +6,8 @@
 			<div class="row">
 
 				<div class="flex-video">
-					<iframe src="//www.youtube.com/embed/SFQGcZRfTfA" seamless webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+					<iframe src="<?php echo $sketch_embedded_link; ?>" seamless webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 				</div>
-				<!-- should load $sketch->video_link...-->
 			
 				<div>
 					<h4><?php echo $sketch->title; ?></h4>	
@@ -81,14 +80,14 @@
 				<p class="related-videos">Related Videos</p>	
 			</div>
 			<ul class="small-block-grid-1">
-				<?php foreach ($related_sketchs as $sketch) { ?>
+				<?php foreach ($related_sketchs as $related_sketch) { ?>
 					<li>
-						<a href="<?php echo base_url();?>watch/12">
+						<a href="<?php echo base_url().'watch/'.$related_sketch->id;?>">
 							<div class="large-5 columns">
-								<img src="<?php echo $sketch->image;?>">
+								<img src="<?php echo $related_sketch->image;?>">
 							</div>
 							<div class="large-7 columns">
-								<span><?php echo $sketch->title ?></span>
+								<span><?php echo $related_sketch->title ?></span>
 							</div>
 						</a>
 					</li>
