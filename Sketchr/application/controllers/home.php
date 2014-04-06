@@ -4,6 +4,8 @@ class Home extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();
+
+		$this->load->model('like_dislike_model');
 	}
 
 	/**
@@ -14,6 +16,9 @@ class Home extends MY_Controller {
 	 */
 	public function index() {
 		$data = array();
+
+		$data['popular'] = $this->like_dislike_model->list_best_ratio();
+
 		$this->show_view_with_hf('home', $data);
 	}
 }

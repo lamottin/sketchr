@@ -11,43 +11,20 @@
 		<div class="row">
 			<div class="large-12 columns">
 
-				<dl class="sub-nav" data-tab>
-					<dd class="active"><a href="#panel2-1">Videos</a></dd>
-					<dd><a href="#panel2-2">Forums</a></dd>
-				</dl>
-
-				<div class="tabs-content">
-
-					<div class="content active" id="panel2-1">
-						
-						<div class="row">
-							<ul class="small-block-grid-6">
-								<?php foreach ($sketchs as $sketch) { ?>	
-									<li>
-										<a class="th" href="<?php echo base_url()."watch/".$sketch->id ?>">
-											<img src="<?php echo 'http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg';?>">
-										</a>
-										<a href="<?php echo base_url()."watch/".$sketch->id ?>">
-											<?php echo $sketch->title ?>
-										</a>
-									</li>										
-								<?php } ?>
-							</ul>
-
-							<div class="pull right">
-								<a href="#">
-									See more...
+				<div class="row">
+					<ul class="small-block-grid-6">
+						<?php foreach ($sketchs as $sketch) { ?>	
+							<li>
+								<a class="th" href="<?php echo base_url()."watch/".$sketch->id ?>">
+									<img src="<?php echo $sketch->image;?>">
 								</a>
-							</div>
-						</div>	
-
-					</div>
-
-					<div class="content" id="panel2-2">
-						<p>Second panel content goes here...</p>
-					</div>
-
-				</div>
+								<a href="<?php echo base_url()."watch/".$sketch->id ?>">
+									<?php echo $sketch->title ?>
+								</a>
+							</li>										
+						<?php } ?>
+					</ul>
+				</div>	
 
 			</div>
 		</div>
