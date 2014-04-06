@@ -47,6 +47,7 @@
 
 .content-container {
     border-left: 1px solid #e2e2e2;
+    margin-top: 10px;
     width: 89%;
 }
 
@@ -95,9 +96,55 @@
 }
 
 /**************************************************************/
+/************** related video nav tweaks **********************/
+
+.related-list {
+    padding-left: 0.5rem;
+}
+
+.related-list li. {
+    margin: 0px 0px 0px 0px;
+    line-height: 2;
+}
+
+.related-list li a:not(.button) {
+    font-size: 90%;
+    color: #000000;
+    text-indent: 10px;
+}
+
+.related-list li a:not(.button):hover {
+    color: #FFFFFF;
+    background-color: #000000; 
+}
+
+.related-list li.divider {
+    margin: 8px 15px 8px 2px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.related-list li.title {
+    font-weight: bold;
+    color: #AAAAAA;
+}
+
+/**************************************************************/
 /*********************** font tweaks **************************/
 padding: .content title; {
     font-weight: bold;
     color: #AAAAAA;
+}
+
+p.comments {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #666666;
+}
+
+p.related-videos {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #666666;
+    margin-left: 16px
 }
 

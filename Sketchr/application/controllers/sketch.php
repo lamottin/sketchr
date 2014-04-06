@@ -111,6 +111,9 @@ class Sketch extends MY_Controller {
 
 		// Get the humorist object from the model
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
+
+		// Get all related Sketchs for easy navigation
+		$data['related_sketchs'] = $this->sketch_model->findRelatedSketch($data['sketch']);
 		
 		/* Here I got all the infos of a comment in an array and his likes/dislikes, already liked/disliked
 		* "comments" => StdObject; so in the view to get the field we type (in a foreach) $value["comments"]->field_name as in $value["comments"]->post_date
