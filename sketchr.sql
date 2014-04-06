@@ -1,13 +1,14 @@
-﻿-- phpMyAdmin SQL Dump
--- version 3.3.9
+-- phpMyAdmin SQL Dump
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Serveur: localhost
--- Généré le : Mer 26 Mars 2014 à 08:00
--- Version du serveur: 5.5.8
--- Version de PHP: 5.3.5
+-- Client: localhost
+-- Généré le: Dim 06 Avril 2014 à 13:29
+-- Version du serveur: 5.6.12-log
+-- Version de PHP: 5.4.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,6 +19,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Base de données: `sketchr`
 --
+CREATE DATABASE IF NOT EXISTS `sketchr` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `sketchr`;
 
 -- --------------------------------------------------------
 
@@ -37,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 INSERT INTO `category` (`id`, `title`, `image`) VALUES
-(1, 'mon_titre', 'mon_image'),
+(1, 'Joueur du Grenier', 'mon_image'),
 (2, 'ma_categorie', 'haha'),
 (3, 'huhu', 'huhu'),
 (4, 'tot', 'tutu'),
@@ -58,11 +61,6 @@ CREATE TABLE IF NOT EXISTS `category_post` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `category_post`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -77,11 +75,6 @@ CREATE TABLE IF NOT EXISTS `category_post_report_abuse` (
   `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `category_post_report_abuse`
---
-
 
 -- --------------------------------------------------------
 
@@ -99,10 +92,29 @@ CREATE TABLE IF NOT EXISTS `category_topic` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
--- Contenu de la table `category_topic`
+-- Structure de la table `ci_sessions`
 --
 
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(45) NOT NULL DEFAULT '0',
+  `user_agent` varchar(255) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+('1a5f9e4568968416d4aae3e451044e71', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36', 1396680529, ''),
+('ca3c034852855db4eef3608a31176cb2', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36', 1396790902, '');
 
 -- --------------------------------------------------------
 
@@ -403,11 +415,6 @@ CREATE TABLE IF NOT EXISTS `humorist_fan` (
   PRIMARY KEY (`member`,`humorist`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `humorist_fan`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -422,11 +429,6 @@ CREATE TABLE IF NOT EXISTS `humorist_post` (
   `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `humorist_post`
---
-
 
 -- --------------------------------------------------------
 
@@ -443,11 +445,6 @@ CREATE TABLE IF NOT EXISTS `humorist_post_report_abuse` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `humorist_post_report_abuse`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -463,11 +460,6 @@ CREATE TABLE IF NOT EXISTS `humorist_topic` (
   `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `humorist_topic`
---
-
 
 -- --------------------------------------------------------
 
@@ -519,11 +511,6 @@ CREATE TABLE IF NOT EXISTS `member_sketch_proposed` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `member_sketch_proposed`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -537,11 +524,6 @@ CREATE TABLE IF NOT EXISTS `member_temporarily_banned` (
   `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `member_temporarily_banned`
---
-
 
 -- --------------------------------------------------------
 
@@ -565,7 +547,7 @@ CREATE TABLE IF NOT EXISTS `sketch` (
 --
 
 INSERT INTO `sketch` (`id`, `title`, `video_link`, `release_date`, `image`, `synopsis`, `sketch_type`) VALUES
-(2, 'mon_titre', 'http://www.ddsqd.jar', '2014-03-23', 'http://localhost:80.fr', 'mon_synopsis', 5),
+(2, 'Joueur du grenier', 'http://www.youtube.com/watch?v=pS9Xokt8WHo', '2014-03-23', 'http://img.youtube.com/vi/pS9Xokt8WHo/hqdefault.jpg', 'mon_synopsis', 1),
 (3, 'jenesaispasquoimettre', 'http://mon_site.php', '2014-07-26', 'http://mon_site.php', 'synopsis de la vidéo', 5);
 
 -- --------------------------------------------------------
@@ -581,7 +563,7 @@ CREATE TABLE IF NOT EXISTS `sketch_comment` (
   `sketch` int(11) NOT NULL,
   `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Contenu de la table `sketch_comment`
@@ -618,7 +600,8 @@ INSERT INTO `sketch_comment` (`id`, `message`, `post_date`, `sketch`, `member`) 
 (28, 'haha', '2014-03-19', 2, 1),
 (29, 'hehe', '2014-03-19', 2, 1),
 (30, 'gdhfj', '2014-03-20', 3, 1),
-(31, 'hyhy', '2014-03-25', 2, 1);
+(31, 'hyhy', '2014-03-25', 2, 1),
+(32, 'truc', '2014-04-05', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -630,13 +613,9 @@ CREATE TABLE IF NOT EXISTS `sketch_comment_like_dislike` (
   `comment` int(11) NOT NULL,
   `member` int(11) NOT NULL,
   `vote` tinyint(1) NOT NULL,
+  `ip` int(11) NOT NULL,
   PRIMARY KEY (`member`,`comment`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `sketch_comment_like_dislike`
---
-
 
 -- --------------------------------------------------------
 
@@ -653,11 +632,6 @@ CREATE TABLE IF NOT EXISTS `sketch_comment_report_abuse` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `sketch_comment_report_abuse`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -671,11 +645,6 @@ CREATE TABLE IF NOT EXISTS `sketch_dead_link` (
   `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `sketch_dead_link`
---
-
 
 -- --------------------------------------------------------
 
@@ -698,7 +667,8 @@ CREATE TABLE IF NOT EXISTS `sketch_like_dislike` (
 INSERT INTO `sketch_like_dislike` (`sketch`, `member`, `vote`, `ip`) VALUES
 (2, 2, 1, '127.0.0.1'),
 (2, 1, 1, '128.0.0.1'),
-(2, 3, 1, '129.0.0.1');
+(2, 3, 1, '129.0.0.1'),
+(2, 0, 2, '::1');
 
 -- --------------------------------------------------------
 
@@ -711,11 +681,6 @@ CREATE TABLE IF NOT EXISTS `sketch_tag` (
   `tag` varchar(50) NOT NULL,
   PRIMARY KEY (`sketch`,`tag`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `sketch_tag`
---
-
 
 -- --------------------------------------------------------
 
@@ -738,9 +703,8 @@ CREATE TABLE IF NOT EXISTS `sketch_type` (
 --
 
 INSERT INTO `sketch_type` (`id`, `title`, `start_date`, `image`, `synopsis`, `category`) VALUES
-(6, 'gfdcxgc', '2014-03-31', 'http://localhost.com', 'mon_synopsis', 4),
-(5, 'MON TYPE', '2014-03-12', 'http://localhost.com', 'Type the synopsis here', 4),
-(7, 'fdsfstgg', '2014-03-23', 'http://localhost.com', 'j''enai pas', 1);
+(1, 'Joueur du grenier', '2014-03-31', 'http://localhost.com', 'mon_synopsis', 1),
+(5, 'MON TYPE', '2014-03-12', 'http://localhost.com', 'Type the synopsis here', 4);
 
 -- --------------------------------------------------------
 
@@ -753,11 +717,6 @@ CREATE TABLE IF NOT EXISTS `sketch_type_fan` (
   `member` int(11) NOT NULL,
   PRIMARY KEY (`member`,`sketch_type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `sketch_type_fan`
---
-
 
 -- --------------------------------------------------------
 
@@ -799,11 +758,6 @@ CREATE TABLE IF NOT EXISTS `sketch_type_post` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `sketch_type_post`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -818,11 +772,6 @@ CREATE TABLE IF NOT EXISTS `sketch_type_post_report_abuse` (
   `member` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `sketch_type_post_report_abuse`
---
-
 
 -- --------------------------------------------------------
 
@@ -840,11 +789,6 @@ CREATE TABLE IF NOT EXISTS `sketch_type_topic` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `sketch_type_topic`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -859,7 +803,6 @@ CREATE TABLE IF NOT EXISTS `sketch_view` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `sketch_view`
---
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
