@@ -172,45 +172,50 @@
 				
 				<!-- Right Nav Section -->
 				<div id="login-content">
-					<ul class="right" id="signin-nav">
-						<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
+					<ul class="right">
+
+						<div id="signin-nav">
+							<form action="<?php echo base_url().'member/login'; ?>"method="post" id="signin">
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input type="text" name="email" id="email" placeholder="log-in" required="required">
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input type="text" name="password" id="password" placeholder="password" required="required">
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<div>
+											<input class="button radius" type="submit" value="Sign in" />
+										</div>
+									</div>
+								</li>
+								<li class="has-form">
+									<div class="row collapse">
+										<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
+									</div>
+								</li>
+							</form>
+						</div>
+
+						<div id="loggedin-nav">
+							<li class="litext"><?php echo $user_session['first_name'].' '.$user_session['last_name'] ?></li>
 							<li class="has-form">
 								<div class="row collapse">
 									<div>
-										<input type="text" name="email" id="email" placeholder="log-in" required="required">
+										<button id="logout" class="button radius">Logout</button>
 									</div>
 								</div>
 							</li>
-							<li class="has-form">
-								<div class="row collapse">
-									<div>
-										<input type="text" name="password" id="password" placeholder="password" required="required">
-									</div>
-								</div>
-							</li>
-							<li class="has-form">
-								<div class="row collapse">
-									<div>
-										<input class="button radius" type="submit" value="Sign in" />
-									</div>
-								</div>
-							</li>
-							<li class="has-form">
-								<div class="row collapse">
-									<a href="<?php echo base_url()."member/addMemberPage"?>" class="button radius">Sign up</a>
-								</div>
-							</li>
-						</form>
-					</ul>
-					<ul class="right" id="loggedin-nav">
-						<li class="litext"><?php echo $user_session['first_name'].' '.$user_session['last_name'] ?></li>
-						<li class="has-form">
-							<div class="row collapse">
-								<div>
-									<button id="logout" class="button radius">Logout</button>
-								</div>
-							</div>
-						</li>
+						</div>
+
 					</ul>
 				</div>	
 			</section>

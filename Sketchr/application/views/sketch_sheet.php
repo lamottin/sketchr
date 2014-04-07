@@ -11,7 +11,8 @@
 			
 				<div>
 					<h4><?php echo $sketch->title; ?></h4>	
-					<h5><?php echo $sketch_type->title; ?></h5>
+					<h5>by <a href="<?php echo base_url().'serie/'.$sketch_type->id; ?>"><?php echo $sketch_type->title; ?></a></h5>
+					<p><?php echo $sketch_type->synopsis; ?></p>
 				</div>
 				
 			</div>
