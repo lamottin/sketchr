@@ -108,9 +108,13 @@ class Sketch extends MY_Controller {
 		// Get the sketch object from the model
 		$data['sketch'] = $this->sketch_model->getById($this->uri->segment(2));
 		// WHAT TO DO IF IT RETURNS NULL? HAVE TO IMPLEMENT THAT !!!!
+		$data['sketch_embedded_link'] = $this->get_embedded_link($data['sketch']->video_link);
 
 		// Get the humorist object from the model
 		$data['sketch_type'] = $this->sketch_type_model->getById($data['sketch']->sketch_type );
+
+		// Get all related Sketchs for easy navigation
+		$data['related_sketchs'] = $this->sketch_model->findRelatedSketch($data['sketch']);
 		
 		/* Here I got all the infos of a comment in an array and his likes/dislikes, already liked/disliked
 		* "comments" => StdObject; so in the view to get the field we type (in a foreach) $value["comments"]->field_name as in $value["comments"]->post_date
@@ -234,7 +238,12 @@ class Sketch extends MY_Controller {
 			echo json_encode($result);
 	}
 
+	private function get_embedded_link($video_link) {
 
+		$parts = explode("=", $video_link);
+
+		return '//www.youtube.com/embed/'.end($parts);
+	}
 
 }
 /* End of file sketch.php */

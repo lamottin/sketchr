@@ -55,5 +55,17 @@ class Like_Dislike_model extends CI_Model {
 		$this->db->update($this->table);
 		
 	}
+
+	public function list_best_ratio() {
+
+		return $this->db->select('sketch')
+			->select('vote')
+			->select('Count(vote) AS vote_count')
+			->from($this->table)
+			->order_by('sketch', 'desc')
+			->group_by(array('sketch','vote'))
+			->get()
+			->result();
+	}
 }
 ?>

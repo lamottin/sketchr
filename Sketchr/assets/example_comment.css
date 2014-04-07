@@ -6,7 +6,7 @@
 
 /* the comments container  */
 .cmt-container{ 
-	width: 90%;
+	width: 100%;
 	height: auto; min-height: 30px;
 	padding: 10px;
 	margin: 10px auto;

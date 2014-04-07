@@ -16,6 +16,33 @@ class Sketch_model extends CI_Model {
 			->result();
 	}
 
+
+	public function findRelatedSketch($sketch) {
+
+		$related_sketchs = array();
+		$temp_array = array();
+
+		// Split the title of the current sketch into tags
+		$sketch_tags = explode(" ", $sketch->title);
+
+		// Get all the related sketchs with common tags in title
+		foreach ($sketch_tags as $tag) {
+			if(strlen($tag) > 4) {
+				$temp_array = $this->db->select('*')
+					->from($this->table)
+					->like('title', $tag)
+					->order_by('id', 'desc')
+					->order_by('release_date', 'desc')
+					->get()
+					->result();
+				$related_sketchs = array_merge($related_sketchs, $temp_array);
+			}
+		}
+
+		return array_unique($related_sketchs, SORT_REGULAR);
+	}
+
+
 	/**
 	 * List all the sketchs within the database ordered by their "id"
 	 * @return [Array] of all sketch
