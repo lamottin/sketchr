@@ -1,4 +1,4 @@
-<div class="columns content-container">
+﻿<div class="columns content-container">
 
 	<div class="large-11 columns">
 
@@ -17,25 +17,44 @@
 				
 			</div>
 
-			<div id="modal_deadlink" class="reveal-modal" data-reveal>
-				<h2>Confirmation</h2>
-				<p class="lead">Vous &ecirc;tes sur le point de signaler un lien mort.</p>
-				<p>Souhaitez-vous confirmer ?</p>
-				<input type="hidden" name="id_sketch_hidden" id="id_sketch_hidden" value="<?php echo $sketch->id ?>" />
-				<input type="hidden" name="id_member_hidden" id="id_member_hidden" value="1" />	
-				<a href="#" id="confirm_deadlink" class="button">Confirmer</a>
-				<a href="#" id="cancel_deadlink" class="button secondary">Annuler</a>
-				<a class="close-reveal-modal">&#215;</a> 
-			</div>
+			
+			
+			<?php 
+				if(!empty($user_session["id"])) {
+				
+					echo '<div id="modal_deadlink" class="reveal-modal" data-reveal>
+					<h2>Confirmation</h2>
+					<p class="lead">Vous &ecirc;tes sur le point de signaler un lien mort.</p>
+					<p>Souhaitez-vous confirmer ?</p>
+					<input type="hidden" name="id_sketch_hidden" id="id_sketch_hidden" value="'.$sketch->id.'" />
+					<input type="hidden" name="id_member_hidden" id="id_member_hidden" value="'.$user_session["id"].'" />	
+					<a href="#" id="confirm_deadlink" class="button">Confirmer</a>
+					<a href="#" id="cancel_deadlink" class="button secondary">Annuler</a>
+					<a class="close-reveal-modal">&#215;</a> 
+					</div>';
+				}
+			?>
 
 			<div class="row">
 
 				<div class="tab-tr" id="t1">
-					<div id="btn_like_sketch" class="like-btn <?php if($like_count == 1){ echo 'like-h';}?>">Like</div>
-					<div id="btn_dislike_sketch" class="dislike-btn <?php if($dislike_count == 1){ echo 'dislike-h';}?>"></div>
-					<?php
-						if($already_reported != null && ($already_reported==false || $already_reported->processed==1))
-							echo '<div class="deadlink" data-reveal-id="modal_deadlink" data-reveal></div>';
+				
+					<?php 
+						//Before
+						// <div id="btn_like_sketch" class="like-btn <?php if($like_count == 1){ echo 'like-h';}?">Like</div>
+						// <div id="btn_dislike_sketch" class="dislike-btn <?php if($dislike_count == 1){ echo 'dislike-h';}?"></div>
+
+						if(!empty($user_session["id"])) {
+							echo '<div id="btn_like_sketch" class="like-btn ';
+								if($like_count == 1){ echo "like-h";}
+							echo '">Like</div>';
+							echo '<div id="btn_dislike_sketch" class="dislike-btn ';
+								if($dislike_count == 1){ echo "dislike-h";}
+							echo '"></div>';
+							
+							if($already_reported==false || $already_reported->processed==1)
+								echo '<div class="deadlink" data-reveal-id="modal_deadlink" data-reveal></div>';
+						}
 					?>
 					<div class="stat-cnt">
 						<div class="rate-count"><?php echo $rate_all_count;?></div>
