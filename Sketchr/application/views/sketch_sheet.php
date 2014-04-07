@@ -23,24 +23,24 @@
 			<div class="row">
 				        
 						<div class="tab-tr" id="t1">
-						<div id="btn_like_sketch" class="like-btn <?php if($like_count == 1){ echo 'like-h';}?>">Like</div>
-						<div id="btn_dislike_sketch" class="dislike-btn <?php if($dislike_count == 1){ echo 'dislike-h';}?>"></div>
-						<?php
-							if($already_reported != null && ($already_reported==false || $already_reported->processed==1))
-								echo '<div class="deadlink" data-reveal-id="modal_deadlink" data-reveal></div>';
-						?>
-								<!-- <div class="share-btn">Share</div> -->
+							<div id="btn_like_sketch" class="like-btn <?php if($like_count == 1){ echo 'like-h';}?>">Like</div>
+							<div id="btn_dislike_sketch" class="dislike-btn <?php if($dislike_count == 1){ echo 'dislike-h';}?>"></div>
+							<?php
+								if($already_reported != null && ($already_reported==false || $already_reported->processed==1))
+									echo '<div class="deadlink" data-reveal-id="modal_deadlink" data-reveal></div>';
+							?>
+							<!-- <div class="share-btn">Share</div> -->
 
-								<div class="stat-cnt">
-									<div class="rate-count"><?php echo $rate_all_count;?></div>
-									<div class="stat-bar">
-										<div class="bg-green" style="width:<?php echo $rate_like_percent;?>%;"></div>
-										<div class="bg-red" style="width:<?php echo $rate_dislike_percent;?>%"></div>
-									</div>
-									<div class="dislike-count"><?php echo $rate_dislike_count;?></div>
-									<div class="like-count"><?php echo $rate_like_count;?></div>
+							<div class="stat-cnt">
+								<div class="rate-count"><?php echo $rate_all_count;?></div>
+								<div class="stat-bar">
+									<div class="bg-green" style="width:<?php echo $rate_like_percent;?>%;"></div>
+									<div class="bg-red" style="width:<?php echo $rate_dislike_percent;?>%"></div>
 								</div>
+								<div class="dislike-count"><?php echo $rate_dislike_count;?></div>
+								<div class="like-count"><?php echo $rate_like_count;?></div>
 							</div>
+						</div>
 							<!-- <div class="share-cnt">
 
 								AddThis Button BEGIN 

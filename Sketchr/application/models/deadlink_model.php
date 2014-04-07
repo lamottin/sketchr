@@ -64,7 +64,7 @@ class deadlink_model extends CI_Model {
 		
 		$this->db->where('sketch', $id_sketch);
 		$this->db->where('member', $user);
-		return $this->db->update($this->table, $data);	
+		return $this->db->update($this->table);	
 
 	}
 
