@@ -1,14 +1,6 @@
 <div class="columns content-container">
 
 	<div class="large-11 columns">
-	 
-	    <div class="row">
-			<div class="large-12 columns">
-				<pre>
-					<?php print_r($popular); ?>
-				</pre>
-			</div>
-		</div>
 
 		<div class="row">
 			<div class="large-12 columns">
@@ -20,23 +12,18 @@
 
 			<ul class="small-block-grid-6">
 
-				<?php for ($i=0; $i < 12; $i++) { ?>
-					
+				<?php foreach ($popular as $sketch) { ?>
 					<li>
-						<a class="th" href="../img/demos/demo2.png">
-							<img src="http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg">
+						<a class="th" href="<?php echo base_url().'watch/'.$sketch->id; ?>">
+							<img src="<?php echo $sketch->image; ?>">
+						</a>
+						<a href="<?php echo base_url()."watch/".$sketch->id ?>">
+							<p style="font-size : 14px; margin-top : 4px;"><?php echo $sketch->title ?></p>
 						</a>
 					</li>
-					
 				<?php } ?>
 
 			</ul>
-
-			<div class="pull right">
-				<a href="#">
-					See more...
-				</a>
-			</div>
 
 		</div>
 

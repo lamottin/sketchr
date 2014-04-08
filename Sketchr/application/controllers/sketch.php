@@ -139,13 +139,13 @@ class Sketch extends MY_Controller {
 		$user_ip = $_SERVER['REMOTE_ADDR'];
 		//Check if the user has already clicked on the unlike (rate = 2) or the like (rate = 1)
         $like_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $data['sketch']->id, 1);  //'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'. $data['sketch']->id.'" and rate = 1 '
-		$dislike_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $data['sketch']->id, 2);//'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'. $data['sketch']->id.'" and rate = 2 '
+		$dislike_count = $this->like_dislike_model->getCountByActUserSketch($user_ip, $data['sketch']->id, -1);//'SELECT COUNT(*) FROM  wcd_yt_rate WHERE ip = "'.$user_ip.'" and id_item = "'. $data['sketch']->id.'" and rate = 2 '
         
         //Count all the rate 
         $rate_all_count = $this->like_dislike_model->getAllCountBySketch($data['sketch']->id); //'SELECT COUNT(*) FROM wcd_yt_rate WHERE id_item = "'.$id_sketch.'"'
         
         $rate_like_count =  $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,1); //'SELECT COUNT(*) FROM wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 1'
-		$rate_dislike_count = $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,2); //'SELECT COUNT(*) FROM wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 2'
+		$rate_dislike_count = $this->like_dislike_model->getAllCountByActSketch($data['sketch']->id,-1); //'SELECT COUNT(*) FROM wcd_yt_rate WHERE id_item = "'.$pageID.'" and rate = 2'
 		
         $rate_like_percent = $this->percent($rate_like_count, $rate_all_count);        
         $rate_dislike_percent = $this->percent($rate_dislike_count, $rate_all_count);
