@@ -16,9 +16,15 @@ class Home extends MY_Controller {
 	 */
 	public function index() {
 		$data = array();
+		$data['popular'] = array();
 
-		$data['popular'] = $this->like_dislike_model->list_best_ratio();
-
+		$popularld = $this->like_dislike_model->list_best_ratio();
+		
+		foreach($popularld as $popularsketch)
+		{
+			array_push($data['popular'], $this->sketch_model->getById($popularsketch->sketch));
+		}
+		
 		$this->show_view_with_hf('home', $data);
 	}
 }
