@@ -17,6 +17,19 @@
     font-size: 0.75rem;
 }
 
+.top-bar input[type="password"], .top-bar .button {
+    font-size: 0.77778rem;
+    position: relative;
+    top: 7px;
+}
+
+.top-bar input[type="password"] {
+    height: auto;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    font-size: 0.75rem;
+}
+
 .top-bar .title-area {
 	margin-left: 2rem;
 	margin-right: 5rem;

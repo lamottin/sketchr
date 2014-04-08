@@ -15,12 +15,16 @@
 					<ul class="small-block-grid-6">
 						<?php foreach ($sketch_types as $sketch_type) { ?>	
 							<li>
-								<a class="th" href="<?php echo base_url()."serie/".$sketch_type->id ?>">
-									<img src="<?php echo 'http://img.youtube.com/vi/aiBt44rrslw/hqdefault.jpg';?>">
-								</a>
-								<a href="<?php echo base_url()."serie/".$sketch_type->id ?>">
-									<?php echo $sketch_type->title ?>
-								</a>
+								<div>
+									<a class="th" href="<?php echo base_url()."serie/".$sketch_type->id ?>">
+										<img src="<?php echo $sketch_type->image; ?>">
+									</a>
+								</div>
+								<div>
+									<a href="<?php echo base_url()."serie/".$sketch_type->id ?>">
+										<?php echo $sketch_type->title ?>
+									</a>
+								</div>
 							</li>										
 						<?php } ?>
 					</ul>

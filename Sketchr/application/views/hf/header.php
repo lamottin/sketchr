@@ -186,7 +186,7 @@
 								<li class="has-form">
 									<div class="row collapse">
 										<div>
-											<input type="text" name="password" id="password" placeholder="password" required="required">
+											<input type="password" name="password" id="password" placeholder="password" required="required">
 										</div>
 									</div>
 								</li>
